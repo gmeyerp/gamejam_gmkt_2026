@@ -2,9 +2,17 @@
 
 [ext_resource type="Script" uid="uid://e3kkuj68sism" path="res://scripts/game_manager.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://df1t6a2s8rmo7" path="res://scenes/office.tscn" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://c0r2aac6igsnl" path="res://scripts/demission_manager.gd" id="3_iywne"]
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="4_p57ef"]
+[ext_resource type="Resource" uid="uid://dl51jbwh53cny" path="res://resources/employee_data/test1.tres" id="5_u5sy4"]
+[ext_resource type="Resource" uid="uid://c3i1ysreum4qw" path="res://resources/employee_data/test2.tres" id="6_0tnpc"]
+[ext_resource type="Resource" uid="uid://b0wkjmnbyvcfj" path="res://resources/employee_data/test3.tres" id="7_vtaks"]
+[ext_resource type="Resource" uid="uid://bjk2ihdxwooey" path="res://resources/employee_data/test4.tres" id="8_kvpfn"]
+[ext_resource type="Resource" uid="uid://b2apcstk5hx5s" path="res://resources/employee_data/test5.tres" id="9_dinhu"]
 
-[node name="Game" type="Node" unique_id=1083196052]
+[node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager")]
 script = ExtResource("1_yqjtg")
+demission_manager = NodePath("DemissionManager")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1816984839]
 
@@ -63,6 +71,10 @@ grow_vertical = 0
 text = "Quit"
 
 [node name="Office" parent="." unique_id=1619228560 instance=ExtResource("2_lnu2h")]
+
+[node name="DemissionManager" parent="." unique_id=1273482904 instance=ExtResource("2_lnu2h")]
+script = ExtResource("3_iywne")
+employee_list = Array[ExtResource("4_p57ef")]([ExtResource("5_u5sy4"), ExtResource("6_0tnpc"), ExtResource("7_vtaks"), ExtResource("8_kvpfn"), ExtResource("9_dinhu")])
 
 [connection signal="pressed" from="CanvasLayer/Control/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/QuitButton" to="." method="_on_quit_button_pressed"]
