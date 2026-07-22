@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bjq3xs3vrvxeq"
-path="res://.godot/imported/Office.blend-7ee04110dcc42f31ad17d1d59f44e647.scn"
+valid=false
 
 [deps]
 
-source_file="res://art/models/office/Office.blend"
-dest_files=["res://.godot/imported/Office.blend-7ee04110dcc42f31ad17d1d59f44e647.scn"]
+source_file="res://Art/Models/Office/Office.blend"
 
 [params]
 
