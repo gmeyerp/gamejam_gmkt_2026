@@ -1,6 +1,8 @@
 class_name DeskReport
 extends Node3D
 
+signal player_scored(score: int)
+
 @export var decision_ui: ReportDecisionUI
 @export var diegetic_display: DiegeticUIDisplay
 @export var interaction_router: InteractionRouter
@@ -48,7 +50,9 @@ func choose_layoff(motive: GlobalVariables.LayoffMotive) -> void:
 
 
 func score_layoff_choice(_choice: GlobalVariables.LayoffMotive, _report: EmployeeData) -> void:
-	pass
+	print(str(_choice) + "/" + str(_report.layoff_motive))
+	if _choice == _report.layoff_motive:
+		player_scored.emit(1)
 
 
 func advance_to_next_report() -> void:

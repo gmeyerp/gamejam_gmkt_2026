@@ -3,6 +3,13 @@ class_name GameManager
 
 @export var demission_manager: DemissionManager
 @export var post_processing: CanvasLayer
+@onready var desk: PlayerDesk = $Office/Desk
+@onready var score_number: Label = $GameHUD/Score/ScoreNumber
+
+var score: int = 0:
+	set(value):
+		score_number.text = str(value)
+
 
 var is_playing: bool = false
 @export var max_game_time: float = 15.0
@@ -16,9 +23,16 @@ func game_start() -> void:
 	game_time = 0.0
 	is_playing = true
 	post_processing.set_distortion(0)
+	reset_score()
 	
 	if demission_manager:
 		demission_manager.start_game()
+	
+	if not desk.report.player_scored.is_connected(increase_score):
+		desk.report.player_scored.connect(increase_score)
+	
+	if not desk.report.decision_ui.layoff_chosen.is_connected(demission_manager.process_decision):
+		desk.report.decision_ui.layoff_chosen.connect(demission_manager.process_decision)
 
 func _process(delta: float) -> void:
 	if is_playing:
@@ -34,3 +48,9 @@ func _on_quit_button_pressed() -> void:
 func _on_demission_game_finished() -> void:
 	is_playing = false
 	print("Acabou os funcionários! Tempo total: ", game_time)
+
+func reset_score():
+	score = 0
+
+func increase_score(add_score: int):
+	score += add_score

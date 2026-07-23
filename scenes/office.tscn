@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://yc3u3dqu82hd" path="res://scripts/desk/clock.gd" id="4_clock"]
 [ext_resource type="Script" uid="uid://dslk4hlghmu6v" path="res://scripts/interaction/interactable.gd" id="5_interactable"]
 [ext_resource type="Script" uid="uid://clg48545tj1sx" path="res://scripts/interaction/interaction_router.gd" id="6_router"]
-[ext_resource type="PackedScene" uid="uid://46m3r0bq38if" path="res://scenes/ui/diegetic_computer_ui.tscn" id="7_pc_ui"]
-[ext_resource type="PackedScene" uid="uid://c0gsc5lhq3kiy" path="res://scenes/ui/diegetic_report_ui.tscn" id="8_report_ui"]
+[ext_resource type="PackedScene" uid="uid://dji0kargchvj8" path="res://scenes/ui/diegetic_computer_ui.tscn" id="7_pc_ui"]
+[ext_resource type="PackedScene" uid="uid://iyqfemwfh13v" path="res://scenes/ui/diegetic_report_ui.tscn" id="8_report_ui"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_desk"]
 size = Vector3(2.4, 0.08, 1.2)
@@ -89,6 +89,7 @@ shape = SubResource("BoxShape_computer")
 [node name="DiegeticComputerUI" parent="Desk/Computer" unique_id=1360918191 instance=ExtResource("7_pc_ui")]
 
 [node name="Report" type="Node3D" parent="Desk" unique_id=1668581864 node_paths=PackedStringArray("diegetic_display")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.06, 0.1)
 script = ExtResource("3_report")
 diegetic_display = NodePath("DiegeticReportUI")

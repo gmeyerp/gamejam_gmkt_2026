@@ -15,16 +15,16 @@
 [ext_resource type="Resource" uid="uid://bjk2ihdxwooey" path="res://resources/employee_data/test4.tres" id="8_kvpfn"]
 [ext_resource type="Resource" uid="uid://b2apcstk5hx5s" path="res://resources/employee_data/test5.tres" id="9_dinhu"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_trtic"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ca42v"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir15t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rysoc"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_trtic")
+albedo_texture = SubResource("ViewportTexture_ca42v")
 
-[sub_resource type="QuadMesh" id="QuadMesh_ca42v"]
+[sub_resource type="QuadMesh" id="QuadMesh_ssvqc"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_ir15t")
+material = SubResource("StandardMaterial3D_rysoc")
 size = Vector2(0.32, 0.4)
 
 [node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager", "post_processing")]
@@ -99,8 +99,9 @@ grow_vertical = 0
 text = "Quit"
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=890185811]
+visible = false
 
-[node name="EmployeeNumer" type="Control" parent="GameHUD" unique_id=1927852521]
+[node name="Control" type="Control" parent="GameHUD" unique_id=1927852521]
 layout_mode = 3
 anchor_left = 0.79300004
 anchor_top = 0.057000004
@@ -112,7 +113,7 @@ offset_right = -0.2241211
 offset_bottom = -0.13601685
 grow_horizontal = 0
 
-[node name="CurrentEmployeeNumber" type="Label" parent="GameHUD/EmployeeNumer" unique_id=963160310]
+[node name="Label" type="Label" parent="GameHUD/Control" unique_id=963160310]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -129,7 +130,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EmployeeIcon" type="TextureRect" parent="GameHUD/EmployeeNumer" unique_id=1190121565]
+[node name="TextureRect" type="TextureRect" parent="GameHUD/Control" unique_id=1190121565]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -143,35 +144,13 @@ texture = ExtResource("4_trtic")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Score" type="Control" parent="GameHUD" unique_id=436912654]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="ScoreNumber" type="Label" parent="GameHUD/Score" unique_id=711838650]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 37.0
-offset_top = 37.0
-offset_right = 110.0
-offset_bottom = 125.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Office" parent="." unique_id=1066995191 instance=ExtResource("2_lnu2h")]
 
 [node name="Desk" parent="Office" index="0" unique_id=1555415675]
 script = ExtResource("6_ir15t")
 
 [node name="ScreenMesh" parent="Office/Desk/Report/DiegeticReportUI" parent_id_path=PackedInt32Array(1066995191, 610582888) index="1" unique_id=1719728263]
-mesh = SubResource("QuadMesh_ca42v")
+mesh = SubResource("QuadMesh_ssvqc")
 
 [node name="InteractionRouter" parent="Office" index="1" unique_id=29840228 node_paths=PackedStringArray("camera", "desk_surface", "desk_objects")]
 camera = NodePath("../Camera3D")
