@@ -6,6 +6,7 @@ extends Node3D
 @export var screen_mesh: MeshInstance3D
 @export var ui_root: Control
 @export var camera: Camera3D
+@export var linked_interactable: Interactable
 
 var input_active: bool = false
 
@@ -22,6 +23,7 @@ func _ready() -> void:
 				break
 
 	resolve_camera()
+	resolve_linked_interactable()
 	if sub_viewport:
 		sub_viewport.handle_input_locally = true
 		sub_viewport.gui_disable_input = false
@@ -38,7 +40,9 @@ func _ready() -> void:
 			" mesh=",
 			screen_mesh,
 			" ui=",
-			ui_root
+			ui_root,
+			" interactable=",
+			linked_interactable
 		)
 
 
@@ -52,6 +56,23 @@ func set_input_active(active: bool) -> void:
 
 func get_ui() -> Control:
 	return ui_root
+
+
+func get_linked_interactable() -> Interactable:
+	resolve_linked_interactable()
+	return linked_interactable
+
+
+func resolve_linked_interactable() -> void:
+	if is_instance_valid(linked_interactable):
+		return
+	var parent := get_parent()
+	if parent == null:
+		return
+	for child in parent.get_children():
+		if child is Interactable:
+			linked_interactable = child
+			return
 
 
 func resolve_camera() -> void:

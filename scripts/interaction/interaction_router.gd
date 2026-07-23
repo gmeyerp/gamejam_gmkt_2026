@@ -139,7 +139,10 @@ func _pick_interactable() -> Interactable:
 	if collider is Interactable:
 		return collider
 	if collider is Node:
-		return _find_interactable_ancestor(collider)
+		var from_ancestor := _find_interactable_ancestor(collider)
+		if from_ancestor:
+			return from_ancestor
+		return _find_interactable_from_diegetic(collider)
 	return null
 
 
@@ -148,5 +151,14 @@ func _find_interactable_ancestor(node: Node) -> Interactable:
 	while current:
 		if current is Interactable:
 			return current
+		current = current.get_parent()
+	return null
+
+
+func _find_interactable_from_diegetic(node: Node) -> Interactable:
+	var current := node
+	while current:
+		if current is DiegeticUIDisplay:
+			return current.get_linked_interactable()
 		current = current.get_parent()
 	return null
