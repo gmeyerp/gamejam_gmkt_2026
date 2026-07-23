@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource("1_4lx3s")
 name = "Udan"
-age = 40
+age = 45
 department = 1
-salary = 5.0
+layoff_motive = 3
+production_rate = 1.0
+salary = 15.0
 metadata/_custom_type_script = "uid://d2272qde40201"

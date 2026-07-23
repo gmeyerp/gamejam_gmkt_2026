@@ -39,6 +39,20 @@ func set_department_data(averages: Dictionary) -> void:
 	if averages.has("productivity"):
 		_productivity_page.text = str(averages["productivity"])
 
+func update_wage_page():
+	var budget_text = ""
+	for i in GlobalVariables.Department.size():
+		budget_text += "%s average wages: %d
+		" % [GlobalVariables.Department.keys()[i], EmployeeList.get_average_salary(i)]
+	_budget_page.text = budget_text
+
+func update_productivity_page():
+	var budget_text = ""
+	for i in GlobalVariables.Department.size():
+		budget_text += "%s average productivity: %d
+		" % [GlobalVariables.Department.keys()[i], EmployeeList.get_average_productivity(i)]
+	_productivity_page.text = budget_text
+
 
 func switch_tab(tab: RulebookTab) -> void:
 	_current_tab = tab
@@ -49,3 +63,6 @@ func _refresh_tab_visibility() -> void:
 	_behaviour_page.visible = _current_tab == RulebookTab.BEHAVIOUR_RULES
 	_budget_page.visible = _current_tab == RulebookTab.DEPARTMENT_BUDGET
 	_productivity_page.visible = _current_tab == RulebookTab.DEPARTMENT_PRODUCTIVITY
+	
+	update_productivity_page()
+	update_wage_page()

@@ -28,6 +28,7 @@ post_processing = NodePath("PostProcessing")
 max_game_time = 900.0
 
 [node name="PostProcessing" parent="." unique_id=929113980 instance=ExtResource("2_vtaks")]
+layer = 0
 
 [node name="GameplayController" type="Node" parent="." unique_id=591240809 node_paths=PackedStringArray("title_ui", "camera", "interaction_router", "pc_focus_marker")]
 script = ExtResource("4_gameplay")
@@ -93,7 +94,6 @@ grow_vertical = 0
 text = "Quit"
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=890185811]
-visible = false
 
 [node name="EmployeeNumer" type="Control" parent="GameHUD" unique_id=1927852521]
 layout_mode = 3

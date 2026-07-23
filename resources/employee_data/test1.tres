@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_tsd86")
 name = "Michelle"
-age = 40
-department = 1
+age = 53
+layoff_motive = 2
+production_rate = 20.0
 salary = 5.0
 metadata/_custom_type_script = "uid://d2272qde40201"

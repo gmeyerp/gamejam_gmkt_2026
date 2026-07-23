@@ -10,6 +10,8 @@ class_name GameManager
 @onready var game_hud: CanvasLayer = $GameHUD
 
 var score: int = 0
+@onready var employee_number: int = EmployeeList.get_employee_number()
+@onready var employee_number_ui: Label = $GameHUD/EmployeeNumer/CurrentEmployeeNumber
 
 
 var is_playing: bool = false
@@ -27,6 +29,7 @@ func game_start() -> void:
 	reset_score()
 	end_menu.hide()
 	game_hud.show()
+	update_employee_number()
 	
 	if demission_manager:
 		demission_manager.start_game()
@@ -36,6 +39,9 @@ func game_start() -> void:
 	
 	if not desk.report.decision_ui.layoff_chosen.is_connected(demission_manager.process_decision):
 		desk.report.decision_ui.layoff_chosen.connect(demission_manager.process_decision)
+	
+	if not EmployeeList.employee_fired.is_connected(on_employee_fired):
+		EmployeeList.employee_fired.connect(on_employee_fired)
 
 func _process(delta: float) -> void:
 	if is_playing:
@@ -68,3 +74,10 @@ func increase_score(add_score: int):
 
 func update_score():
 	score_number.text = str(score)
+
+func update_employee_number():
+	employee_number_ui.text = str(EmployeeList.get_employee_number())
+
+func on_employee_fired():
+	print("Employee fired")
+	update_employee_number()

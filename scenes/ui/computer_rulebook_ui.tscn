@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://d0xifjyukvu2n"]
 
-[ext_resource type="Script" path="res://scripts/ui/computer_rulebook_ui.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://cipcdonmhkejr" path="res://scripts/ui/computer_rulebook_ui.gd" id="1_script"]
 
-[node name="ComputerRulebookUI" type="Control"]
+[node name="ComputerRulebookUI" type="Control" unique_id=1566547511]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,50 +11,50 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="." unique_id=158387300]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 offset_left = 8.0
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Panel"]
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=425031013]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Title" type="Label" parent="Panel/VBox"]
+[node name="Title" type="Label" parent="Panel/VBox" unique_id=745386304]
 layout_mode = 2
 text = "Rulebook"
 
-[node name="TabButtons" type="HBoxContainer" parent="Panel/VBox"]
+[node name="TabButtons" type="HBoxContainer" parent="Panel/VBox" unique_id=1545234170]
 layout_mode = 2
 
-[node name="BehaviourTab" type="Button" parent="Panel/VBox/TabButtons"]
+[node name="BehaviourTab" type="Button" parent="Panel/VBox/TabButtons" unique_id=1165323925]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Comportamento"
 
-[node name="BudgetTab" type="Button" parent="Panel/VBox/TabButtons"]
+[node name="BudgetTab" type="Button" parent="Panel/VBox/TabButtons" unique_id=349965519]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Orçamento"
 
-[node name="ProductivityTab" type="Button" parent="Panel/VBox/TabButtons"]
+[node name="ProductivityTab" type="Button" parent="Panel/VBox/TabButtons" unique_id=1530235495]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Produtividade"
 
-[node name="Pages" type="Control" parent="Panel/VBox"]
+[node name="Pages" type="Control" parent="Panel/VBox" unique_id=297397268]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BehaviourPage" type="Label" parent="Panel/VBox/Pages"]
+[node name="BehaviourPage" type="Label" parent="Panel/VBox/Pages" unique_id=1488763008]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,7 +65,7 @@ text = "Regras de Comportamento
 (placeholder)"
 autowrap_mode = 3
 
-[node name="BudgetPage" type="Label" parent="Panel/VBox/Pages"]
+[node name="BudgetPage" type="Label" parent="Panel/VBox/Pages" unique_id=1199917392]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -77,7 +77,7 @@ text = "Orçamento do Departamento
 (placeholder)"
 autowrap_mode = 3
 
-[node name="ProductivityPage" type="Label" parent="Panel/VBox/Pages"]
+[node name="ProductivityPage" type="Label" parent="Panel/VBox/Pages" unique_id=707399047]
 visible = false
 layout_mode = 1
 anchors_preset = 15
