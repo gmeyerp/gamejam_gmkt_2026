@@ -8,6 +8,7 @@ class_name GameManager
 @onready var end_menu: CanvasLayer = $EndMenu
 @onready var final_score: Label = $EndMenu/Control/Score
 @onready var game_hud: CanvasLayer = $GameHUD
+@onready var office: EnvironmentManager = $Office
 
 var score: int = 0
 @onready var employee_number: int = EmployeeList.get_employee_number()
@@ -30,6 +31,7 @@ func game_start() -> void:
 	end_menu.hide()
 	game_hud.show()
 	update_employee_number()
+	office.clear_office()
 	
 	if demission_manager:
 		demission_manager.start_game()
@@ -39,6 +41,9 @@ func game_start() -> void:
 	
 	if not desk.report.decision_ui.layoff_chosen.is_connected(demission_manager.process_decision):
 		desk.report.decision_ui.layoff_chosen.connect(demission_manager.process_decision)
+	
+	if not desk.report.decision_ui.layoff_chosen.is_connected(office.on_employee_fired):
+		desk.report.decision_ui.layoff_chosen.connect(office.on_employee_fired)
 	
 	if not EmployeeList.employee_fired.is_connected(on_employee_fired):
 		EmployeeList.employee_fired.connect(on_employee_fired)

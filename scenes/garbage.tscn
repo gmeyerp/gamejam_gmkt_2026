@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c407ecuqlnv7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74enp"]
+albedo_color = Color(0.54361, 0.26272708, 0.1670903, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qmg03"]
+material = SubResource("StandardMaterial3D_74enp")
+height = 0.3
+
+[node name="Garbage" type="Node3D" unique_id=398386746]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=576467932]
+mesh = SubResource("SphereMesh_qmg03")

@@ -31,27 +31,12 @@ func _ready() -> void:
 	_apply_viewport_texture()
 	set_input_active(false)
 
-	if debug_input:
-		print(
-			"[DiegeticUI] ready name=",
-			name,
-			" camera=",
-			camera,
-			" mesh=",
-			screen_mesh,
-			" ui=",
-			ui_root,
-			" interactable=",
-			linked_interactable
-		)
 
 
 func set_input_active(active: bool) -> void:
 	input_active = active
 	resolve_camera()
 	set_process_input(active)
-	if debug_input:
-		print("[DiegeticUI] ", name, " input_active=", active, " camera=", camera)
 
 
 func get_ui() -> Control:
