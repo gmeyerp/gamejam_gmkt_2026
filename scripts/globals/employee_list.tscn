@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5qyfnxlow2vw"]
 
-[ext_resource type="Script" uid="uid://cnws0kfcemx4f" path="res://scenes/employee_list_manager.gd" id="1_fe0eh"]
+[ext_resource type="Script" uid="uid://cnws0kfcemx4f" path="res://scripts/globals/employee_list_manager.gd" id="1_fe0eh"]
 [ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="2_epcra"]
 [ext_resource type="Resource" uid="uid://dl51jbwh53cny" path="res://resources/employee_data/test1.tres" id="3_w3exu"]
 [ext_resource type="Resource" uid="uid://c3i1ysreum4qw" path="res://resources/employee_data/test2.tres" id="4_rfsbb"]
