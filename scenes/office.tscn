@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://clg48545tj1sx" path="res://scripts/interaction/interaction_router.gd" id="6_router"]
 [ext_resource type="PackedScene" uid="uid://dji0kargchvj8" path="res://scenes/ui/diegetic_computer_ui.tscn" id="7_pc_ui"]
 [ext_resource type="PackedScene" uid="uid://iyqfemwfh13v" path="res://scenes/ui/diegetic_report_ui.tscn" id="8_report_ui"]
-[ext_resource type="PackedScene" uid="uid://b2g3n4o737ckb" path="res://scenes/flickering_light.tscn" id="10_in4ui"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_desk"]
 size = Vector3(2.4, 0.08, 1.2)
@@ -50,13 +49,8 @@ albedo_color = Color(0.75, 0.55, 0.2, 1)
 [sub_resource type="SphereShape3D" id="SphereShape_clock"]
 radius = 0.14
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_qmg03"]
-size = Vector2(20, 30)
-
-[node name="Office" type="Node3D" unique_id=1965194032 node_paths=PackedStringArray("lights", "dirt")]
+[node name="Office" type="Node3D" unique_id=1965194032]
 script = ExtResource("1_gdafm")
-lights = [NodePath("FlickeringLight"), NodePath("FlickeringLight2"), NodePath("FlickeringLight3"), NodePath("FlickeringLight4"), NodePath("FlickeringLight5"), NodePath("FlickeringLight6")]
-dirt = [NodePath("Dirt"), NodePath("Dirt2"), NodePath("Dirt3"), NodePath("Dirt4")]
 garbage = ExtResource("2_in4ui")
 
 [node name="Desk" type="Node3D" parent="." unique_id=1555415675]
@@ -145,36 +139,4 @@ shape = SubResource("SphereShape_clock")
 script = ExtResource("6_router")
 desk_objects = [null, null, null]
 
-[node name="Dirt" type="Marker3D" parent="." unique_id=1291452055]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4655826, 0, -3.4599977)
-
-[node name="Dirt3" type="Marker3D" parent="." unique_id=1389658558]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9389327, 0, -8.603708)
-
-[node name="Dirt4" type="Marker3D" parent="." unique_id=1702059631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.194084, 0, -7.9027057)
-
-[node name="Dirt2" type="Marker3D" parent="." unique_id=863276492]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0414243, 0, -3.091291)
-
-[node name="FlickeringLight" parent="." unique_id=1119269783 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 3, -4)
-
-[node name="FlickeringLight2" parent="." unique_id=1953955363 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 3, -4)
-
-[node name="FlickeringLight3" parent="." unique_id=276911742 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 3, -12)
-
-[node name="FlickeringLight4" parent="." unique_id=576495430 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 3, -12)
-
-[node name="FlickeringLight5" parent="." unique_id=84837394 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 3, -20)
-
-[node name="FlickeringLight6" parent="." unique_id=1272869112 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 3, -20)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1755284124]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.284458)
-mesh = SubResource("PlaneMesh_qmg03")
+[connection signal="employee_fired" from="Desk/Report" to="." method="on_employee_fired"]

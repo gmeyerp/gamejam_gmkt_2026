@@ -42,9 +42,6 @@ func game_start() -> void:
 	if not desk.report.decision_ui.layoff_chosen.is_connected(demission_manager.process_decision):
 		desk.report.decision_ui.layoff_chosen.connect(demission_manager.process_decision)
 	
-	if not desk.report.decision_ui.layoff_chosen.is_connected(office.on_employee_fired):
-		desk.report.decision_ui.layoff_chosen.connect(office.on_employee_fired)
-	
 	if not EmployeeList.employee_fired.is_connected(on_employee_fired):
 		EmployeeList.employee_fired.connect(on_employee_fired)
 
