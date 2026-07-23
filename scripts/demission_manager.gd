@@ -31,6 +31,8 @@ func load_next_employee() -> void:
 		print(">> Funcionário Atual (%d/%d): %s" % [current_index + 1, employee_list.size(), current_employee.name])
 		
 		employee_selected.emit(current_employee)
+		EmployeeList.get_average_productivity(current_employee.department)
+		EmployeeList.get_average_salary(current_employee.department)
 	else:
 		EmployeeList.start_new_round()
 		employee_list = EmployeeList.get_employee_list()

@@ -6,9 +6,7 @@ class_name GameManager
 @onready var desk: PlayerDesk = $Office/Desk
 @onready var score_number: Label = $GameHUD/Score/ScoreNumber
 
-var score: int = 0:
-	set(value):
-		score_number.text = str(value)
+var score: int = 0
 
 
 var is_playing: bool = false
@@ -53,6 +51,12 @@ func _on_demission_game_finished() -> void:
 
 func reset_score():
 	score = 0
+	update_score()
 
 func increase_score(add_score: int):
+	print("Score Change")
 	score += add_score
+	update_score()
+
+func update_score():
+	score_number.text = str(score)
