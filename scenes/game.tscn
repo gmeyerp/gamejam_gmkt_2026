@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://durc4x7dmglmm"]
 
 [ext_resource type="Script" uid="uid://e3kkuj68sism" path="res://scripts/game_manager.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://df1t6a2s8rmo7" path="res://scenes/office.tscn" id="2_office"]
-[ext_resource type="Script" uid="uid://cf8lbwvcio247" path="res://scripts/camera/camera_controller.gd" id="3_camera"]
-[ext_resource type="Script" uid="uid://btv6j4lifiaap" path="res://scripts/gameplay_controller.gd" id="4_gameplay"]
-
-[node name="Game" type="Node" unique_id=1895438667]
 [ext_resource type="PackedScene" uid="uid://df1t6a2s8rmo7" path="res://scenes/office.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dqbuyoufnwsei" path="res://scenes/post_processing.tscn" id="2_vtaks"]
+[ext_resource type="Script" uid="uid://cf8lbwvcio247" path="res://scripts/camera/camera_controller.gd" id="3_camera"]
 [ext_resource type="Script" uid="uid://c0r2aac6igsnl" path="res://scripts/demission_manager.gd" id="3_iywne"]
+[ext_resource type="Script" uid="uid://btv6j4lifiaap" path="res://scripts/gameplay_controller.gd" id="4_gameplay"]
 [ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="4_p57ef"]
 [ext_resource type="Resource" uid="uid://dl51jbwh53cny" path="res://resources/employee_data/test1.tres" id="5_u5sy4"]
 [ext_resource type="Resource" uid="uid://c3i1ysreum4qw" path="res://resources/employee_data/test2.tres" id="6_0tnpc"]
@@ -20,6 +17,7 @@
 script = ExtResource("1_yqjtg")
 demission_manager = NodePath("DemissionManager")
 post_processing = NodePath("PostProcessing")
+max_game_time = 900.0
 
 [node name="PostProcessing" parent="." unique_id=929113980 instance=ExtResource("2_vtaks")]
 
@@ -86,7 +84,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Quit"
 
-[node name="Office" parent="." unique_id=1066995191 instance=ExtResource("2_office")]
+[node name="Office" parent="." unique_id=1066995191 instance=ExtResource("2_lnu2h")]
 
 [node name="InteractionRouter" parent="Office" index="1" unique_id=29840228 node_paths=PackedStringArray("camera", "desk_surface", "desk_objects")]
 camera = NodePath("../Camera3D")

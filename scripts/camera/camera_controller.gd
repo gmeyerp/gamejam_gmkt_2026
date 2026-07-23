@@ -21,7 +21,6 @@ enum Mode { FREE, DESK }
 @export var desk_yaw_right: float = 0.22
 @export var desk_pitch_up: float = 0.16
 @export var desk_pitch_down: float = 0.16
-
 @export_group("Edge look")
 @export var edge_margin: float = 0.08
 @export var edge_look_enabled: bool = true
