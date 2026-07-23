@@ -47,6 +47,8 @@ func _on_quit_button_pressed() -> void:
 
 func _on_demission_game_finished() -> void:
 	is_playing = false
+	if desk and desk.report:
+		desk.report.close_inspection()
 	print("Acabou os funcionários! Tempo total: ", game_time)
 
 func reset_score():

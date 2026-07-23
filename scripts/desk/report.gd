@@ -14,7 +14,6 @@ func _ready() -> void:
 	if decision_ui == null and diegetic_display:
 		decision_ui = diegetic_display.get_ui() as ReportDecisionUI
 	if decision_ui:
-		#decision_ui.show_employee(_current_employee)
 		if not decision_ui.layoff_chosen.is_connected(choose_layoff):
 			decision_ui.layoff_chosen.connect(choose_layoff)
 	if diegetic_display:
@@ -38,15 +37,12 @@ func set_employee(employee: EmployeeData) -> void:
 	_current_employee = employee
 	if decision_ui:
 		decision_ui.show_employee(employee)
+	if diegetic_display and diegetic_display.input_active:
+		diegetic_display.set_input_active(true)
 
 
 func choose_layoff(motive: GlobalVariables.LayoffMotive) -> void:
 	score_layoff_choice(motive, _current_employee)
-	advance_to_next_report()
-	if interaction_router:
-		interaction_router.request_deselect()
-	else:
-		on_deselect()
 
 
 func score_layoff_choice(_choice: GlobalVariables.LayoffMotive, _report: EmployeeData) -> void:
@@ -55,5 +51,8 @@ func score_layoff_choice(_choice: GlobalVariables.LayoffMotive, _report: Employe
 		player_scored.emit(1)
 
 
-func advance_to_next_report() -> void:
-	pass
+func close_inspection() -> void:
+	if interaction_router:
+		interaction_router.request_deselect()
+	else:
+		on_deselect()
