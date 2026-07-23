@@ -3,11 +3,12 @@ class_name EmployeeListManager
 
 @export var employee_list: Array[EmployeeData]
 
-@onready var current_employees : Array[EmployeeData] = employee_list
+@onready var current_employees : Array[EmployeeData] = employee_list.duplicate()
 var next_list : Array[EmployeeData]
 
-func reset_list():
-	current_employees = employee_list
+func reset_list() -> Array[EmployeeData]:
+	current_employees = employee_list.duplicate()
+	return current_employees.duplicate()
 
 func get_average_productivity(department: GlobalVariables.Department) -> float:
 	var sum: float = 0

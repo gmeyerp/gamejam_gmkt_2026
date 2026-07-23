@@ -30,12 +30,14 @@ func _ready() -> void:
 func show_employee(employee: EmployeeData) -> void:
 	visible = true
 	if employee and not employee.name.is_empty():
-		_title.text = "Report — %s | Age: %d" % [employee.name, employee.age]
-		employee_name.text = employee.name
-		main_info.text = "Productivity: %d
+		_title.text = "Decision for — %s" % employee.name
+		employee_name.text = "Report
+		%s | Age: %d" % [employee.name, employee.age]
+		main_info.text = "Department: %s
+		Productivity: %d
 		Wage: %d
 		Comment: %s
-		" % [employee.production_rate, employee.salary, employee.commentary]
+		" % [GlobalVariables.Department.keys()[employee.department], employee.production_rate, employee.salary, employee.commentary]
 	
 	else:
 		_title.text = "Report — %s" % employee.name

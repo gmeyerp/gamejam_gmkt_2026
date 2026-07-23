@@ -9,16 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://n3b5tkdvnp1o" path="res://icon.svg" id="4_trtic"]
 [ext_resource type="Script" uid="uid://cnt0wq62pgagn" path="res://scripts/desk/player_desk.gd" id="6_ir15t"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_trtic"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_gee14"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir15t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tnpc"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_trtic")
+albedo_texture = SubResource("ViewportTexture_gee14")
 
-[sub_resource type="QuadMesh" id="QuadMesh_ca42v"]
+[sub_resource type="QuadMesh" id="QuadMesh_vtaks"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_ir15t")
+material = SubResource("StandardMaterial3D_0tnpc")
 size = Vector2(0.32, 0.4)
 
 [node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager", "post_processing")]
@@ -93,6 +93,7 @@ grow_vertical = 0
 text = "Quit"
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=890185811]
+visible = false
 
 [node name="EmployeeNumer" type="Control" parent="GameHUD" unique_id=1927852521]
 layout_mode = 3
@@ -159,13 +160,82 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="EndMenu" type="CanvasLayer" parent="." unique_id=882623685]
+visible = false
+
+[node name="Control" type="Panel" parent="EndMenu" unique_id=1314691191]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="EndMenu/Control" unique_id=294758434]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 60.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "EVERYONE WAS FIRED!!
+FINAL SCORE:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="EndMenu/Control" unique_id=100744147]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 288.0
+offset_top = 231.0
+offset_right = -288.0
+offset_bottom = 359.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="EndMenu/Control" unique_id=1438589888]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -394.0
+offset_top = -249.0
+offset_right = -138.0
+offset_bottom = -171.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="EndMenu/Control" unique_id=1534548524]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 91.0
+offset_top = -249.0
+offset_right = 347.0
+offset_bottom = -171.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit"
+
 [node name="Office" parent="." unique_id=1066995191 instance=ExtResource("2_lnu2h")]
 
 [node name="Desk" parent="Office" index="0" unique_id=1555415675]
 script = ExtResource("6_ir15t")
 
 [node name="ScreenMesh" parent="Office/Desk/Report/DiegeticReportUI" parent_id_path=PackedInt32Array(1066995191, 610582888) index="1" unique_id=1719728263]
-mesh = SubResource("QuadMesh_ca42v")
+mesh = SubResource("QuadMesh_vtaks")
 
 [node name="InteractionRouter" parent="Office" index="1" unique_id=29840228 node_paths=PackedStringArray("camera", "desk_surface", "desk_objects")]
 camera = NodePath("../Camera3D")
@@ -207,6 +277,8 @@ metadata/_custom_type_script = "uid://c0r2aac6igsnl"
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="GameplayController" method="on_start_game_pressed"]
 [connection signal="pressed" from="MainMenu/Control/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="EndMenu/Control/StartButton" to="." method="game_start"]
+[connection signal="pressed" from="EndMenu/Control/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="employee_selected" from="DemissionManager" to="Office/Desk/Report" method="set_employee"]
 
 [editable path="Office"]

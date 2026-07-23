@@ -5,6 +5,9 @@ class_name GameManager
 @export var post_processing: CanvasLayer
 @onready var desk: PlayerDesk = $Office/Desk
 @onready var score_number: Label = $GameHUD/Score/ScoreNumber
+@onready var end_menu: CanvasLayer = $EndMenu
+@onready var final_score: Label = $EndMenu/Control/Score
+@onready var game_hud: CanvasLayer = $GameHUD
 
 var score: int = 0
 
@@ -22,6 +25,8 @@ func game_start() -> void:
 	is_playing = true
 	post_processing.set_distortion(0)
 	reset_score()
+	end_menu.hide()
+	game_hud.show()
 	
 	if demission_manager:
 		demission_manager.start_game()
@@ -48,6 +53,9 @@ func _on_demission_game_finished() -> void:
 	if desk and desk.report:
 		desk.report.close_inspection()
 	print("Acabou os funcionários! Tempo total: ", game_time)
+	end_menu.show()
+	game_hud.hide()
+	final_score.text = str(score)
 
 func reset_score():
 	score = 0

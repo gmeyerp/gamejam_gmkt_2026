@@ -10,6 +10,7 @@ var current_index: int = 0
 func start_game() -> void:
 	current_index = 0
 	
+	employee_list = EmployeeList.reset_list()
 	employee_list.shuffle()
 	
 	print("--- INICIANDO NOVO JOGO ---")
