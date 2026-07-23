@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://df1t6a2s8rmo7"]
 
+[ext_resource type="Script" uid="uid://b6r0ce0okeani" path="res://scripts/environment_manager.gd" id="1_3e7dm"]
+
 [node name="Office" type="Node3D" unique_id=1619228560]
+script = ExtResource("1_3e7dm")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://e3kkuj68sism" path="res://scripts/game_manager.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://df1t6a2s8rmo7" path="res://scenes/office.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dqbuyoufnwsei" path="res://scenes/post_processing.tscn" id="2_vtaks"]
 [ext_resource type="Script" uid="uid://c0r2aac6igsnl" path="res://scripts/demission_manager.gd" id="3_iywne"]
 [ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="4_p57ef"]
 [ext_resource type="Resource" uid="uid://dl51jbwh53cny" path="res://resources/employee_data/test1.tres" id="5_u5sy4"]
@@ -10,9 +11,12 @@
 [ext_resource type="Resource" uid="uid://bjk2ihdxwooey" path="res://resources/employee_data/test4.tres" id="8_kvpfn"]
 [ext_resource type="Resource" uid="uid://b2apcstk5hx5s" path="res://resources/employee_data/test5.tres" id="9_dinhu"]
 
-[node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager")]
+[node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager", "post_processing")]
 script = ExtResource("1_yqjtg")
 demission_manager = NodePath("DemissionManager")
+post_processing = NodePath("PostProcessing")
+
+[node name="PostProcessing" parent="." unique_id=929113980 instance=ExtResource("2_vtaks")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1816984839]
 

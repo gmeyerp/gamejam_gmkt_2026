@@ -2,6 +2,7 @@ extends Node
 class_name GameManager
 
 @export var demission_manager: DemissionManager
+@export var post_processing: CanvasLayer
 
 var is_playing: bool = false
 @export var max_game_time: float = 15.0
@@ -14,6 +15,7 @@ func _ready() -> void:
 func game_start() -> void:
 	game_time = 0.0
 	is_playing = true
+	post_processing.set_distortion(0)
 	
 	if demission_manager:
 		demission_manager.start_game()
@@ -21,6 +23,7 @@ func game_start() -> void:
 func _process(delta: float) -> void:
 	if is_playing:
 		game_time += delta
+		post_processing.set_distortion(clamp(game_time/max_game_time, 0, 1 ))
 
 func _on_start_button_pressed() -> void:
 	game_start()
