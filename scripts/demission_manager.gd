@@ -4,7 +4,7 @@ class_name DemissionManager
 signal employee_selected(employee: EmployeeData)
 signal game_finished
 
-@export var employee_list: Array[EmployeeData] = []
+@onready var employee_list: Array[EmployeeData] = EmployeeList.get_employee_list()
 var current_index: int = 0
 
 func start_game() -> void:
@@ -32,19 +32,33 @@ func load_next_employee() -> void:
 		
 		employee_selected.emit(current_employee)
 	else:
-		print(">> Todos os funcionários foram processados!")
-		game_finished.emit()
+		EmployeeList.start_new_round()
+		employee_list = EmployeeList.get_employee_list()
+		if employee_list.size() == 0:
+			print(">> Todos os funcionários foram processados!")
+			game_finished.emit()
+		else:
+			start_new_round()
 
+func start_new_round():
+	employee_list.shuffle()
+	current_index = 0
+	load_next_employee()
+	
 func process_decision(motive_chosen: GlobalVariables.LayoffMotive) -> void:
 	if current_index >= employee_list.size():
 		return
-		
 	var current_employee: EmployeeData = employee_list[current_index]
 	
 	if motive_chosen == current_employee.layoff_motive:
 		print(" Decisão CORRETA para %s" % current_employee.name)
 	else:
 		print(" Decisão ERRADA para %s" % current_employee.name)
-			
+	
+	if motive_chosen == GlobalVariables.LayoffMotive.Keep:
+		EmployeeList.add_next_round(current_employee)
+	else:
+		EmployeeList.remove_from_list(current_employee)
+	
 	current_index += 1
 	load_next_employee()

@@ -6,14 +6,8 @@
 [ext_resource type="Script" uid="uid://cf8lbwvcio247" path="res://scripts/camera/camera_controller.gd" id="3_camera"]
 [ext_resource type="Script" uid="uid://c0r2aac6igsnl" path="res://scripts/demission_manager.gd" id="3_iywne"]
 [ext_resource type="Script" uid="uid://btv6j4lifiaap" path="res://scripts/gameplay_controller.gd" id="4_gameplay"]
-[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://n3b5tkdvnp1o" path="res://icon.svg" id="4_trtic"]
-[ext_resource type="Resource" uid="uid://dl51jbwh53cny" path="res://resources/employee_data/test1.tres" id="5_u5sy4"]
-[ext_resource type="Resource" uid="uid://c3i1ysreum4qw" path="res://resources/employee_data/test2.tres" id="6_0tnpc"]
 [ext_resource type="Script" uid="uid://cnt0wq62pgagn" path="res://scripts/desk/player_desk.gd" id="6_ir15t"]
-[ext_resource type="Resource" uid="uid://b0wkjmnbyvcfj" path="res://resources/employee_data/test3.tres" id="7_vtaks"]
-[ext_resource type="Resource" uid="uid://bjk2ihdxwooey" path="res://resources/employee_data/test4.tres" id="8_kvpfn"]
-[ext_resource type="Resource" uid="uid://b2apcstk5hx5s" path="res://resources/employee_data/test5.tres" id="9_dinhu"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_trtic"]
 viewport_path = NodePath("SubViewport")
@@ -208,7 +202,6 @@ mode_lerp_speed = 4.0
 
 [node name="DemissionManager" type="Node" parent="." unique_id=1136449082]
 script = ExtResource("3_iywne")
-employee_list = Array[ExtResource("4_p57ef")]([ExtResource("5_u5sy4"), ExtResource("6_0tnpc"), ExtResource("7_vtaks"), ExtResource("8_kvpfn"), ExtResource("9_dinhu")])
 metadata/_custom_type_script = "uid://c0r2aac6igsnl"
 
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="." method="_on_start_button_pressed"]
