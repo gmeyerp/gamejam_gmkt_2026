@@ -11,7 +11,6 @@ func game_start():
 func _process(delta: float) -> void:
 	if is_playing:
 		game_time += delta
-		print(game_time)
 
 func _on_start_button_pressed() -> void:
 	game_start()
