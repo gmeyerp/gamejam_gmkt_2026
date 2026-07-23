@@ -3,9 +3,6 @@
 [ext_resource type="Shader" uid="uid://s11oloilp20o" path="res://scenes/lens_distortion.gdshader" id="1_jxqm2"]
 [ext_resource type="Script" uid="uid://bi1w2krs86drv" path="res://scripts/post_processing.gd" id="2_1tnkr"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_psmbb"]
-size = Vector2(1024, 1024)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmg03"]
 shader = ExtResource("1_jxqm2")
 shader_parameter/distortion = 0.0
@@ -13,11 +10,6 @@ shader_parameter/pos = Vector2(0.5, 0.5)
 
 [node name="PostProcessing" type="CanvasLayer" unique_id=929113980]
 script = ExtResource("2_1tnkr")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=588404923]
-offset_right = 1153.0
-offset_bottom = 1024.0
-texture = SubResource("PlaceholderTexture2D_psmbb")
 
 [node name="LensDistortion" type="ColorRect" parent="." unique_id=98481197]
 z_index = 3
