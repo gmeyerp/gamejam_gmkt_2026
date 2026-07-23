@@ -17,11 +17,8 @@ func start_game() -> void:
 	print("Ordem dos funcionários sorteados:")
 	for i in range(employee_list.size()):
 		var emp = employee_list[i]
-		
-		if not emp:
-			continue
-			
-		print("  [%d] %s" % [i, emp.name])
+		if emp:
+			print("  [%d] %s" % [i, emp.name])
 
 	load_next_employee()
 
@@ -29,11 +26,13 @@ func load_next_employee() -> void:
 	if current_index < employee_list.size():
 		var current_employee: EmployeeData = employee_list[current_index]
 		
+		if not current_employee:
+			current_index += 1
+			load_next_employee()
+			return
+
 		print(">> Funcionário Atual (%d/%d): %s" % [current_index + 1, employee_list.size(), current_employee.name])
-		
 		employee_selected.emit(current_employee)
-		EmployeeList.get_average_productivity(current_employee.department)
-		EmployeeList.get_average_salary(current_employee.department)
 	else:
 		EmployeeList.start_new_round()
 		employee_list = EmployeeList.get_employee_list()
@@ -43,14 +42,15 @@ func load_next_employee() -> void:
 		else:
 			start_new_round()
 
-func start_new_round():
+func start_new_round() -> void:
 	employee_list.shuffle()
 	current_index = 0
 	load_next_employee()
-	
+
 func process_decision(motive_chosen: GlobalVariables.LayoffMotive) -> void:
 	if current_index >= employee_list.size():
 		return
+		
 	var current_employee: EmployeeData = employee_list[current_index]
 	
 	if motive_chosen == current_employee.layoff_motive:
