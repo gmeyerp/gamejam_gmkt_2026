@@ -13,6 +13,18 @@
 [ext_resource type="Resource" uid="uid://bjk2ihdxwooey" path="res://resources/employee_data/test4.tres" id="8_kvpfn"]
 [ext_resource type="Resource" uid="uid://b2apcstk5hx5s" path="res://resources/employee_data/test5.tres" id="9_dinhu"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_iywne"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p57ef"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_iywne")
+
+[sub_resource type="QuadMesh" id="QuadMesh_u5sy4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_p57ef")
+size = Vector2(0.32, 0.4)
+
 [node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager", "post_processing")]
 script = ExtResource("1_yqjtg")
 demission_manager = NodePath("DemissionManager")
@@ -86,6 +98,9 @@ text = "Quit"
 
 [node name="Office" parent="." unique_id=1066995191 instance=ExtResource("2_lnu2h")]
 
+[node name="ScreenMesh" parent="Office/Desk/Report/DiegeticReportUI" parent_id_path=PackedInt32Array(1066995191, 610582888) index="1" unique_id=1719728263]
+mesh = SubResource("QuadMesh_u5sy4")
+
 [node name="InteractionRouter" parent="Office" index="1" unique_id=29840228 node_paths=PackedStringArray("camera", "desk_surface", "desk_objects")]
 camera = NodePath("../Camera3D")
 desk_surface = NodePath("../Desk/DeskSurface/Interactable")
@@ -119,13 +134,15 @@ edge_look_enabled = false
 focus_lerp_speed = 6.0
 mode_lerp_speed = 4.0
 
-[node name="DemissionManager" parent="." unique_id=1273482904 instance=ExtResource("2_lnu2h")]
+[node name="DemissionManager" type="Node" parent="." unique_id=1136449082]
 script = ExtResource("3_iywne")
 employee_list = Array[ExtResource("4_p57ef")]([ExtResource("5_u5sy4"), ExtResource("6_0tnpc"), ExtResource("7_vtaks"), ExtResource("8_kvpfn"), ExtResource("9_dinhu")])
+metadata/_custom_type_script = "uid://c0r2aac6igsnl"
 
 [connection signal="pressed" from="CanvasLayer/Control/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/StartButton" to="GameplayController" method="on_start_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="employee_selected" from="DemissionManager" to="Office/Desk/Report" method="set_employee"]
 
 [editable path="Office"]
 [editable path="Office/Desk/Report/DiegeticReportUI"]

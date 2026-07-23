@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://b2g3n4o737ckb"]
+
+[ext_resource type="Script" uid="uid://s74r5emigy50" path="res://scripts/flickering_light.gd" id="1_qlewg"]
+
+[sub_resource type="Animation" id="Animation_qc3bn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightOrb:mesh:material:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.75388557, 0.8808983, 0.99512535, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qlewg"]
+resource_name = "broken"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 0.6333334, 0.86666673, 0.96666676, 1.1666667, 1.2666668, 1.5333334, 1.6333334, 1.8666668, 4.7333336, 4.8333335, 5.3, 5.4, 5.6333337, 5.7333336, 5.933334, 6.033334, 6.3, 6.4, 6.533334, 8.166667, 8.266667, 8.5, 8.6, 8.8, 8.900001, 9.166667, 9.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightOrb:mesh:material:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 0.6333334, 0.86666673, 0.96666676, 1.1666667, 1.2666668, 1.5333334, 1.6333334, 1.8666668, 4.7333336, 4.8333335, 5.3, 5.4, 5.6333337, 5.7333336, 5.933334, 6.033334, 6.3, 6.4, 6.533334, 8.166667, 8.266667, 8.5, 8.6, 8.8, 8.900001, 9.166667, 9.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1), Color(0, 0, 0, 1), Color(0.75388557, 0.8808983, 0.99512535, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ahix"]
+_data = {
+&"RESET": SubResource("Animation_qc3bn"),
+&"broken": SubResource("Animation_qlewg")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykh0f"]
+emission_enabled = true
+emission = Color(0.75388557, 0.8808983, 0.99512535, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qmg03"]
+material = SubResource("StandardMaterial3D_ykh0f")
+radius = 0.2
+height = 0.4
+
+[node name="FlickeringLight" type="SpotLight3D" unique_id=1119269783]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_color = Color(0.7529412, 0.88235295, 0.99607843, 1)
+light_energy = 2.0
+shadow_enabled = true
+spot_attenuation = -0.26
+script = ExtResource("1_qlewg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1636830268]
+libraries/ = SubResource("AnimationLibrary_5ahix")
+autoplay = &"RESET"
+
+[node name="LightOrb" type="MeshInstance3D" parent="." unique_id=576600731]
+mesh = SubResource("SphereMesh_qmg03")

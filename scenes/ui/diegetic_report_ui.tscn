@@ -1,33 +1,40 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://iyqfemwfh13v"]
 
-[ext_resource type="Script" path="res://scripts/ui/diegetic_ui_display.gd" id="1_display"]
-[ext_resource type="PackedScene" path="res://scenes/ui/report_decision_ui.tscn" id="2_ui"]
+[ext_resource type="Script" uid="uid://cu0rglerd6mos" path="res://scripts/ui/diegetic_ui_display.gd" id="1_display"]
+[ext_resource type="PackedScene" uid="uid://ccmc385s5v5ay" path="res://scenes/ui/report_decision_ui.tscn" id="2_ui"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ykh0f"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmg03"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ykh0f")
 
 [sub_resource type="QuadMesh" id="QuadMesh_screen"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_qmg03")
 size = Vector2(0.32, 0.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape_pick"]
 size = Vector3(0.32, 0.4, 0.02)
 
-[node name="DiegeticReportUI" type="Node3D"]
+[node name="DiegeticReportUI" type="Node3D" unique_id=1701022361]
 script = ExtResource("1_display")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-handle_input_locally = true
-gui_disable_input = false
+[node name="SubViewport" type="SubViewport" parent="." unique_id=255816298]
 size = Vector2i(512, 640)
 render_target_update_mode = 4
 
-[node name="ReportDecisionUI" parent="SubViewport" instance=ExtResource("2_ui")]
+[node name="ReportDecisionUI" parent="SubViewport" unique_id=879790421 instance=ExtResource("2_ui")]
 
-[node name="ScreenMesh" type="MeshInstance3D" parent="."]
+[node name="ScreenMesh" type="MeshInstance3D" parent="." unique_id=1719728263]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.02, 0)
 mesh = SubResource("QuadMesh_screen")
 
-[node name="Area3D" type="Area3D" parent="ScreenMesh"]
-input_capture_on_drag = true
+[node name="Area3D" type="Area3D" parent="ScreenMesh" unique_id=1615183211]
 collision_layer = 2
 collision_mask = 0
+input_capture_on_drag = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenMesh/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenMesh/Area3D" unique_id=1141948549]
 shape = SubResource("BoxShape_pick")

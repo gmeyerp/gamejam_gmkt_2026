@@ -2,6 +2,8 @@ class_name ReportDecisionUI
 extends Control
 
 signal layoff_chosen(motive: GlobalVariables.LayoffMotive)
+@onready var employee_name: Label = $EmployeeInfo/Name
+@onready var main_info: Label = $EmployeeInfo/MainInfo
 
 @onready var _title: Label = $Panel/VBox/Title
 @onready var _keep_button: Button = $Panel/VBox/KeepButton
@@ -28,6 +30,12 @@ func _ready() -> void:
 func show_employee(employee: EmployeeData) -> void:
 	visible = true
 	if employee and not employee.name.is_empty():
-		_title.text = "Relatório — %s" % employee.name
+		_title.text = "Report — %s | Age: %d" % [employee.name, employee.age]
+		employee_name.text = employee.name
+		main_info.text = "Productivity: %d
+		Wage: %d
+		Comment: %s
+		" % [employee.production_rate, employee.salary, employee.commentary]
+	
 	else:
-		_title.text = "Relatório — escolha:"
+		_title.text = "Report — %s" % employee.name
