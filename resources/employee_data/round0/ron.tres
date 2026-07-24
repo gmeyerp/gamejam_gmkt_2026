@@ -9,7 +9,7 @@ age = 48
 layoff_motive = 2
 production_rate = 70.0
 salary = 45.0
-commentary = Array[String](["", "Was wasting company resources.", "Was wasting company resources. Ordered a lot of pizzas and didn't share with anyone.", "Was wasting company resources.
+commentary = Array[String](["He has a company credit card.", "Was wasting company resources.", "Ordered a lot of pizzas and didn't share with anyone.", "Was wasting company resources.
 Ordered a lot of pizzas and didn't share with anyone.
 There is so much pizza everywhere, he doesn't stop ordering and is still not sharing.", "He started puking pizza in our cabinets"])
 metadata/_custom_type_script = "uid://d2272qde40201"

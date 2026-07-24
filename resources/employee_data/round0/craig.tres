@@ -10,7 +10,7 @@ department = 1
 layoff_motive = 1
 production_rate = 12.0
 salary = 7.0
-commentary = Array[String](["", "Can't even hold a screwdriver", "Boss says he can't even hold a screwdriver.
+commentary = Array[String](["He's a little clumsy.", "Can't even hold a screwdriver", "Boss says he can't even hold a screwdriver.
 Stabbed someone when he fell down a ladder.
 ", "Boss says he can't even hold a screwdriver.
 Stabbed someone when he fell down a ladder.
