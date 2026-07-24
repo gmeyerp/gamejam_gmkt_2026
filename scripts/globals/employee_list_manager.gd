@@ -9,8 +9,6 @@ var layoff_rounds : int = 0
 @onready var current_employees: Array[EmployeeData] = employee_list.duplicate()
 var next_list: Array[EmployeeData] = []
 
-func _ready() -> void:
-	debug_empoyee_departments()
 
 func reset_list() -> Array[EmployeeData]:
 	current_employees = employee_list.duplicate()
@@ -68,6 +66,7 @@ func get_employee_number() -> int:
 func add_next_round(employee: EmployeeData) -> void:
 	if employee:
 		next_list.append(employee)
+	remove_from_list(employee)
 
 func remove_from_list(employee: EmployeeData) -> void:
 	current_employees.erase(employee)

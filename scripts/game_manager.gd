@@ -30,6 +30,7 @@ func game_start() -> void:
 	reset_score()
 	end_menu.hide()
 	game_hud.show()
+	EmployeeList.reset_list()
 	update_employee_number()
 	office.clear_office()
 	if desk and desk.clock:
