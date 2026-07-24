@@ -1,8 +1,6 @@
 class_name ClockStage
 extends Resource
 
-## Display segment targets for the comic desk clock.
-## Fields after seconds are independent HUD slots (not nested SI time units).
 enum FormatMode { HM, HMS, HMS_CS, HMS_MS, HMS_US }
 
 @export var end_progress: float = 0.5
