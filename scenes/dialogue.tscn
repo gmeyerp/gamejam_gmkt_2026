@@ -12,7 +12,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -180.0
 offset_top = -100.0
-offset_right = 180.0
+offset_right = 240.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -32,7 +32,7 @@ grow_vertical = 2
 color = Color(0.1764706, 0.1764706, 0.1764706, 0.5686275)
 
 [node name="Container_H" type="HBoxContainer" parent="BackGround" unique_id=1529223614]
-custom_minimum_size = Vector2(350, 72)
+custom_minimum_size = Vector2(410, 72)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

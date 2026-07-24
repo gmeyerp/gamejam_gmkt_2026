@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://c15rj0exjou6x" path="res://scripts/ui/level_dialogue.gd" id="4_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://n3b5tkdvnp1o" path="res://icon.svg" id="4_trtic"]
 [ext_resource type="Script" uid="uid://c345omwqftp5k" path="res://scenes/detect_area.gd" id="8_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://dmlfgwuktrrhk" path="res://resources/Udan.png" id="8_kvpfn"]
 [ext_resource type="Script" uid="uid://cmu8i0w3sdimo" path="res://scripts/player/behavior.gd" id="9_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://dt7ceafpfxv6d" path="res://resources/Javelas.png" id="9_dinhu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0i88t"]
 
@@ -237,6 +239,8 @@ metadata/_custom_type_script = "uid://c0r2aac6igsnl"
 script = ExtResource("4_kvpfn")
 hud = NodePath("Hud")
 dialogue_area = NodePath("../Point_Mesa/Area3D")
+chat = Array[String](["Nada de ir embora mais cedo hoje não em, não dou a minima sé possui compromisso", "Quero o serviço concluido e se isso significa que vai ter que ficar aqui ápos as 18 já não é um problema meu", "... Ok ne vejo que não tenho muita opção, pode deixa chefe", "Que bom que entendeu. Estou contando contigo em"])
+personagem = Array[Texture]([ExtResource("8_kvpfn"), ExtResource("9_dinhu")])
 
 [node name="Hud" type="CanvasLayer" parent="Dialogue" unique_id=1984543245]
 

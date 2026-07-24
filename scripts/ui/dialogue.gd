@@ -36,15 +36,19 @@ func initialize_dialog() -> void:
 		queue_free() 
 		return
 
-	# Se existir, carrega normalmente
-	namefriend.text = data[id]["namefriend"]
-	dialogue.text = data[id]["dialogue"]
+	# Carrega nome e diálogo
+	if namefriend: namefriend.text = data[id]["namefriend"]
+	if dialogue: dialogue.text = data[id]["dialogue"]
 
-	namefriend.text = data[id]["namefriend"]
-	dialogue.text = data[id]["dialogue"]
-	
-	if ResourceLoader.exists(data[id]["face"]):
-		face.texture = load(data[id]["face"])
+	if face:
+		var face_data = data[id]["face"]
+		
+		if face_data is Texture2D:
+			face.texture = face_data
+		elif face_data is String and ResourceLoader.exists(face_data):
+			face.texture = load(face_data)
+		else:
+			face.texture = null
 		
 	dialogue.visible_characters = 0
 	animate_text()
