@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AcceptableBehaviours" format=3 uid="uid://cpygoruh2ww1q"]
+
+[ext_resource type="Script" uid="uid://d01qq2n657r0s" path="res://resources/acceptable_behaviours/acceptable_behaviours.gd" id="1_f3avv"]
+
+[resource]
+script = ExtResource("1_f3avv")
+rule_description = Array[String](["Don't forget our group yoga tuesdays.", "Don't forget our group yoga tuesdays.", "Don't forget our group yoga tuesdays.", "Don't forget our group yoga tuesdays.", "Don't forget our group yoga tuesdays."])
+metadata/_custom_type_script = "uid://d01qq2n657r0s"

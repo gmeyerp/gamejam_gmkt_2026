@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://dr0mo1yohhig6"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_y2fec"]
+
+[resource]
+script = ExtResource("1_y2fec")
+name = "Cyril"
+age = 44
+department = 2
+layoff_round = 1
+layoff_motive = 3
+production_rate = 80.0
+salary = 1.0
+commentary = Array[String](["He's always like 7 minutes late.", "He's always like 7 minutes late. Does he think he's more important than us?", "Today he was 6 minutes late because he was dogsitting for his sick neighbor.", "Yesterday he was 9 minutes late because he brought everyone donnuts.", "Every monday he's 8 minutes late because he gets so busy posting show spoilers on his profile."])
+metadata/_custom_type_script = "uid://d2272qde40201"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://d0rwtscje5fo0"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_4qifl"]
+
+[resource]
+script = ExtResource("1_4qifl")
+name = "Ron"
+age = 48
+layoff_motive = 2
+production_rate = 70.0
+salary = 45.0
+commentary = Array[String](["", "Was wasting company resources.", "Was wasting company resources. Ordered a lot of pizzas and didn't share with anyone.", "Was wasting company resources.
+Ordered a lot of pizzas and didn't share with anyone.
+There is so much pizza everywhere, he doesn't stop ordering and is still not sharing.", "He started puking pizza in our cabinets"])
+metadata/_custom_type_script = "uid://d2272qde40201"

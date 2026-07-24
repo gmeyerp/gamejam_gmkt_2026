@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AcceptableBehaviours" format=3 uid="uid://c8sxgt12kq8tq"]
+
+[ext_resource type="Script" uid="uid://d01qq2n657r0s" path="res://resources/acceptable_behaviours/acceptable_behaviours.gd" id="1_5as3c"]
+
+[resource]
+script = ExtResource("1_5as3c")
+rule_description = Array[String](["If you come early, you are allowed to leave early.", "If you come early, you are allowed to leave early.", "Don't leave until the end shift. We might even require overtime.", "Don't leave until the end shift. We might even require overtime.", "Don't leave until the end shift. We might even require overtime."])
+metadata/_custom_type_script = "uid://d01qq2n657r0s"

@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://d0xifjyukvu2n"]
 
 [ext_resource type="Script" uid="uid://cipcdonmhkejr" path="res://scripts/ui/computer_rulebook_ui.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://d01qq2n657r0s" path="res://resources/acceptable_behaviours/acceptable_behaviours.gd" id="2_rpnvi"]
+[ext_resource type="Resource" uid="uid://dfnlm2ikv0cb" path="res://resources/acceptable_behaviours/breaks.tres" id="3_gnv4x"]
+[ext_resource type="Resource" uid="uid://bx8bxwiucqq4r" path="res://resources/acceptable_behaviours/communal_food.tres" id="4_a05m4"]
+[ext_resource type="Resource" uid="uid://bsepdgl83alx5" path="res://resources/acceptable_behaviours/lunch_time.tres" id="5_blnf1"]
+[ext_resource type="Resource" uid="uid://c8sxgt12kq8tq" path="res://resources/acceptable_behaviours/over_time.tres" id="6_qrbbp"]
+[ext_resource type="Resource" uid="uid://cpbn0cfleqm6g" path="res://resources/acceptable_behaviours/sitting.tres" id="7_rif7b"]
+[ext_resource type="Resource" uid="uid://bx0vesm5xlflm" path="res://resources/acceptable_behaviours/tardiness.tres" id="8_06c8f"]
+[ext_resource type="Resource" uid="uid://c8qbje87mq3hp" path="res://resources/acceptable_behaviours/tips.tres" id="9_cudtr"]
+[ext_resource type="Resource" uid="uid://c8nfmfibvacc0" path="res://resources/acceptable_behaviours/water_usage.tres" id="10_j1tah"]
+[ext_resource type="Resource" uid="uid://cpygoruh2ww1q" path="res://resources/acceptable_behaviours/yoga.tres" id="11_mnstb"]
 
 [node name="ComputerRulebookUI" type="Control" unique_id=1566547511]
 layout_mode = 3
@@ -10,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
+rules = Array[ExtResource("2_rpnvi")]([ExtResource("3_gnv4x"), ExtResource("4_a05m4"), ExtResource("5_blnf1"), ExtResource("6_qrbbp"), ExtResource("7_rif7b"), ExtResource("8_06c8f"), ExtResource("9_cudtr"), ExtResource("10_j1tah"), ExtResource("11_mnstb")])
 
 [node name="Panel" type="PanelContainer" parent="." unique_id=158387300]
 layout_mode = 1

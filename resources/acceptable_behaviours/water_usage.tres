@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AcceptableBehaviours" format=3 uid="uid://c8nfmfibvacc0"]
+
+[ext_resource type="Script" uid="uid://d01qq2n657r0s" path="res://resources/acceptable_behaviours/acceptable_behaviours.gd" id="1_dspls"]
+
+[resource]
+script = ExtResource("1_dspls")
+rule_description = Array[String](["Our company offers amenities: you can drink water, soda and coffee on company's dime.", "Our company offers amenities: you can drink water, soda and coffee on company's dime.", "Our company offers amenities: you can drink water, soda and coffee on company's dime.", "Our company offers amenities: you can drink water, soda and coffee on company's dime.", "Our company offers amenities: you can drink coffee on company's dime."])
+metadata/_custom_type_script = "uid://d01qq2n657r0s"

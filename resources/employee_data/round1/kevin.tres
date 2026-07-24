@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://b2apcstk5hx5s"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_qhk6m"]
+
+[resource]
+script = ExtResource("1_qhk6m")
+name = "Kevin"
+age = 55
+department = 2
+layoff_round = 1
+layoff_motive = 1
+production_rate = 30.0
+salary = 3.0
+commentary = Array[String](["Boring.", "Doesn't speak with anyone. Ever.", "Doesn't speak with anyone. Ever.
+He's installing a white noise machine in his space.", "His white noise machine is making weird noises. Those are not whales.
+", "His white noise machine is making weird noises. Are those chants? Are the shadows moving? Are going crazy?"])
+metadata/_custom_type_script = "uid://d2272qde40201"

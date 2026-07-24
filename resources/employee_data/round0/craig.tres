@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://hndwv0451o4n"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_n53j6"]
+
+[resource]
+script = ExtResource("1_n53j6")
+name = "Craig"
+age = 40
+department = 1
+layoff_motive = 1
+production_rate = 12.0
+salary = 7.0
+commentary = Array[String](["", "Can't even hold a screwdriver", "Boss says he can't even hold a screwdriver.
+Stabbed someone when he fell down a ladder.
+", "Boss says he can't even hold a screwdriver.
+Stabbed someone when he fell down a ladder.
+Started smashing PCs when he was bored, like he didn't have work to do.", "Is threatening to erase our data base. Please fire him."])
+metadata/_custom_type_script = "uid://d2272qde40201"

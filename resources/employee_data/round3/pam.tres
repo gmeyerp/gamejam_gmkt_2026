@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://c3i1ysreum4qw"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_kmaty"]
+
+[resource]
+script = ExtResource("1_kmaty")
+name = "Pam"
+age = 65
+layoff_round = 3
+layoff_motive = 2
+production_rate = 85.0
+salary = 25.0
+commentary = Array[String](["She's always so talkative.", "She's delightful, but oh does she talk.", "One time I was wearing headphones and she didn't notive and kept talking. I didn't even have room to let her know I couldn't hear.", "Are you the HR guy? I just wanted you to know that this is me, Pam. How are things over there? Did you see that lady leave earlier? Is she okay? Is it company police? She's always so nice and I do see her come earlier. Have you ever noticed?", "Can anyone fill this forms with comment about other people? Are they anonymous? Doesn't matter. This is me, Pam. I never had pen pal before, are you new to the company? I swear I never met you before. Where is your desk? I'll have to ask since the reviews are one way only, right"])
+metadata/_custom_type_script = "uid://d2272qde40201"

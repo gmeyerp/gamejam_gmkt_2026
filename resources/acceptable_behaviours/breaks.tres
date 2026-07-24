@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AcceptableBehaviours" format=3 uid="uid://dfnlm2ikv0cb"]
+
+[ext_resource type="Script" uid="uid://d01qq2n657r0s" path="res://resources/acceptable_behaviours/acceptable_behaviours.gd" id="1_jij3w"]
+
+[resource]
+script = ExtResource("1_jij3w")
+rule_description = Array[String](["Please consider the breaks you take. It's acceptable to take 5 minutes every hour.", "Please consider the breaks you take. It's acceptable to take 5 minutes every hour.", "Please consider the breaks you take. It's acceptable to take 5 minutes every hour.", "Please consider the breaks you take. It's acceptable to take 5 minutes every hour.", "Please consider the breaks you take. It's acceptable to take 5 minutes every hour."])
+metadata/_custom_type_script = "uid://d01qq2n657r0s"

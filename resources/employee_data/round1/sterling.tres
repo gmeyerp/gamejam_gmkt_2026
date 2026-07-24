@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://dha5os7ugoljs"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_sbftn"]
+
+[resource]
+script = ExtResource("1_sbftn")
+name = "Sterling"
+age = 40
+layoff_round = 1
+layoff_motive = 2
+production_rate = 75.0
+salary = 18.0
+commentary = Array[String](["Has a fancy car.", "He's always leaving with the boss.", "He's always leaving and arriving with the boss.", "He's the boss's son?", "He's saying he owns the company. He owns you. He owns us. He owns everything."])
+metadata/_custom_type_script = "uid://d2272qde40201"

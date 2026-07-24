@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://b0wkjmnbyvcfj"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_ks8d7"]
+
+[resource]
+script = ExtResource("1_ks8d7")
+name = "Jim"
+age = 45
+department = 2
+layoff_round = 2
+layoff_motive = 1
+production_rate = 62.0
+salary = 2.0
+commentary = Array[String](["Always places nice things for everyone after cleaning their spaces.", "Always places nice things for everyone after cleaning their spaces. He left you a teddy bear for Annie.", "He's not happy with everyone being fired.", "His gifts are making people itchy.", "His gifts are filled with lice. It' everywhere."])
+metadata/_custom_type_script = "uid://d2272qde40201"

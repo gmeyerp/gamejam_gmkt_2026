@@ -21,8 +21,8 @@ func clear_office():
 	garbage_speed = 0
 	garbage_timer = 0
 
-func on_employee_fired(department: GlobalVariables.Department):
-	match department:
+func on_employee_fired(employee: EmployeeData):
+	match employee.department:
 		GlobalVariables.Department.Maintenance:
 			on_maintenance_fired()
 		GlobalVariables.Department.Cleaning:
@@ -47,6 +47,8 @@ func _process(delta: float) -> void:
 		create_garbage()
 
 func create_garbage():
+	if dirt.size() == 0:
+		return
 	var instance = garbage.instantiate()
 	var rand = randi_range(0, dirt.size() - 1)
 	dirt[rand].add_child(instance)

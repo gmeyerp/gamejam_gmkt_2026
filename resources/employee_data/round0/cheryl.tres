@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://cexp2a7f0m6yw"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_wsxxe"]
+
+[resource]
+script = ExtResource("1_wsxxe")
+name = "Cheryl"
+age = 25
+department = 2
+layoff_motive = 3
+production_rate = 80.0
+salary = 1.0
+commentary = Array[String](["She keeps going to the bathroom every 30 minutes and spends like 10 minute every time.", "Her eyes are very puffy. She's making everyone unconfortable, how many breaks is she allowed? Is she crying?", "She started a fire with her boyfriend's things in the break room. Firemen are coming. She's a menace.
+", "She wants to make her (ex)boyfriend jealous and is going after the interns.", "Are you single? <3"])
+metadata/_custom_type_script = "uid://d2272qde40201"

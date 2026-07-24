@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://r2aloumm8mhr"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_lros4"]
+
+[resource]
+script = ExtResource("1_lros4")
+name = "Amy"
+age = 35
+layoff_round = 2
+layoff_motive = 3
+production_rate = 75.0
+salary = 15.0
+commentary = Array[String](["She always leaves 15 minutes earlier.", "She always comes 15 minutes earlier to leave 15 minutes earlier and pick up her daughter at daycare.", "Today she got here 30 minutes early because she has reservations for a restaurant and she's going to leave early.", "She said tomorrow she'll come 2 hours earlier to see the sunset.", "Where is Amy? Did she leave already?"])
+metadata/_custom_type_script = "uid://d2272qde40201"
