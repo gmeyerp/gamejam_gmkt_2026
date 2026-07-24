@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d37wihsxrtcrv"]
+
+[ext_resource type="PackedScene" uid="uid://d08qgkp4dlr2k" path="res://models/Office.blend" id="1_s4el7"]
+
+[node name="Office" unique_id=190045835 instance=ExtResource("1_s4el7")]
+
+[node name="Papers" parent="." index="3" unique_id=908902412]
+visible = false
+
+[node name="SceneBoundaries" parent="." index="151" unique_id=562209226]
+cast_shadow = 0
