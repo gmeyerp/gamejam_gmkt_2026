@@ -5,12 +5,16 @@
 [ext_resource type="Script" uid="uid://cyh50bkyel1jc" path="res://scripts/desk/computer.gd" id="2_computer"]
 [ext_resource type="PackedScene" uid="uid://c407ecuqlnv7" path="res://scenes/garbage.tscn" id="2_in4ui"]
 [ext_resource type="Script" uid="uid://cqbp2sea2is7k" path="res://scripts/desk/report.gd" id="3_report"]
+[ext_resource type="Script" uid="uid://cnt0wq62pgagn" path="res://scripts/desk/player_desk.gd" id="3_ujkv6"]
 [ext_resource type="Script" uid="uid://yc3u3dqu82hd" path="res://scripts/desk/clock.gd" id="4_clock"]
 [ext_resource type="Script" uid="uid://dslk4hlghmu6v" path="res://scripts/interaction/interactable.gd" id="5_interactable"]
 [ext_resource type="Script" uid="uid://clg48545tj1sx" path="res://scripts/interaction/interaction_router.gd" id="6_router"]
 [ext_resource type="PackedScene" uid="uid://dji0kargchvj8" path="res://scenes/ui/diegetic_computer_ui.tscn" id="7_pc_ui"]
 [ext_resource type="PackedScene" uid="uid://iyqfemwfh13v" path="res://scenes/ui/diegetic_report_ui.tscn" id="8_report_ui"]
 [ext_resource type="PackedScene" uid="uid://b2g3n4o737ckb" path="res://scenes/flickering_light.tscn" id="10_in4ui"]
+[ext_resource type="PackedScene" path="res://scenes/ui/clock_display.tscn" id="11_clock_ui"]
+[ext_resource type="Script" uid="uid://dq0ta68rtwsgq" path="res://resources/clock/clock_stage.gd" id="12_clock_stage"]
+[ext_resource type="Script" uid="uid://cf8lbwvcio247" path="res://scripts/camera/camera_controller.gd" id="13_camera"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_desk"]
 size = Vector3(2.4, 0.08, 1.2)
@@ -39,16 +43,92 @@ albedo_color = Color(0.92, 0.9, 0.82, 1)
 [sub_resource type="BoxShape3D" id="BoxShape_report"]
 size = Vector3(0.35, 0.05, 0.45)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_clock"]
-top_radius = 0.12
-bottom_radius = 0.12
-height = 0.12
+[sub_resource type="Resource" id="ClockStage_0"]
+script = ExtResource("12_clock_stage")
+end_progress = 0.1
+target_hours = 16
+
+[sub_resource type="Resource" id="ClockStage_1"]
+script = ExtResource("12_clock_stage")
+end_progress = 0.2
+
+[sub_resource type="Resource" id="ClockStage_2"]
+script = ExtResource("12_clock_stage")
+end_progress = 0.3
+target_minutes = 30
+
+[sub_resource type="Resource" id="ClockStage_3"]
+script = ExtResource("12_clock_stage")
+end_progress = 0.4
+target_minutes = 45
+
+[sub_resource type="Resource" id="ClockStage_4"]
+script = ExtResource("12_clock_stage")
+end_progress = 0.6
+target_minutes = 59
+
+[sub_resource type="Resource" id="Resource_0tnpc"]
+script = ExtResource("12_clock_stage")
+end_progress = 0.7
+target_minutes = 59
+target_seconds = 59
+format_mode = 1
+variant_index = 1
+metadata/_custom_type_script = "uid://dq0ta68rtwsgq"
+
+[sub_resource type="Resource" id="Resource_adnto"]
+script = ExtResource("12_clock_stage")
+end_progress = 0.8
+target_minutes = 59
+target_seconds = 59
+target_centiseconds = 99
+format_mode = 2
+variant_index = 2
+metadata/_custom_type_script = "uid://dq0ta68rtwsgq"
+
+[sub_resource type="Resource" id="Resource_grqqk"]
+script = ExtResource("12_clock_stage")
+end_progress = 0.9
+target_minutes = 59
+target_seconds = 59
+target_centiseconds = 99
+target_milliseconds = 999
+format_mode = 3
+variant_index = 3
+metadata/_custom_type_script = "uid://dq0ta68rtwsgq"
+
+[sub_resource type="Resource" id="Resource_gy76c"]
+script = ExtResource("12_clock_stage")
+end_progress = 0.99
+target_minutes = 59
+target_seconds = 59
+target_centiseconds = 99
+target_milliseconds = 999
+target_microseconds = 999
+format_mode = 4
+variant_index = 4
+metadata/_custom_type_script = "uid://dq0ta68rtwsgq"
+
+[sub_resource type="BoxMesh" id="BoxMesh_clock_hm"]
+size = Vector3(0.28, 0.1, 0.14)
 
 [sub_resource type="StandardMaterial3D" id="Mat_clock"]
-albedo_color = Color(0.75, 0.55, 0.2, 1)
+albedo_color = Color(0.12, 0.12, 0.14, 1)
 
-[sub_resource type="SphereShape3D" id="SphereShape_clock"]
-radius = 0.14
+[sub_resource type="BoxMesh" id="BoxMesh_clock_hms"]
+size = Vector3(0.48, 0.1, 0.14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_clock_hmscs"]
+size = Vector3(0.64, 0.1, 0.14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_clock_hmsms"]
+size = Vector3(0.74, 0.1, 0.14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_clock_hmsus"]
+size = Vector3(0.96, 0.1, 0.14)
+
+[sub_resource type="BoxShape3D" id="BoxShape_clock"]
+size = Vector3(1, 0.12, 0.16)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qmg03"]
 size = Vector2(20, 30)
@@ -61,6 +141,7 @@ garbage = ExtResource("2_in4ui")
 
 [node name="Desk" type="Node3D" parent="." unique_id=1555415675]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+script = ExtResource("3_ujkv6")
 
 [node name="DeskSurface" type="Node3D" parent="Desk" unique_id=742379552]
 script = ExtResource("1_desk")
@@ -98,11 +179,12 @@ shape = SubResource("BoxShape_computer")
 
 [node name="DiegeticComputerUI" parent="Desk/Computer" unique_id=1360918191 instance=ExtResource("7_pc_ui")]
 
-[node name="Report" type="Node3D" parent="Desk" unique_id=1668581864 node_paths=PackedStringArray("diegetic_display")]
+[node name="Report" type="Node3D" parent="Desk" unique_id=1668581864 node_paths=PackedStringArray("diegetic_display", "interaction_router")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.06, 0.1)
 script = ExtResource("3_report")
 diegetic_display = NodePath("DiegeticReportUI")
+interaction_router = NodePath("../../InteractionRouter")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Desk/Report" unique_id=1329061048]
 mesh = SubResource("BoxMesh_report")
@@ -122,13 +204,64 @@ shape = SubResource("BoxShape_report")
 [node name="DiegeticReportUI" parent="Desk/Report" unique_id=610582888 instance=ExtResource("8_report_ui")]
 debug_input = false
 
-[node name="Clock" type="Node3D" parent="Desk" unique_id=1162184841]
+[node name="Clock" type="Node3D" parent="Desk" unique_id=1162184841 node_paths=PackedStringArray("variants")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0.107397676, -0.35)
 script = ExtResource("4_clock")
+stages = Array[ExtResource("12_clock_stage")]([SubResource("ClockStage_0"), SubResource("ClockStage_1"), SubResource("ClockStage_2"), SubResource("ClockStage_3"), SubResource("ClockStage_4"), SubResource("Resource_0tnpc"), SubResource("Resource_adnto"), SubResource("Resource_grqqk"), SubResource("Resource_gy76c")])
+variants = [NodePath("ClockBody_HM"), NodePath("ClockBody_HMS"), NodePath("ClockBody_HMSCs"), NodePath("ClockBody_HMSMs"), NodePath("ClockBody_HMSUs")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Desk/Clock" unique_id=1280406765]
-mesh = SubResource("CylinderMesh_clock")
+[node name="ClockBody_HM" type="Node3D" parent="Desk/Clock" unique_id=643567221]
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HM" unique_id=1284705517]
+mesh = SubResource("BoxMesh_clock_hm")
 surface_material_override/0 = SubResource("Mat_clock")
+
+[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HM" unique_id=423279344 instance=ExtResource("11_clock_ui")]
+
+[node name="ClockBody_HMS" type="Node3D" parent="Desk/Clock" unique_id=26025301]
+visible = false
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HMS" unique_id=1735941642]
+mesh = SubResource("BoxMesh_clock_hms")
+surface_material_override/0 = SubResource("Mat_clock")
+
+[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HMS" unique_id=2087257058 instance=ExtResource("11_clock_ui")]
+viewport_width = 410
+screen_width = 0.35
+
+[node name="ClockBody_HMSCs" type="Node3D" parent="Desk/Clock" unique_id=1397853514]
+visible = false
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HMSCs" unique_id=1734361276]
+mesh = SubResource("BoxMesh_clock_hmscs")
+surface_material_override/0 = SubResource("Mat_clock")
+
+[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HMSCs" unique_id=313452321 instance=ExtResource("11_clock_ui")]
+viewport_width = 563
+screen_width = 0.48
+
+[node name="ClockBody_HMSMs" type="Node3D" parent="Desk/Clock" unique_id=1254908392]
+visible = false
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HMSMs" unique_id=875294760]
+mesh = SubResource("BoxMesh_clock_hmsms")
+surface_material_override/0 = SubResource("Mat_clock")
+
+[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HMSMs" unique_id=1367018772 instance=ExtResource("11_clock_ui")]
+viewport_width = 614
+screen_width = 0.53
+
+[node name="ClockBody_HMSUs" type="Node3D" parent="Desk/Clock" unique_id=414914262]
+visible = false
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HMSUs" unique_id=1005823097]
+mesh = SubResource("BoxMesh_clock_hmsus")
+surface_material_override/0 = SubResource("Mat_clock")
+
+[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HMSUs" unique_id=1618106833 instance=ExtResource("11_clock_ui")]
+viewport_width = 820
+screen_width = 0.7
 
 [node name="FocusMarker" type="Marker3D" parent="Desk/Clock" unique_id=648323789]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.052299023, 0.4)
@@ -139,11 +272,41 @@ script = ExtResource("5_interactable")
 focus_marker = NodePath("../FocusMarker")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/Clock/Interactable" unique_id=758283041]
-shape = SubResource("SphereShape_clock")
+shape = SubResource("BoxShape_clock")
 
-[node name="InteractionRouter" type="Node" parent="." unique_id=29840228 node_paths=PackedStringArray("desk_objects")]
+[node name="InteractionRouter" type="Node" parent="." unique_id=29840228 node_paths=PackedStringArray("camera", "desk_surface", "desk_objects")]
 script = ExtResource("6_router")
-desk_objects = [null, null, null]
+camera = NodePath("../Camera3D")
+desk_surface = NodePath("../Desk/DeskSurface/Interactable")
+desk_objects = [NodePath("../Desk/Computer/Interactable"), NodePath("../Desk/Report/Interactable"), NodePath("../Desk/Clock/Interactable")]
+
+[node name="FreeAnchor" type="Marker3D" parent="." unique_id=195158807]
+transform = Transform3D(1, 0, 0, 0, 0.98, 0.199, 0, -0.199, 0.98, 0, 1.507271, 1.820462)
+
+[node name="DeskAnchor" type="Marker3D" parent="." unique_id=509314780]
+transform = Transform3D(1, 0, 0, 0, 0.62524265, 0.78043044, 0, -0.78043044, 0.62524265, 0, 1.4100412, 0.4980737)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=342673675 node_paths=PackedStringArray("free_anchor", "desk_anchor")]
+transform = Transform3D(1, 0, 0, 0, 0.96592593, 0.25881907, 0, -0.25881907, 0.96592593, -0.65, 1.08, 1.05)
+current = true
+script = ExtResource("13_camera")
+free_anchor = NodePath("../FreeAnchor")
+desk_anchor = NodePath("../DeskAnchor")
+free_yaw_left = 0.065
+free_yaw_right = 0.065
+free_pitch_up = 0.05
+free_pitch_down = 0.05
+desk_yaw_left = 0.01
+desk_yaw_right = 0.01
+desk_pitch_up = 0.03
+desk_pitch_down = 0.03
+edge_look_enabled = false
+focus_lerp_speed = 6.0
+mode_lerp_speed = 4.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=671355985]
+transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 4, 2)
+shadow_enabled = true
 
 [node name="Dirt" type="Marker3D" parent="." unique_id=1291452055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4655826, 0, -3.4599977)

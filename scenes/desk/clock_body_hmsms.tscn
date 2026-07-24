@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://lrxao0107ovy"]
+
+[ext_resource type="Script" uid="uid://nmmu585ldg26" path="res://scripts/ui/clock_display.gd" id="1_display"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+size = Vector3(0.74, 0.1, 0.14)
+
+[sub_resource type="StandardMaterial3D" id="Mat_clock"]
+albedo_color = Color(0.12, 0.12, 0.14, 1)
+
+[node name="ClockBody_HMSMs" type="Node3D" unique_id=342532056]
+
+[node name="BodyMesh" type="MeshInstance3D" parent="." unique_id=274117599]
+mesh = SubResource("BoxMesh_body")
+surface_material_override/0 = SubResource("Mat_clock")
+
+[node name="ClockDisplay" type="Node3D" parent="." unique_id=1512623745]
+script = ExtResource("1_display")
+viewport_width = 614
+screen_width = 0.53
+
+[node name="SubViewport" type="SubViewport" parent="ClockDisplay" unique_id=72492401]
+disable_3d = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(614, 64)
+render_target_update_mode = 4
+
+[node name="TimeLabel" type="Label" parent="ClockDisplay/SubViewport" unique_id=1513502198]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.35, 1)
+theme_override_font_sizes/font_size = 36
+text = "17:59:59:999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScreenMesh" type="MeshInstance3D" parent="ClockDisplay" unique_id=1754392856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.071)

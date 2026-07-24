@@ -3,32 +3,19 @@
 [ext_resource type="Script" uid="uid://e3kkuj68sism" path="res://scripts/game_manager.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://df1t6a2s8rmo7" path="res://scenes/office.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dqbuyoufnwsei" path="res://scenes/post_processing.tscn" id="2_vtaks"]
-[ext_resource type="Script" uid="uid://cf8lbwvcio247" path="res://scripts/camera/camera_controller.gd" id="3_camera"]
 [ext_resource type="Script" uid="uid://c0r2aac6igsnl" path="res://scripts/demission_manager.gd" id="3_iywne"]
 [ext_resource type="Script" uid="uid://btv6j4lifiaap" path="res://scripts/gameplay_controller.gd" id="4_gameplay"]
 [ext_resource type="Texture2D" uid="uid://n3b5tkdvnp1o" path="res://icon.svg" id="4_trtic"]
-[ext_resource type="Script" uid="uid://cnt0wq62pgagn" path="res://scripts/desk/player_desk.gd" id="6_ir15t"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_gee14"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tnpc"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_gee14")
-
-[sub_resource type="QuadMesh" id="QuadMesh_vtaks"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_0tnpc")
-size = Vector2(0.32, 0.4)
 
 [node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager", "post_processing")]
 script = ExtResource("1_yqjtg")
 demission_manager = NodePath("DemissionManager")
 post_processing = NodePath("PostProcessing")
-max_game_time = 900.0
+max_game_time = 60.0
 
 [node name="PostProcessing" parent="." unique_id=929113980 instance=ExtResource("2_vtaks")]
 layer = 0
+visible = false
 
 [node name="GameplayController" type="Node" parent="." unique_id=591240809 node_paths=PackedStringArray("title_ui", "camera", "interaction_router", "pc_focus_marker")]
 script = ExtResource("4_gameplay")
@@ -231,45 +218,6 @@ text = "Quit"
 
 [node name="Office" parent="." unique_id=1066995191 instance=ExtResource("2_lnu2h")]
 
-[node name="Desk" parent="Office" index="0" unique_id=1555415675]
-script = ExtResource("6_ir15t")
-
-[node name="ScreenMesh" parent="Office/Desk/Report/DiegeticReportUI" parent_id_path=PackedInt32Array(1066995191, 610582888) index="1" unique_id=1719728263]
-mesh = SubResource("QuadMesh_vtaks")
-
-[node name="InteractionRouter" parent="Office" index="1" unique_id=29840228 node_paths=PackedStringArray("camera", "desk_surface", "desk_objects")]
-camera = NodePath("../Camera3D")
-desk_surface = NodePath("../Desk/DeskSurface/Interactable")
-desk_objects = [NodePath("../Desk/Computer/Interactable"), NodePath("../Desk/Report/Interactable"), NodePath("../Desk/Clock/Interactable")]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Office" unique_id=1714362677]
-transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 4, 2)
-shadow_enabled = true
-
-[node name="FreeAnchor" type="Marker3D" parent="Office" unique_id=1692342373]
-transform = Transform3D(1, 0, 0, 0, 0.98, 0.199, 0, -0.199, 0.98, 0, 1.507271, 1.820462)
-
-[node name="DeskAnchor" type="Marker3D" parent="Office" unique_id=1706784368]
-transform = Transform3D(1, 0, 0, 0, 0.62524265, 0.78043044, 0, -0.78043044, 0.62524265, 0, 1.4100412, 0.4980737)
-
-[node name="Camera3D" type="Camera3D" parent="Office" unique_id=1079534241 node_paths=PackedStringArray("free_anchor", "desk_anchor")]
-transform = Transform3D(1, 0, 0, 0, 0.96592593, 0.25881907, 0, -0.25881907, 0.96592593, -0.65, 1.08, 1.05)
-current = true
-script = ExtResource("3_camera")
-free_anchor = NodePath("../FreeAnchor")
-desk_anchor = NodePath("../DeskAnchor")
-free_yaw_left = 0.2
-free_yaw_right = 0.2
-free_pitch_up = 0.05
-free_pitch_down = 0.05
-desk_yaw_left = 0.1
-desk_yaw_right = 0.1
-desk_pitch_up = 0.03
-desk_pitch_down = 0.03
-edge_look_enabled = false
-focus_lerp_speed = 6.0
-mode_lerp_speed = 4.0
-
 [node name="DemissionManager" type="Node" parent="." unique_id=1136449082]
 script = ExtResource("3_iywne")
 metadata/_custom_type_script = "uid://c0r2aac6igsnl"
@@ -280,6 +228,3 @@ metadata/_custom_type_script = "uid://c0r2aac6igsnl"
 [connection signal="pressed" from="EndMenu/Control/StartButton" to="." method="game_start"]
 [connection signal="pressed" from="EndMenu/Control/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="employee_selected" from="DemissionManager" to="Office/Desk/Report" method="set_employee"]
-
-[editable path="Office"]
-[editable path="Office/Desk/Report/DiegeticReportUI"]

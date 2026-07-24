@@ -32,6 +32,8 @@ func game_start() -> void:
 	game_hud.show()
 	update_employee_number()
 	office.clear_office()
+	if desk and desk.clock:
+		desk.clock.reset_clock()
 	
 	if demission_manager:
 		demission_manager.start_game()
@@ -51,7 +53,10 @@ func game_start() -> void:
 func _process(delta: float) -> void:
 	if is_playing:
 		game_time += delta
-		post_processing.set_distortion(clamp(game_time/max_game_time, 0, 1 ))
+		var progress: float = clampf(game_time / max_game_time, 0.0, 1.0)
+		post_processing.set_distortion(progress)
+		if desk and desk.clock:
+			desk.clock.on_clock_tick(game_time, max_game_time)
 
 func _on_start_button_pressed() -> void:
 	game_start()
