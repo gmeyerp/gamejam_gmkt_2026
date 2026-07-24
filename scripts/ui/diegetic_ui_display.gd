@@ -7,6 +7,7 @@ extends Node3D
 @export var ui_root: Control
 @export var camera: Camera3D
 @export var linked_interactable: Interactable
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var input_active: bool = false
 
@@ -148,3 +149,7 @@ func _mouse_to_viewport_pos() -> Variant:
 
 	var uv := Vector2(local.x / quad.size.x + 0.5, -local.y / quad.size.y + 0.5)
 	return Vector2(uv.x * float(sub_viewport.size.x), uv.y * float(sub_viewport.size.y))
+
+
+func _on_layoff_chosen() -> void:
+	animation_player.play("send_report")

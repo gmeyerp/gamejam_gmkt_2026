@@ -18,6 +18,94 @@ size = Vector2(0.32, 0.4)
 [sub_resource type="BoxShape3D" id="BoxShape_pick"]
 size = Vector3(0.32, 0.4, 0.02)
 
+[sub_resource type="Animation" id="Animation_my0sk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m3xqq"]
+resource_name = "send_report"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.4666667, 0.90000004, 1, 1.2333333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 0, 0.5, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.93549883, 0, -0.8301104), Vector3(0.2561339, 0, -1.9369242), Vector3(1.3351073, 0, -3.7354965), Vector3(0, 0, 0), Vector3(0, 0.4, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.90000004, 1, 1.5),
+"transitions": PackedFloat32Array(1, 0, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 12.566371, 0), Vector3(0, 0, 3.1415927), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.90000004, 1, 1.5),
+"transitions": PackedFloat32Array(1, 0, 0.5, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1i2vd"]
+_data = {
+&"RESET": SubResource("Animation_my0sk"),
+&"send_report": SubResource("Animation_m3xqq")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qmg03"]
+size = Vector2(0.35, 0.4)
+
 [node name="DiegeticReportUI" type="Node3D" unique_id=1701022361]
 script = ExtResource("1_display")
 
@@ -38,3 +126,12 @@ input_capture_on_drag = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenMesh/Area3D" unique_id=1141948549]
 shape = SubResource("BoxShape_pick")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1780159011]
+libraries/ = SubResource("AnimationLibrary_1i2vd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=307793980]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_qmg03")
+
+[connection signal="layoff_chosen" from="SubViewport/ReportDecisionUI" to="." method="_on_layoff_chosen" unbinds=1]

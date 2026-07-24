@@ -47,7 +47,8 @@ func start_new_round() -> void:
 	current_index = 0
 	load_next_employee()
 
-func process_decision(motive_chosen: GlobalVariables.LayoffMotive) -> void:
+func process_decision(motive_chosen: GlobalVariables.LayoffMotive) -> void:	
+	
 	if current_index >= employee_list.size():
 		return
 		
