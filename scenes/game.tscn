@@ -5,7 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://dqbuyoufnwsei" path="res://scenes/post_processing.tscn" id="2_vtaks"]
 [ext_resource type="Script" uid="uid://c0r2aac6igsnl" path="res://scripts/demission_manager.gd" id="3_iywne"]
 [ext_resource type="Script" uid="uid://btv6j4lifiaap" path="res://scripts/gameplay_controller.gd" id="4_gameplay"]
+[ext_resource type="Script" uid="uid://c15rj0exjou6x" path="res://scripts/ui/level_dialogue.gd" id="4_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://n3b5tkdvnp1o" path="res://icon.svg" id="4_trtic"]
+[ext_resource type="Script" uid="uid://c345omwqftp5k" path="res://scenes/detect_area.gd" id="8_0tnpc"]
+[ext_resource type="Script" uid="uid://cmu8i0w3sdimo" path="res://scripts/player/behavior.gd" id="9_0tnpc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0i88t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0i88t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0i88t"]
 
 [node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager", "post_processing")]
 script = ExtResource("1_yqjtg")
@@ -80,7 +89,9 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Quit"
 
-[node name="GameHUD" type="CanvasLayer" parent="." unique_id=890185811]
+[node name="GameHUD" type="CanvasLayer" parent="." unique_id=890185811 node_paths=PackedStringArray("hud")]
+script = ExtResource("4_kvpfn")
+hud = NodePath(".")
 
 [node name="EmployeeNumer" type="Control" parent="GameHUD" unique_id=1927852521]
 layout_mode = 3
@@ -221,6 +232,40 @@ text = "Quit"
 [node name="DemissionManager" type="Node" parent="." unique_id=1136449082]
 script = ExtResource("3_iywne")
 metadata/_custom_type_script = "uid://c0r2aac6igsnl"
+
+[node name="Dialogue" type="Node3D" parent="." unique_id=51088233 node_paths=PackedStringArray("hud", "dialogue_area")]
+script = ExtResource("4_kvpfn")
+hud = NodePath("Hud")
+dialogue_area = NodePath("../Point_Mesa/Area3D")
+
+[node name="Hud" type="CanvasLayer" parent="Dialogue" unique_id=1984543245]
+
+[node name="Point_1" type="Node3D" parent="." unique_id=536513095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -8)
+
+[node name="Point_2" type="Node3D" parent="." unique_id=2020617358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+
+[node name="Point_Mesa" type="Node3D" parent="." unique_id=1856331660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="Area3D" type="Area3D" parent="Point_Mesa" unique_id=1732930151]
+script = ExtResource("8_0tnpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Point_Mesa/Area3D" unique_id=289924086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.14783049)
+shape = SubResource("BoxShape3D_0i88t")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=728306156 node_paths=PackedStringArray("points")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.23494, -8)
+script = ExtResource("9_0tnpc")
+points = [NodePath("../Point_1"), NodePath("../Point_2"), NodePath("../Point_Mesa"), NodePath("../Point_2"), NodePath("../Point_1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=698966240]
+shape = SubResource("CapsuleShape3D_0i88t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=305190626]
+mesh = SubResource("CapsuleMesh_0i88t")
 
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="GameplayController" method="on_start_game_pressed"]
