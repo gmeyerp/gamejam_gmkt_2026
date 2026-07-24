@@ -10,6 +10,10 @@ extends Node3D
 @export var animation_player: AnimationPlayer
 
 @export var papers : Array[Node3D]
+var current_motive : GlobalVariables.LayoffMotive
+@export var stampTexture : MeshInstance3D
+@export var keepMaterial : Material
+@export var fireMaterial: Material
 
 var input_active: bool = false
 
@@ -157,8 +161,15 @@ func _mouse_to_viewport_pos() -> Variant:
 	return Vector2(uv.x * float(sub_viewport.size.x), uv.y * float(sub_viewport.size.y))
 
 
-func _on_layoff_chosen() -> void:
+func _on_layoff_chosen(motive: GlobalVariables.LayoffMotive) -> void:
 	animation_player.play("send_report")
+	current_motive = motive
+
+func stamp():
+	if current_motive == GlobalVariables.LayoffMotive.Keep:
+		stampTexture.material_override = keepMaterial
+	else:
+		stampTexture.material_override = fireMaterial
 
 func update_papers() -> void:
 	var employees = EmployeeList.get_employee_number()

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d0xifjyukvu2n"]
 
+[ext_resource type="Theme" uid="uid://ctwpwhl3etueo" path="res://ui/computer_theme.tres" id="1_a05m4"]
 [ext_resource type="Script" uid="uid://cipcdonmhkejr" path="res://scripts/ui/computer_rulebook_ui.gd" id="1_script"]
 [ext_resource type="Script" uid="uid://d01qq2n657r0s" path="res://resources/acceptable_behaviours/acceptable_behaviours.gd" id="2_rpnvi"]
 [ext_resource type="Resource" uid="uid://dfnlm2ikv0cb" path="res://resources/acceptable_behaviours/breaks.tres" id="3_gnv4x"]
@@ -20,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_a05m4")
 script = ExtResource("1_script")
 rules = Array[ExtResource("2_rpnvi")]([ExtResource("3_gnv4x"), ExtResource("4_a05m4"), ExtResource("5_blnf1"), ExtResource("6_qrbbp"), ExtResource("7_rif7b"), ExtResource("8_06c8f"), ExtResource("9_cudtr"), ExtResource("10_j1tah"), ExtResource("11_mnstb")])
 
@@ -41,7 +43,11 @@ theme_override_constants/separation = 8
 
 [node name="Title" type="Label" parent="Panel/VBox" unique_id=745386304]
 layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 30
 text = "Rulebook"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TabButtons" type="HBoxContainer" parent="Panel/VBox" unique_id=1545234170]
 layout_mode = 2
@@ -49,19 +55,19 @@ layout_mode = 2
 [node name="BehaviourTab" type="Button" parent="Panel/VBox/TabButtons" unique_id=1165323925]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Comportamento"
+text = "Company Polices"
 script = ExtResource("12_gnv4x")
 
 [node name="BudgetTab" type="Button" parent="Panel/VBox/TabButtons" unique_id=349965519]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Orçamento"
+text = "Employee Wages"
 script = ExtResource("12_gnv4x")
 
 [node name="ProductivityTab" type="Button" parent="Panel/VBox/TabButtons" unique_id=1530235495]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Produtividade"
+text = "Production Rate"
 script = ExtResource("12_gnv4x")
 
 [node name="Pages" type="Control" parent="Panel/VBox" unique_id=297397268]
@@ -74,6 +80,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Regras de Comportamento

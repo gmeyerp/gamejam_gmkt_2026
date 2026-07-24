@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cu0rglerd6mos" path="res://scripts/ui/diegetic_ui_display.gd" id="1_display"]
 [ext_resource type="PackedScene" uid="uid://ccmc385s5v5ay" path="res://scenes/ui/report_decision_ui.tscn" id="2_ui"]
+[ext_resource type="Material" uid="uid://btljbto0kf2xv" path="res://materials/keep_material.tres" id="3_1i2vd"]
+[ext_resource type="Material" uid="uid://c0s2fww5fcurl" path="res://materials/fired_material.tres" id="3_m3xqq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ykh0f"]
 viewport_path = NodePath("SubViewport")
@@ -56,10 +58,58 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Stamp:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5133458, 0.34743744, -0.078)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Stamp:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.50143415)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Stamp:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("StampTexture:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_m3xqq"]
 resource_name = "send_report"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,7 +117,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.20000002, 0.4666667, 0.90000004, 1, 1.2333333, 1.5),
+"times": PackedFloat32Array(0.5, 0.70000005, 0.9666667, 1.4000001, 1.5, 1.7333333, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 0, 0.5, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.93549883, 0, -0.8301104), Vector3(0.2561339, 0, -1.9369242), Vector3(1.3351073, 0, -3.7354965), Vector3(0, 0, 0), Vector3(0, 0.4, 0), Vector3(0, 0, 0)]
@@ -79,7 +129,7 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.90000004, 1, 1.5),
+"times": PackedFloat32Array(0.5, 1.4000001, 1.5, 2),
 "transitions": PackedFloat32Array(1, 0, 0.5, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 12.566371, 0), Vector3(0, 0, 3.1415927), Vector3(0, 0, 0)]
@@ -91,7 +141,7 @@ tracks/2/path = NodePath(".:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.90000004, 1, 1.5),
+"times": PackedFloat32Array(0.5, 1.4000001, 1.5, 2),
 "transitions": PackedFloat32Array(1, 0, 0.5, 1),
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1), Vector3(1, 1, 1)]
@@ -103,12 +153,69 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.16666667, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
+"method": &"stamp"
+}, {
+"args": [false],
+"method": &"set_input_active"
+}, {
+"args": [],
 "method": &"update_papers"
+}, {
+"args": [true],
+"method": &"set_input_active"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Stamp:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5133458, 0.34743744, -0.078), Vector3(0.07066244, 2.9802322e-08, -0.082978606), Vector3(0.07066244, 2.9802322e-08, -0.082978606), Vector3(0.5133458, 0.34743744, -0.078)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Stamp:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.50143415), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -0.50143415)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Stamp:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("StampTexture:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 1.5000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1i2vd"]
@@ -120,9 +227,40 @@ _data = {
 [sub_resource type="PlaneMesh" id="PlaneMesh_qmg03"]
 size = Vector2(0.35, 0.4)
 
-[node name="DiegeticReportUI" type="Node3D" unique_id=1701022361 node_paths=PackedStringArray("animation_player")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykh0f"]
+albedo_color = Color(0.6411244, 0.34921926, 0.17832729, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qmg03"]
+material = SubResource("StandardMaterial3D_ykh0f")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i2vd"]
+albedo_color = Color(0.82318187, 0, 0.063288696, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_01eo7"]
+material = SubResource("StandardMaterial3D_1i2vd")
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.02
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q0aoh"]
+material = SubResource("StandardMaterial3D_ykh0f")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ykh0f"]
+material = ExtResource("3_m3xqq")
+size = Vector2(0.075, 0.075)
+
+[node name="DiegeticReportUI" type="Node3D" unique_id=1701022361 node_paths=PackedStringArray("animation_player", "stampTexture")]
 script = ExtResource("1_display")
 animation_player = NodePath("AnimationPlayer")
+stampTexture = NodePath("StampTexture")
+keepMaterial = ExtResource("3_m3xqq")
+fireMaterial = ExtResource("3_1i2vd")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=255816298]
 size = Vector2i(512, 640)
@@ -149,4 +287,25 @@ libraries/ = SubResource("AnimationLibrary_1i2vd")
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0.020404287, 0)
 mesh = SubResource("PlaneMesh_qmg03")
 
-[connection signal="layoff_chosen" from="SubViewport/ReportDecisionUI" to="." method="_on_layoff_chosen" unbinds=1]
+[node name="Stamp" type="Node3D" parent="." unique_id=1434041839]
+transform = Transform3D(0.8768941, 0.48068362, 0, -0.48068362, 0.8768941, 0, 0, 0, 1, 0.5133458, 0.34743744, -0.078)
+visible = false
+
+[node name="Base" type="MeshInstance3D" parent="Stamp" unique_id=1610763977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029262736, 0)
+mesh = SubResource("CylinderMesh_qmg03")
+
+[node name="BaseRED" type="MeshInstance3D" parent="Stamp" unique_id=1506137207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026467562, 0)
+mesh = SubResource("CylinderMesh_01eo7")
+
+[node name="Stick" type="MeshInstance3D" parent="Stamp" unique_id=1676872768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08320601, 0)
+mesh = SubResource("CylinderMesh_q0aoh")
+
+[node name="StampTexture" type="MeshInstance3D" parent="." unique_id=393283473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07066244, 0.020996854, -0.082978606)
+visible = false
+mesh = SubResource("PlaneMesh_ykh0f")
+
+[connection signal="layoff_chosen" from="SubViewport/ReportDecisionUI" to="." method="_on_layoff_chosen"]
