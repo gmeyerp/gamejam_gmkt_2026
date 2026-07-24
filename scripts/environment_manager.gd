@@ -9,6 +9,7 @@ var max_maintenance: int
 @export var dirt: Array[Node3D]
 @export var garbage_speed: float = 0
 @export var garbage: PackedScene
+@onready var diegetic_report: DiegeticUIDisplay = $Desk/Report/DiegeticReportUI
 
 var garbage_timer: float = 0
 const DUMP_TIMER: float = 10
@@ -25,6 +26,8 @@ func clear_office():
 			
 	garbage_speed = 0
 	garbage_timer = 0
+	
+	diegetic_report.reset_papers()
 
 func on_employee_fired(employee: EmployeeData):
 	match employee.department:

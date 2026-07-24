@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://df1t6a2s8rmo7" path="res://scenes/office.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dqbuyoufnwsei" path="res://scenes/post_processing.tscn" id="2_vtaks"]
 [ext_resource type="Script" uid="uid://c0r2aac6igsnl" path="res://scripts/demission_manager.gd" id="3_iywne"]
+[ext_resource type="Script" uid="uid://dgsop8aipatjf" path="res://scripts/ui/button.gd" id="4_dinhu"]
 [ext_resource type="Script" uid="uid://btv6j4lifiaap" path="res://scripts/gameplay_controller.gd" id="4_gameplay"]
 [ext_resource type="Script" uid="uid://c15rj0exjou6x" path="res://scripts/ui/level_dialogue.gd" id="4_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://n3b5tkdvnp1o" path="res://icon.svg" id="4_trtic"]
@@ -75,6 +76,7 @@ offset_bottom = -171.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Start Game"
+script = ExtResource("4_dinhu")
 
 [node name="QuitButton" type="Button" parent="MainMenu/Control" unique_id=140853345]
 layout_mode = 1
@@ -90,6 +92,7 @@ offset_bottom = -171.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Quit"
+script = ExtResource("4_dinhu")
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=890185811 node_paths=PackedStringArray("hud")]
 script = ExtResource("4_kvpfn")
@@ -213,6 +216,7 @@ offset_bottom = -171.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Start Game"
+script = ExtResource("4_dinhu")
 
 [node name="QuitButton" type="Button" parent="EndMenu/Control" unique_id=1534548524]
 layout_mode = 1
@@ -228,6 +232,7 @@ offset_bottom = -171.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Quit"
+script = ExtResource("4_dinhu")
 
 [node name="Office" parent="." unique_id=1066995191 instance=ExtResource("2_lnu2h")]
 
@@ -240,7 +245,7 @@ script = ExtResource("4_kvpfn")
 hud = NodePath("Hud")
 dialogue_area = NodePath("../Point_Mesa/Area3D")
 chat = Array[String](["Nada de ir embora mais cedo hoje não em, não dou a minima sé possui compromisso", "Quero o serviço concluido e se isso significa que vai ter que ficar aqui ápos as 18 já não é um problema meu", "... Ok ne vejo que não tenho muita opção, pode deixa chefe", "Que bom que entendeu. Estou contando contigo em"])
-personagem = Array[Texture]([ExtResource("8_kvpfn"), ExtResource("9_dinhu")])
+personagem = Array[Texture2D]([ExtResource("8_kvpfn"), ExtResource("9_dinhu")])
 
 [node name="Hud" type="CanvasLayer" parent="Dialogue" unique_id=1984543245]
 

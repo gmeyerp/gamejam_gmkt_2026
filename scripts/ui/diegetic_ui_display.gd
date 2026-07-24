@@ -7,7 +7,9 @@ extends Node3D
 @export var ui_root: Control
 @export var camera: Camera3D
 @export var linked_interactable: Interactable
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var animation_player: AnimationPlayer
+
+@export var papers : Array[Node3D]
 
 var input_active: bool = false
 
@@ -31,8 +33,12 @@ func _ready() -> void:
 
 	_apply_viewport_texture()
 	set_input_active(false)
+	
+	reset_papers()
 
-
+func reset_papers():
+	for i in range(papers.size()):
+		papers[i].show()
 
 func set_input_active(active: bool) -> void:
 	input_active = active
@@ -153,3 +159,18 @@ func _mouse_to_viewport_pos() -> Variant:
 
 func _on_layoff_chosen() -> void:
 	animation_player.play("send_report")
+
+func update_papers() -> void:
+	var employees = EmployeeList.get_employee_number()
+	if employees <= 13:
+		papers[4].hide()
+	if employees <= 10:
+		papers[3].hide()
+	if employees <= 7:
+		papers[2].hide()
+	if employees == 2:
+		papers[1].hide()
+	if employees == 1:
+		papers[0].hide()
+	if employees == 0:
+		animation_player.stop()

@@ -4,6 +4,10 @@ class_name DeskReport
 signal player_scored(score: int)
 signal employee_fired(employee: EmployeeData)
 
+@export var click_sfx : AudioStream
+@export var correct_sfx : AudioStream
+@export var incorrect_sfx : AudioStream
+
 @export var decision_ui: ReportDecisionUI
 @export var diegetic_display: DiegeticUIDisplay
 @export var interaction_router: InteractionRouter
@@ -52,18 +56,26 @@ func score_layoff_choice(_choice: GlobalVariables.LayoffMotive, _report: Employe
 	if _choice == GlobalVariables.LayoffMotive.InapropriateBehaviour:
 		if _report.layoff_round == EmployeeList.get_layoff_round():
 			player_scored.emit(1)
+			UIGlobalSound.play_sfx(correct_sfx)
 		else:
 			player_scored.emit(-1)
+			UIGlobalSound.play_sfx(incorrect_sfx)
 	elif _choice == GlobalVariables.LayoffMotive.BudgetCut:
 		if _report.salary >= EmployeeList.get_average_salary(_report.department):
 			player_scored.emit(1)
+			UIGlobalSound.play_sfx(correct_sfx)
 		else:
 			player_scored.emit(-1)
+			UIGlobalSound.play_sfx(incorrect_sfx)
 	elif _choice == GlobalVariables.LayoffMotive.Improductivity:
 		if _report.production_rate <= EmployeeList.get_average_productivity(_report.department):
 			player_scored.emit(1)
+			UIGlobalSound.play_sfx(correct_sfx)
 		else:
 			player_scored.emit(-1)
+			UIGlobalSound.play_sfx(incorrect_sfx)
+	else:
+		UIGlobalSound.play_sfx(click_sfx)
 
 func close_inspection() -> void:
 	if interaction_router:

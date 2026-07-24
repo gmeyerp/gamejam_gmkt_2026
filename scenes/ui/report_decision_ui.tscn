@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ccmc385s5v5ay"]
 
 [ext_resource type="Script" uid="uid://c718s6sl7bbpo" path="res://scripts/ui/report_decision_ui.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dgsop8aipatjf" path="res://scripts/ui/button.gd" id="2_npdwp"]
 
 [node name="ReportDecisionUI" type="Control" unique_id=488828330]
 layout_mode = 3
@@ -78,6 +79,7 @@ vertical_alignment = 1
 [node name="KeepButton" type="Button" parent="Panel/VBox" unique_id=722335928]
 layout_mode = 2
 text = "Manter"
+script = ExtResource("2_npdwp")
 
 [node name="ImproductivityButton" type="Button" parent="Panel/VBox" unique_id=1214578364]
 layout_mode = 2

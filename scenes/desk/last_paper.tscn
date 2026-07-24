@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c7fmu6q837r75"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykh0f"]
+cull_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qmg03"]
+material = SubResource("StandardMaterial3D_ykh0f")
+size = Vector2(0.3, 0.4)
+
+[node name="LastPaper" type="Node3D" unique_id=1258898422]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=491900574]
+transform = Transform3D(0.9772565, 0, -0.21206088, 0, 1, 0, 0.21206088, 0, 0.9772565, 0, 0, 0)
+mesh = SubResource("PlaneMesh_qmg03")

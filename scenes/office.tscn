@@ -11,7 +11,11 @@
 [ext_resource type="Script" uid="uid://clg48545tj1sx" path="res://scripts/interaction/interaction_router.gd" id="6_router"]
 [ext_resource type="PackedScene" uid="uid://dji0kargchvj8" path="res://scenes/ui/diegetic_computer_ui.tscn" id="7_pc_ui"]
 [ext_resource type="PackedScene" uid="uid://iyqfemwfh13v" path="res://scenes/ui/diegetic_report_ui.tscn" id="8_report_ui"]
+[ext_resource type="AudioStream" uid="uid://n7oef61b4pw8" path="res://sfx/click.wav" id="9_kviqm"]
+[ext_resource type="PackedScene" uid="uid://c7fmu6q837r75" path="res://scenes/desk/last_paper.tscn" id="10_07d2k"]
 [ext_resource type="PackedScene" uid="uid://b2g3n4o737ckb" path="res://scenes/flickering_light.tscn" id="10_in4ui"]
+[ext_resource type="AudioStream" uid="uid://2nf0xkhxwgsw" path="res://sfx/positive.wav" id="10_ja80a"]
+[ext_resource type="AudioStream" uid="uid://dcgg5eglwm2j5" path="res://sfx/negative_2.wav" id="11_alkg7"]
 [ext_resource type="PackedScene" path="res://scenes/ui/clock_display.tscn" id="11_clock_ui"]
 [ext_resource type="Script" uid="uid://dq0ta68rtwsgq" path="res://resources/clock/clock_stage.gd" id="12_clock_stage"]
 [ext_resource type="Script" uid="uid://cf8lbwvcio247" path="res://scripts/camera/camera_controller.gd" id="13_camera"]
@@ -34,8 +38,11 @@ albedo_color = Color(0.15, 0.15, 0.18, 1)
 [sub_resource type="BoxShape3D" id="BoxShape_computer"]
 size = Vector3(0.55, 0.4, 0.12)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmg03"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_report"]
-size = Vector3(0.35, 0.02, 0.45)
+material = SubResource("StandardMaterial3D_qmg03")
+size = Vector3(0.35, 0.01, 0.45)
 
 [sub_resource type="StandardMaterial3D" id="Mat_report"]
 albedo_color = Color(0.92, 0.9, 0.82, 1)
@@ -181,12 +188,16 @@ shape = SubResource("BoxShape_computer")
 
 [node name="Report" type="Node3D" parent="Desk" unique_id=1668581864 node_paths=PackedStringArray("diegetic_display", "interaction_router")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.06, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.060000002, 0.1)
 script = ExtResource("3_report")
+click_sfx = ExtResource("9_kviqm")
+correct_sfx = ExtResource("10_ja80a")
+incorrect_sfx = ExtResource("11_alkg7")
 diegetic_display = NodePath("DiegeticReportUI")
 interaction_router = NodePath("../../InteractionRouter")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Desk/Report" unique_id=1329061048]
+visible = false
 mesh = SubResource("BoxMesh_report")
 surface_material_override/0 = SubResource("Mat_report")
 
@@ -201,8 +212,24 @@ focus_marker = NodePath("../FocusMarker")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/Report/Interactable" unique_id=2051445332]
 shape = SubResource("BoxShape_report")
 
-[node name="DiegeticReportUI" parent="Desk/Report" unique_id=610582888 instance=ExtResource("8_report_ui")]
+[node name="DiegeticReportUI" parent="Desk/Report" unique_id=610582888 node_paths=PackedStringArray("papers") instance=ExtResource("8_report_ui")]
 debug_input = false
+papers = [NodePath("../LastPaper"), NodePath("../LastPaper2"), NodePath("../LastPaper3"), NodePath("../LastPaper4"), NodePath("../LastPaper5")]
+
+[node name="LastPaper" parent="Desk/Report" unique_id=1258898422 instance=ExtResource("10_07d2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018682837, 0)
+
+[node name="LastPaper2" parent="Desk/Report" unique_id=1610813698 instance=ExtResource("10_07d2k")]
+transform = Transform3D(0.9774159, 0, 0.2113248, 0, 1, 0, -0.2113248, 0, 0.9774159, 0, -0.01518923, 0)
+
+[node name="LastPaper3" parent="Desk/Report" unique_id=1870299294 instance=ExtResource("10_07d2k")]
+transform = Transform3D(0.94997203, 0, 0.31233492, 0, 1, 0, -0.31233492, 0, 0.94997203, 0, -0.010408878, 0)
+
+[node name="LastPaper4" parent="Desk/Report" unique_id=1181516676 instance=ExtResource("10_07d2k")]
+transform = Transform3D(0.9918944, 0, -0.12706462, 0, 1, 0, 0.12706462, 0, 0.9918944, 0, -0.006274581, 0)
+
+[node name="LastPaper5" parent="Desk/Report" unique_id=1535158415 instance=ExtResource("10_07d2k")]
+transform = Transform3D(0.88941634, 0, 0.45709792, 0, 1, 0, -0.45709792, 0, 0.88941634, 0, -0.0039693713, 0)
 
 [node name="Clock" type="Node3D" parent="Desk" unique_id=1162184841 node_paths=PackedStringArray("variants")]
 unique_name_in_owner = true
