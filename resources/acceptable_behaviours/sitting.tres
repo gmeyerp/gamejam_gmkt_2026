@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AcceptableBehaviours" format=3 uid="uid://cpbn0cfleqm6g"]
+
+[ext_resource type="Script" uid="uid://d01qq2n657r0s" path="res://resources/acceptable_behaviours/acceptable_behaviours.gd" id="1_luj1y"]
+
+[resource]
+script = ExtResource("1_luj1y")
+rule_description = Array[String](["If you are on company time and your position requires, you are not allowed to sit.", "If you are on company time and your position requires, you are not allowed to sit.", "If you are on company time and your position requires, you are not allowed to sit.", "If you are on company time and your position requires, you are not allowed to sit.", "If you are on company time and your position requires, you are not allowed to sit."])
+metadata/_custom_type_script = "uid://d01qq2n657r0s"

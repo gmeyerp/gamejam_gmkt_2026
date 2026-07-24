@@ -47,6 +47,8 @@ func _process(delta: float) -> void:
 		create_garbage()
 
 func create_garbage():
+	if dirt.size() == 0:
+		return
 	var instance = garbage.instantiate()
 	var rand = randi_range(0, dirt.size() - 1)
 	dirt[rand].add_child(instance)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://dvwa4ws755h41"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_pqlrm"]
+
+[resource]
+script = ExtResource("1_pqlrm")
+name = "Malory"
+age = 27
+layoff_round = 4
+layoff_motive = 3
+production_rate = 95.0
+salary = 18.0
+commentary = Array[String](["She's so fit and hydrated.", "She drinks so much water. How is she not in the bathroom all the time? I wish I had her bladder.", "She spends soooo much time refilling that bottle.", "All she does is talk about going to the gym and her diet. If she says \"Drink more water one more time\" I swear to God...", "I swear the other day I dropped my pen under the table and she lifted 3 desks together to help me. She drinks so much water because she sweats all of it."])
+metadata/_custom_type_script = "uid://d2272qde40201"

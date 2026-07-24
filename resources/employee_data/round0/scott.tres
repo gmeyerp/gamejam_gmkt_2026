@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://dl51jbwh53cny"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_5a4ln"]
+
+[resource]
+script = ExtResource("1_5a4ln")
+name = "Scott"
+age = 53
+layoff_motive = 1
+production_rate = 20.0
+salary = 20.0
+commentary = Array[String](["", "Started an office boardgame party.", "Started an office boardgame party. People are fighting over what colors they want.", "Started an office boardgame party. People are fighting over what colors they want. Doesn't have Catan in his collection.", "He didn't invite you to the boardgame party."])
+metadata/_custom_type_script = "uid://d2272qde40201"

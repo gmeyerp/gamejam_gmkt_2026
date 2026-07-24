@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://cwemtvj0vetrw"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_as1me"]
+
+[resource]
+script = ExtResource("1_as1me")
+name = "Ray"
+age = 32
+department = 1
+layoff_round = 4
+layoff_motive = 1
+production_rate = 55.0
+salary = 6.0
+commentary = Array[String](["He's a good employee.", "He works a lot, but at the christmas party he definitely was overdrinking.", "I think he's underpayed for his position and what he does. He gave his secret santa a sock.", "I swear I saw he steal someone's gift at the christmas party.", "Wasn't he married? He hooked up with Cheryl at the christmas party."])
+metadata/_custom_type_script = "uid://d2272qde40201"

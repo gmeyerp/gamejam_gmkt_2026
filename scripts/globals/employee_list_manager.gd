@@ -4,13 +4,18 @@ class_name EmployeeListManager
 signal employee_fired
 
 @export var employee_list: Array[EmployeeData] = []
+var layoff_rounds : int = 0
 
 @onready var current_employees: Array[EmployeeData] = employee_list.duplicate()
 var next_list: Array[EmployeeData] = []
 
+func _ready() -> void:
+	debug_empoyee_departments()
+
 func reset_list() -> Array[EmployeeData]:
 	current_employees = employee_list.duplicate()
 	next_list.clear()
+	layoff_rounds = 0
 	return current_employees.duplicate()
 
 func get_average_productivity(department: GlobalVariables.Department) -> float:
@@ -71,6 +76,35 @@ func remove_from_list(employee: EmployeeData) -> void:
 func start_new_round() -> void:
 	current_employees = next_list.duplicate()
 	next_list.clear()
+	layoff_rounds += 1
+	layoff_rounds = clamp(layoff_rounds,0,4)
+
+func get_layoff_round():
+	return layoff_rounds
 
 func get_employee_list() -> Array[EmployeeData]:
 	return current_employees.duplicate()
+
+func debug_empoyee_departments():
+	var cleaning = 0
+	var maintanence = 0
+	var office = 0
+	for i in range(employee_list.size()):
+		if employee_list[i].department == GlobalVariables.Department.Cleaning:
+			cleaning += 1
+		elif employee_list[i].department == GlobalVariables.Department.Maintenance:
+			maintanence += 1
+		elif employee_list[i].department == GlobalVariables.Department.Office:
+			office += 1
+	print("Cleaning: " + str(cleaning))
+	print("Maintenance: " + str(maintanence))
+	print("Office: " + str(office))
+	
+	
+	get_average_productivity(GlobalVariables.Department.Cleaning)
+	get_average_productivity(GlobalVariables.Department.Maintenance)
+	get_average_productivity(GlobalVariables.Department.Office)
+	
+	get_average_salary(GlobalVariables.Department.Cleaning)
+	get_average_salary(GlobalVariables.Department.Maintenance)
+	get_average_salary(GlobalVariables.Department.Office)

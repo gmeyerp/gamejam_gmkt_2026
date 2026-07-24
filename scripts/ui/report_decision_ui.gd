@@ -37,7 +37,8 @@ func show_employee(employee: EmployeeData) -> void:
 		Productivity: %d
 		Wage: %d
 		Comment: %s
-		" % [GlobalVariables.Department.keys()[employee.department], employee.production_rate, employee.salary, employee.commentary]
+		" % [GlobalVariables.Department.keys()[employee.department],
+		employee.production_rate, employee.salary, employee.commentary[EmployeeList.get_layoff_round()]]
 	
 	else:
 		_title.text = "Report — %s" % employee.name

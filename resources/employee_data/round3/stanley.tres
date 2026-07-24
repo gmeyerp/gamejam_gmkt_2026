@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://hbwsn5vscycb"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_scm4l"]
+
+[resource]
+script = ExtResource("1_scm4l")
+name = "Stanley"
+age = 18
+department = 1
+layoff_round = 3
+layoff_motive = 1
+production_rate = 45.0
+salary = 67.0
+commentary = Array[String](["He makes the best coffee.", "The break room smells so good after he was there. Delicious coffee smells.", "I think he used to be a barista. He makes the best pots.", "I heard he ordered so many special coffees for us. Have you heard of Kopi Luwak?", "That special coffee comes from where???? Please fire him.
+-Boss"])
+metadata/_custom_type_script = "uid://d2272qde40201"

@@ -10,4 +10,4 @@ class_name EmployeeData
 
 @export var production_rate: float
 @export var salary: float
-@export var commentary: Array[String] = []
+@export_multiline var commentary: Array[String] = ["","","","",""]

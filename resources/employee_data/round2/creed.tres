@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://bjk2ihdxwooey"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_o50d0"]
+
+[resource]
+script = ExtResource("1_o50d0")
+name = "Creed"
+age = 77
+department = 1
+layoff_round = 2
+layoff_motive = 2
+production_rate = 60.0
+salary = 20.0
+commentary = Array[String](["He's one week from retiring.", "He's one week from retiring.
+Before working here  he used to work in movies.", "He's one week from retiring.
+Before working here  he used to work in movies.
+Someone said his face feels sticky.", "His face was washing off earlier. Is he made of plastic?", "He fakes being old for sympathy"])
+metadata/_custom_type_script = "uid://d2272qde40201"

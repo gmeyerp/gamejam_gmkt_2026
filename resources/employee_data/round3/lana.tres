@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://pl84elsu5ioi"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_xfk57"]
+
+[resource]
+script = ExtResource("1_xfk57")
+name = "Lana"
+age = 37
+department = 2
+layoff_round = 3
+layoff_motive = 3
+production_rate = 75.0
+salary = 2.0
+commentary = Array[String](["She always cooks for everyone during her lunch break.", "She takes an hour long lunch break, but she uses it to make some great snacks.", "Today she decided to make brunch for everyone. I love her pancakes.", "She took 15 minutes extra on her break, but the food she did was great. I love her mimosas.", "She added laxatives to the food today."])
+metadata/_custom_type_script = "uid://d2272qde40201"

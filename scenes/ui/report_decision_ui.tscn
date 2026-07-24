@@ -50,6 +50,7 @@ teste
 teste"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Panel" type="PanelContainer" parent="." unique_id=1676759742]
 layout_mode = 1

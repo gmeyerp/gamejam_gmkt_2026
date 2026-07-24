@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AcceptableBehaviours" format=3 uid="uid://c8qbje87mq3hp"]
+
+[ext_resource type="Script" uid="uid://d01qq2n657r0s" path="res://resources/acceptable_behaviours/acceptable_behaviours.gd" id="1_oxfyl"]
+
+[resource]
+script = ExtResource("1_oxfyl")
+rule_description = Array[String](["If you receive a tip, please enjoy your extra money.", "If you receive a tip, please enjoy your extra money.", "If you receive a tip, it's company money.", "If you receive a tip, it's company money.", "If you receive a tip, it's company money."])
+metadata/_custom_type_script = "uid://d01qq2n657r0s"

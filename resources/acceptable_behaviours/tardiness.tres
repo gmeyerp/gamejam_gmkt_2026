@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AcceptableBehaviours" format=3 uid="uid://bx0vesm5xlflm"]
+
+[ext_resource type="Script" uid="uid://d01qq2n657r0s" path="res://resources/acceptable_behaviours/acceptable_behaviours.gd" id="1_57lmx"]
+
+[resource]
+script = ExtResource("1_57lmx")
+rule_description = Array[String](["We have a tolerance for being late of ten minutes.", "We have a tolerance for being late of five minutes.", "We have a tolerance for being late of five minutes.", "We have a tolerance for being late of five minutes.", "We have a tolerance for being late of five minutes."])
+metadata/_custom_type_script = "uid://d01qq2n657r0s"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://siilngpci85a"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_4krrh"]
+
+[resource]
+script = ExtResource("1_4krrh")
+name = "April"
+age = 22
+department = 1
+layoff_round = 1
+layoff_motive = 2
+production_rate = 70.0
+salary = 24.0
+commentary = Array[String](["", "", "Was sleepy on the job.", "Wasn't sleepy at all. She was smelling like alcohol, not the cleaning kind.", "She might be responsible for our empty cleaning supply closet. If you know what I mean."])
+metadata/_custom_type_script = "uid://d2272qde40201"

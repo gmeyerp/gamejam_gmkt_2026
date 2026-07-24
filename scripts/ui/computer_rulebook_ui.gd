@@ -13,6 +13,7 @@ enum RulebookTab {
 @onready var _behaviour_page: Label = $Panel/VBox/Pages/BehaviourPage
 @onready var _budget_page: Label = $Panel/VBox/Pages/BudgetPage
 @onready var _productivity_page: Label = $Panel/VBox/Pages/ProductivityPage
+@export var rules : Array[AcceptableBehaviours]
 
 var _current_tab: RulebookTab = RulebookTab.BEHAVIOUR_RULES
 
@@ -53,6 +54,14 @@ func update_productivity_page():
 		" % [GlobalVariables.Department.keys()[i], EmployeeList.get_average_productivity(i)]
 	_productivity_page.text = budget_text
 
+func update_behaviour_page():
+	var round = EmployeeList.get_layoff_round()
+	var rule_text = ""
+	for i in range(rules.size()):
+		rule_text += "%s
+		" % rules[i].rule_description[round]
+	_behaviour_page.text = rule_text
+	print(rule_text)
 
 func switch_tab(tab: RulebookTab) -> void:
 	_current_tab = tab
@@ -66,3 +75,4 @@ func _refresh_tab_visibility() -> void:
 	
 	update_productivity_page()
 	update_wage_page()
+	update_behaviour_page()

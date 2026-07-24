@@ -49,12 +49,21 @@ func score_layoff_choice(_choice: GlobalVariables.LayoffMotive, _report: Employe
 		
 	print(str(_choice) + "/" + str(_report.layoff_motive))
 	
-	if _choice == _report.layoff_motive:
-		player_scored.emit(1)
-	elif _choice == GlobalVariables.LayoffMotive.BudgetCut and _report.salary >= EmployeeList.get_average_salary(_report.department):
-		player_scored.emit(1)
-	elif _choice == GlobalVariables.LayoffMotive.Improductivity and _report.production_rate <= EmployeeList.get_average_productivity(_report.department):
-		player_scored.emit(1)
+	if _choice == GlobalVariables.LayoffMotive.InapropriateBehaviour:
+		if _report.layoff_round == EmployeeList.get_layoff_round():
+			player_scored.emit(1)
+		else:
+			player_scored.emit(-1)
+	elif _choice == GlobalVariables.LayoffMotive.BudgetCut:
+		if _report.salary >= EmployeeList.get_average_salary(_report.department):
+			player_scored.emit(1)
+		else:
+			player_scored.emit(-1)
+	elif _choice == GlobalVariables.LayoffMotive.Improductivity:
+		if _report.production_rate <= EmployeeList.get_average_productivity(_report.department):
+			player_scored.emit(1)
+		else:
+			player_scored.emit(-1)
 
 func close_inspection() -> void:
 	if interaction_router:
