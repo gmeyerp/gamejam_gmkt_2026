@@ -162,8 +162,9 @@ func _mouse_to_viewport_pos() -> Variant:
 
 
 func _on_layoff_chosen(motive: GlobalVariables.LayoffMotive) -> void:
-	animation_player.play("send_report")
+	set_input_active(false)
 	current_motive = motive
+	animation_player.play("send_report")
 
 func stamp():
 	if current_motive == GlobalVariables.LayoffMotive.Keep:
