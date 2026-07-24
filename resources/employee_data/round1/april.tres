@@ -11,5 +11,5 @@ layoff_round = 1
 layoff_motive = 2
 production_rate = 70.0
 salary = 24.0
-commentary = Array[String](["", "", "Was sleepy on the job.", "Wasn't sleepy at all. She was smelling like alcohol, not the cleaning kind.", "She might be responsible for our empty cleaning supply closet. If you know what I mean."])
+commentary = Array[String](["She's always so careful when disinfecting my supplies.", "Her supply cart is so full of chemicals.", "Was sleepy on the job.", "Wasn't sleepy at all. She was smelling like alcohol, not the cleaning kind.", "She might be responsible for our empty cleaning supply closet. If you know what I mean."])
 metadata/_custom_type_script = "uid://d2272qde40201"

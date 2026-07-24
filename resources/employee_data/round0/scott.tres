@@ -9,5 +9,5 @@ age = 53
 layoff_motive = 1
 production_rate = 20.0
 salary = 20.0
-commentary = Array[String](["", "Started an office boardgame party.", "Started an office boardgame party. People are fighting over what colors they want.", "Started an office boardgame party. People are fighting over what colors they want. Doesn't have Catan in his collection.", "He didn't invite you to the boardgame party."])
+commentary = Array[String](["Spends all his money on board games.", "Started an office board game party.", "People are fighting over what colors they want in his board game party.", "He has so many games but he doesn't have Catan in his collection.", "He didn't invite you to the board game party."])
 metadata/_custom_type_script = "uid://d2272qde40201"
