@@ -10,9 +10,9 @@ enum RulebookTab {
 @onready var _behaviour_tab: Button = $Panel/VBox/TabButtons/BehaviourTab
 @onready var _budget_tab: Button = $Panel/VBox/TabButtons/BudgetTab
 @onready var _productivity_tab: Button = $Panel/VBox/TabButtons/ProductivityTab
-@onready var _behaviour_page: Label = $Panel/VBox/Pages/BehaviourPage
-@onready var _budget_page: Label = $Panel/VBox/Pages/BudgetPage
-@onready var _productivity_page: Label = $Panel/VBox/Pages/ProductivityPage
+@onready var _behaviour_page: Label = %BehaviourPage
+@onready var _budget_page: Label = %BudgetPage
+@onready var _productivity_page: Label = %ProductivityPage
 @export var rules : Array[AcceptableBehaviours]
 
 var _current_tab: RulebookTab = RulebookTab.BEHAVIOUR_RULES
