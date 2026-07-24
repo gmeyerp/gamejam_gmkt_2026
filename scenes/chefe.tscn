@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b5e4aj7jlnr3k"]
+
+[ext_resource type="Script" uid="uid://cmu8i0w3sdimo" path="res://scripts/player/behavior.gd" id="1_mw83k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0i88t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0i88t"]
+
+[node name="Chefe" type="CharacterBody3D" unique_id=1751731516 node_paths=PackedStringArray("points")]
+script = ExtResource("1_mw83k")
+points = [null, null]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=361160316]
+shape = SubResource("CapsuleShape3D_0i88t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653570449]
+mesh = SubResource("CapsuleMesh_0i88t")

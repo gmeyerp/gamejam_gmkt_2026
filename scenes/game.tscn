@@ -248,38 +248,57 @@ metadata/_custom_type_script = "uid://c0r2aac6igsnl"
 [node name="Dialogue" type="Node3D" parent="." unique_id=51088233 node_paths=PackedStringArray("hud", "dialogue_area")]
 script = ExtResource("4_kvpfn")
 hud = NodePath("Hud")
-dialogue_area = NodePath("../Point_Mesa/Area3D")
-chat = Array[String](["Nada de ir embora mais cedo hoje não em, não dou a minima sé possui compromisso", "Quero o serviço concluido e se isso significa que vai ter que ficar aqui ápos as 18 já não é um problema meu", "... Ok ne vejo que não tenho muita opção, pode deixa chefe", "Que bom que entendeu. Estou contando contigo em"])
+dialogue_area = NodePath("../Point_You/Area3D")
+chat = Array[String](["Nada de ir embora mais cedo hoje não em, não dou a minima sé possui compromisso mais tarde.", "Quero o serviço concluido e se isso significa que vai ter que ficar aqui ápos as 18 já não é um problema meu", "... Ok ne vejo que não tenho muita opção, pode deixa chefe", "Que bom que entendeu. Estou contando contigo em"])
 personagem = Array[Texture2D]([ExtResource("8_kvpfn"), ExtResource("9_dinhu")])
 
 [node name="Hud" type="CanvasLayer" parent="Dialogue" unique_id=1984543245]
 
-[node name="Point_1" type="Node3D" parent="." unique_id=536513095]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -8)
+[node name="Point_Chefe" type="Node3D" parent="." unique_id=2020617358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -26)
 
-[node name="Point_2" type="Node3D" parent="." unique_id=2020617358]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+[node name="Point_MesaChefe" type="Node3D" parent="Point_Chefe" unique_id=390553940]
 
-[node name="Point_Mesa" type="Node3D" parent="." unique_id=1856331660]
+[node name="Point_Front" type="Node3D" parent="Point_Chefe" unique_id=1429117347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3)
+
+[node name="Point_SideB" type="Node3D" parent="Point_Chefe" unique_id=1015987540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 3)
+
+[node name="Point_SideA" type="Node3D" parent="Point_Chefe" unique_id=931085198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 0)
+
+[node name="Point_You" type="Node3D" parent="." unique_id=1856331660]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 
-[node name="Area3D" type="Area3D" parent="Point_Mesa" unique_id=1732930151]
+[node name="Area3D" type="Area3D" parent="Point_You" unique_id=1732930151]
 script = ExtResource("8_0tnpc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Point_Mesa/Area3D" unique_id=289924086]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Point_You/Area3D" unique_id=289924086]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.14783049)
 shape = SubResource("BoxShape3D_0i88t")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=728306156 node_paths=PackedStringArray("points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.23494, -8)
+[node name="Chefe" type="CharacterBody3D" parent="." unique_id=728306156 node_paths=PackedStringArray("points")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24678898, 1.23494, -26.23165)
 script = ExtResource("9_0tnpc")
-points = [NodePath("../Point_1"), NodePath("../Point_2"), NodePath("../Point_Mesa"), NodePath("../Point_2"), NodePath("../Point_1")]
+points = [NodePath("../Point_Chefe/Point_MesaChefe"), NodePath("../Point_Chefe/Point_SideA"), NodePath("../Point_Chefe/Point_SideB"), NodePath("../Point_Chefe/Point_Front"), NodePath("../Point_You"), NodePath("../Point_Chefe/Point_Front"), NodePath("../Point_Chefe/Point_SideB"), NodePath("../Point_Chefe/Point_SideA"), NodePath("../Point_Chefe/Point_MesaChefe")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=698966240]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chefe" unique_id=698966240]
 shape = SubResource("CapsuleShape3D_0i88t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=305190626]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chefe" unique_id=305190626]
 mesh = SubResource("CapsuleMesh_0i88t")
+
+[node name="Points_Friends" type="Node3D" parent="." unique_id=1270949417]
+
+[node name="Point_Mesa1" type="Node3D" parent="Points_Friends" unique_id=2048347704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -14.678086)
+
+[node name="Point_Mesa2" type="Node3D" parent="Points_Friends" unique_id=466512006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.115174, 1, -8.63378)
+
+[node name="Point_Mesa3" type="Node3D" parent="Points_Friends" unique_id=403401922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7382524, 1, -21.987175)
 
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="GameplayController" method="on_start_game_pressed"]

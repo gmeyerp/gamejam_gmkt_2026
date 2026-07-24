@@ -1,17 +1,20 @@
 extends CharacterBody3D
 
-@export var speed: float = 2.0
+class_name Behavior
+
+@export var speed: float = 3.0
 @export var points: Array[Node3D]
 
 var index: int = 0
 var waiting_input: bool = false
+
+
 
 func _physics_process(_delta: float) -> void:
 	if points.is_empty():
 		return
 
 	if index >= points.size():
-		queue_free()
 		return
 
 	if waiting_input:
@@ -36,5 +39,8 @@ func _physics_process(_delta: float) -> void:
 	if global_position.distance_to(target_position) < 0.5:
 		index += 1
 
-func parar_e_aguardar() -> void:
+func set_waiting() -> void:
 	waiting_input = true
+func resume_movement() -> void:
+	waiting_input = false
+	index += 1
