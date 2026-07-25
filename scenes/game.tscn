@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cmu8i0w3sdimo" path="res://scripts/player/behavior.gd" id="9_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://dt7ceafpfxv6d" path="res://resources/Javelas.png" id="9_dinhu"]
 [ext_resource type="Script" uid="uid://c12vib6ytgl13" path="res://scripts/player/behavior_friends.gd" id="13_kvuet"]
+[ext_resource type="Script" uid="uid://fd3bqgn6mebd" path="res://scripts/player/route_manager.gd" id="16_ca42v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0i88t"]
 
@@ -318,12 +319,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -8)
 [node name="Point_Mesa4" type="Node3D" parent="Points_Friends" unique_id=1469677592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3.6)
 
-[node name="Friend_1" type="CharacterBody3D" parent="." unique_id=1591275231 node_paths=PackedStringArray("character", "points")]
+[node name="Friend_1" type="CharacterBody3D" parent="." unique_id=1591275231 node_paths=PackedStringArray("character", "manager", "points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -8)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
-min_interval = 12.0
-max_interval = 31.0
+manager = NodePath("../Route_Manager")
 points = [NodePath("../Points_Friends/Point_Mesa1"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mesa1")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_1" unique_id=1266492199]
@@ -332,12 +332,11 @@ shape = SubResource("CapsuleShape3D_0i88t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_1" unique_id=1104494850]
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Friend_2" type="CharacterBody3D" parent="." unique_id=1261741946 node_paths=PackedStringArray("character", "points")]
+[node name="Friend_2" type="CharacterBody3D" parent="." unique_id=1261741946 node_paths=PackedStringArray("character", "manager", "points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -3.6)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
-min_interval = 13.0
-speed = 3.8
+manager = NodePath("../Route_Manager")
 points = [NodePath("../Points_Friends/Point_Mesa2"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Mesa2")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_2" unique_id=1952373948]
@@ -346,12 +345,11 @@ shape = SubResource("CapsuleShape3D_0i88t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_2" unique_id=815519738]
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Friend_3" type="CharacterBody3D" parent="." unique_id=1544350430 node_paths=PackedStringArray("character", "points")]
+[node name="Friend_3" type="CharacterBody3D" parent="." unique_id=1544350430 node_paths=PackedStringArray("character", "manager", "points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -8)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
-min_interval = 16.0
-max_interval = 33.0
+manager = NodePath("../Route_Manager")
 points = [NodePath("../Points_Friends/Point_Mesa3"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mesa3")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_3" unique_id=1292010789]
@@ -360,13 +358,11 @@ shape = SubResource("CapsuleShape3D_0i88t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_3" unique_id=40470540]
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Friend_4" type="CharacterBody3D" parent="." unique_id=1857943544 node_paths=PackedStringArray("character", "points")]
+[node name="Friend_4" type="CharacterBody3D" parent="." unique_id=1857943544 node_paths=PackedStringArray("character", "manager", "points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3.6)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
-min_interval = 15.0
-max_interval = 32.0
-speed = 2.0
+manager = NodePath("../Route_Manager")
 points = [NodePath("../Points_Friends/Point_Mesa4"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Mesa4")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_4" unique_id=5135914]
@@ -374,6 +370,9 @@ shape = SubResource("CapsuleShape3D_0i88t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_4" unique_id=992208121]
 mesh = SubResource("CapsuleMesh_0i88t")
+
+[node name="Route_Manager" type="Node3D" parent="." unique_id=567275079]
+script = ExtResource("16_ca42v")
 
 [connection signal="pressed" from="EndMenu/Control/StartButton" to="." method="game_start"]
 [connection signal="pressed" from="EndMenu/Control/StartButton" to="GameplayController" method="on_start_game_pressed"]
