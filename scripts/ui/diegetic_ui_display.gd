@@ -14,8 +14,10 @@ var current_motive : GlobalVariables.LayoffMotive
 @export var stampTexture : MeshInstance3D
 @export var keepMaterial : Material
 @export var fireMaterial: Material
+@export var base_viewport_height: int = 400
 
 var input_active: bool = false
+var _followed_screen: MeshInstance3D
 
 
 func _ready() -> void:
@@ -100,6 +102,73 @@ func _apply_viewport_texture() -> void:
 	mat.albedo_texture = sub_viewport.get_texture()
 	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR
 	screen_mesh.material_override = mat
+
+
+func follow_screen(screen: MeshInstance3D) -> void:
+	if screen == null or screen_mesh == null:
+		return
+	if _followed_screen and _followed_screen != screen:
+		_followed_screen.visible = true
+	_followed_screen = screen
+	screen.visible = false
+
+	var aabb := screen.get_aabb()
+	var face_size := _face_size_from_aabb(aabb)
+	var world_width := absf(face_size.x * screen.global_transform.basis.get_scale().x)
+	var world_height := absf(face_size.y * screen.global_transform.basis.get_scale().y)
+	if world_height < 0.0001:
+		world_height = 0.0001
+	if world_width < 0.0001:
+		world_width = 0.0001
+
+	var aspect := world_width / world_height
+	var vp_height := maxi(base_viewport_height, 64)
+	var vp_width := maxi(int(round(float(vp_height) * aspect)), 64)
+	if sub_viewport:
+		sub_viewport.size = Vector2i(vp_width, vp_height)
+
+	screen_mesh.global_transform = screen.global_transform
+	screen_mesh.global_position += screen.global_transform.basis.z.normalized() * 0.001
+
+	var quad := screen_mesh.mesh as QuadMesh
+	if quad == null:
+		quad = QuadMesh.new()
+		screen_mesh.mesh = quad
+	else:
+		quad = quad.duplicate() as QuadMesh
+		screen_mesh.mesh = quad
+	quad.size = Vector2(world_width, world_height)
+
+	_sync_screen_collision(world_width, world_height)
+	_apply_viewport_texture()
+
+
+func _face_size_from_aabb(aabb: AABB) -> Vector2:
+	var sx := aabb.size.x
+	var sy := aabb.size.y
+	var sz := aabb.size.z
+	if sx >= sz and sy >= sz:
+		return Vector2(sx, sy)
+	if sx >= sy and sz >= sy:
+		return Vector2(sx, sz)
+	return Vector2(sy, sz)
+
+
+func _sync_screen_collision(world_width: float, world_height: float) -> void:
+	var area := screen_mesh.get_node_or_null("Area3D") as Area3D
+	if area == null:
+		return
+	var col := area.get_node_or_null("CollisionShape3D") as CollisionShape3D
+	if col == null:
+		return
+	var box := col.shape as BoxShape3D
+	if box == null:
+		box = BoxShape3D.new()
+		col.shape = box
+	else:
+		box = box.duplicate() as BoxShape3D
+		col.shape = box
+	box.size = Vector3(world_width, world_height, 0.02)
 
 
 func _input(event: InputEvent) -> void:

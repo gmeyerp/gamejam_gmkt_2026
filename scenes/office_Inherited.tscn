@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bdmumm01qdu36"]
+
+[ext_resource type="PackedScene" uid="uid://d08qgkp4dlr2k" path="res://models/Office.blend" id="1_eyvtq"]
+
+[node name="Office" unique_id=1875127865 instance=ExtResource("1_eyvtq")]
+
+[node name="TableClock" parent="." index="134" unique_id=529196787]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)
+
+[node name="TableClockAlternative1" parent="." index="135" unique_id=204889040]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)
+
+[node name="TableClockAlternative2" parent="." index="136" unique_id=788610184]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)
+
+[node name="TableClockAlternative3" parent="." index="137" unique_id=1841546965]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)
+
+[node name="TableClockAlternative4" parent="." index="138" unique_id=1315706552]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)

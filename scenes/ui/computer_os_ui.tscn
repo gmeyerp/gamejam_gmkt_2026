@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://b6q0n6mcc2nqh"]
 
 [ext_resource type="Theme" uid="uid://ctwpwhl3etueo" path="res://ui/computer_theme.tres" id="1_theme"]
-[ext_resource type="Script" path="res://scripts/ui/computer_os_ui.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://tvyboa8w64a8" path="res://scripts/ui/computer_os_ui.gd" id="2_script"]
 [ext_resource type="PackedScene" uid="uid://d0xifjyukvu2n" path="res://scenes/ui/computer_rulebook_ui.tscn" id="3_rulebook"]
-[ext_resource type="Script" path="res://scripts/ui/button.gd" id="4_button"]
+[ext_resource type="Script" uid="uid://dgsop8aipatjf" path="res://scripts/ui/button.gd" id="4_button"]
 
-[node name="ComputerOsUI" type="Control"]
+[node name="ComputerOsUI" type="Control" unique_id=102451917]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,8 +15,7 @@ grow_vertical = 2
 theme = ExtResource("1_theme")
 script = ExtResource("2_script")
 
-[node name="Desktop" type="ColorRect" parent="."]
-visible = false
+[node name="Desktop" type="ColorRect" parent="." unique_id=1343018599]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12, 0.28, 0.42, 1)
 
-[node name="Icons" type="VBoxContainer" parent="Desktop"]
+[node name="Icons" type="VBoxContainer" parent="Desktop" unique_id=2054008661]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
@@ -33,19 +32,19 @@ offset_right = 168.0
 offset_bottom = 200.0
 theme_override_constants/separation = 12
 
-[node name="RulebookIcon" type="Button" parent="Desktop/Icons"]
+[node name="RulebookIcon" type="Button" parent="Desktop/Icons" unique_id=851525284]
 custom_minimum_size = Vector2(120, 64)
 layout_mode = 2
 text = "Rulebook"
 script = ExtResource("4_button")
 
-[node name="QuitIcon" type="Button" parent="Desktop/Icons"]
+[node name="QuitIcon" type="Button" parent="Desktop/Icons" unique_id=826796448]
 custom_minimum_size = Vector2(120, 64)
 layout_mode = 2
 text = "Quit Game"
 script = ExtResource("4_button")
 
-[node name="BootScreen" type="ColorRect" parent="."]
+[node name="BootScreen" type="ColorRect" parent="." unique_id=1376354523]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.05, 0.08, 0.12, 1)
 
-[node name="Center" type="CenterContainer" parent="BootScreen"]
+[node name="Center" type="CenterContainer" parent="BootScreen" unique_id=1268120078]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,32 +61,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="BootScreen/Center"]
+[node name="VBox" type="VBoxContainer" parent="BootScreen/Center" unique_id=1424681081]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="BootScreen/Center/VBox"]
+[node name="Title" type="Label" parent="BootScreen/Center/VBox" unique_id=1637588712]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "LAYOFF SIMULATOR"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="BootScreen/Center/VBox"]
+[node name="StartButton" type="Button" parent="BootScreen/Center/VBox" unique_id=1194275880]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Start Game"
 script = ExtResource("4_button")
 
-[node name="QuitButton" type="Button" parent="BootScreen/Center/VBox"]
+[node name="QuitButton" type="Button" parent="BootScreen/Center/VBox" unique_id=1003759816]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Quit"
 script = ExtResource("4_button")
 
-[node name="RulebookWindow" parent="." instance=ExtResource("3_rulebook")]
-visible = false
+[node name="RulebookWindow" parent="." unique_id=1128787929 instance=ExtResource("3_rulebook")]
+layout_mode = 1
 
-[node name="QuitConfirmDialog" type="ColorRect" parent="."]
+[node name="QuitConfirmDialog" type="ColorRect" parent="." unique_id=1854294159]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -97,7 +96,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.55)
 
-[node name="Panel" type="PanelContainer" parent="QuitConfirmDialog"]
+[node name="Panel" type="PanelContainer" parent="QuitConfirmDialog" unique_id=1259564158]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -111,29 +110,29 @@ offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="QuitConfirmDialog/Panel"]
+[node name="VBox" type="VBoxContainer" parent="QuitConfirmDialog/Panel" unique_id=1767000861]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Message" type="Label" parent="QuitConfirmDialog/Panel/VBox"]
+[node name="Message" type="Label" parent="QuitConfirmDialog/Panel/VBox" unique_id=642712668]
 layout_mode = 2
 text = "Return to title?
 Progress will not be saved."
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Buttons" type="HBoxContainer" parent="QuitConfirmDialog/Panel/VBox"]
+[node name="Buttons" type="HBoxContainer" parent="QuitConfirmDialog/Panel/VBox" unique_id=595358975]
 layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="ConfirmButton" type="Button" parent="QuitConfirmDialog/Panel/VBox/Buttons"]
+[node name="ConfirmButton" type="Button" parent="QuitConfirmDialog/Panel/VBox/Buttons" unique_id=2020216444]
 custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
 text = "Confirm"
 script = ExtResource("4_button")
 
-[node name="CancelButton" type="Button" parent="QuitConfirmDialog/Panel/VBox/Buttons"]
+[node name="CancelButton" type="Button" parent="QuitConfirmDialog/Panel/VBox/Buttons" unique_id=1260120953]
 custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
 text = "Cancel"

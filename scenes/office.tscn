@@ -16,10 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://b2g3n4o737ckb" path="res://scenes/flickering_light.tscn" id="10_in4ui"]
 [ext_resource type="AudioStream" uid="uid://2nf0xkhxwgsw" path="res://sfx/positive.wav" id="10_ja80a"]
 [ext_resource type="AudioStream" uid="uid://dcgg5eglwm2j5" path="res://sfx/negative_2.wav" id="11_alkg7"]
-[ext_resource type="PackedScene" path="res://scenes/ui/clock_display.tscn" id="11_clock_ui"]
+[ext_resource type="PackedScene" uid="uid://dqi4qdl4apset" path="res://scenes/ui/clock_display.tscn" id="11_clock_ui"]
 [ext_resource type="Script" uid="uid://dq0ta68rtwsgq" path="res://resources/clock/clock_stage.gd" id="12_clock_stage"]
 [ext_resource type="Script" uid="uid://cf8lbwvcio247" path="res://scripts/camera/camera_controller.gd" id="13_camera"]
-[ext_resource type="PackedScene" uid="uid://d37wihsxrtcrv" path="res://models/office_inherit.tscn" id="20_ja80a"]
+[ext_resource type="PackedScene" uid="uid://bdmumm01qdu36" path="res://scenes/office_Inherited.tscn" id="20_ja80a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape_desk"]
 size = Vector3(2.4, 0.08, 1.2)
@@ -119,13 +119,16 @@ script = ExtResource("5_interactable")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/DeskSurface/Interactable" unique_id=1960378909]
 shape = SubResource("BoxShape_desk")
 
-[node name="Computer" type="Node3D" parent="Desk" unique_id=1049893740 node_paths=PackedStringArray("diegetic_display")]
+[node name="Computer" type="Node3D" parent="Desk" unique_id=1049893740 node_paths=PackedStringArray("diegetic_display", "interaction_router", "monitor_screen", "monitor_body")]
 transform = Transform3D(0.92896247, 0, 0.370174, 0, 1, 0, -0.370174, 0, 0.92896247, -0.7683244, 0.60014725, -0.037579715)
 script = ExtResource("2_computer")
 diegetic_display = NodePath("DiegeticComputerUI")
+interaction_router = NodePath("../../InteractionRouter")
+monitor_screen = NodePath("../../Office/Monitor/ScreenMesh")
+monitor_body = NodePath("../../Office/Monitor")
 
 [node name="FocusMarker" type="Marker3D" parent="Desk/Computer" unique_id=1070064894]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.01048255, 0.3292163)
+transform = Transform3D(0.9848077, 0, 0.17364818, 0, 0.99999994, 0, -0.17364818, 0, 0.98480767, 0.06571913, -0.013341188, 0.2892081)
 
 [node name="Interactable" type="Area3D" parent="Desk/Computer" unique_id=1419704303 node_paths=PackedStringArray("focus_marker")]
 collision_mask = 0
@@ -136,6 +139,7 @@ focus_marker = NodePath("../FocusMarker")
 shape = SubResource("BoxShape_computer")
 
 [node name="DiegeticComputerUI" parent="Desk/Computer" unique_id=1360918191 instance=ExtResource("7_pc_ui")]
+transform = Transform3D(0.99026805, 0, 0.1391731, 0, 1, 0, -0.1391731, 0, 0.99026805, 0, 0, 0)
 
 [node name="Report" type="Node3D" parent="Desk" unique_id=1668581864 node_paths=PackedStringArray("diegetic_display", "interaction_router")]
 unique_name_in_owner = true
@@ -262,6 +266,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 
 [node name="FlickeringLight6" parent="." unique_id=1272869112 instance=ExtResource("10_in4ui")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 3, -20)
 
-[node name="Office" parent="." unique_id=190045835 instance=ExtResource("20_ja80a")]
+[node name="Office" parent="." unique_id=1875127865 instance=ExtResource("20_ja80a")]
 
 [editable path="Office"]
