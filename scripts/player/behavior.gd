@@ -6,6 +6,7 @@ const DialogueScreen: PackedScene = preload("res://scenes/dialogue.tscn")
 @export_category("Objects")
 @export var hud: CanvasLayer = null
 @export var dialogue_area: Area3D = null 
+var new_dialogue: Node
 
 @export_category("Dialogue Setup")
 @export var conversas: Array[Array] = [] 
@@ -76,7 +77,7 @@ func area_body(body: Node3D) -> void:
 		body.set_waiting()
 		body.build_random_dialogue_data()
 			
-		var new_dialogue = DialogueScreen.instantiate()
+		new_dialogue = DialogueScreen.instantiate()
 		new_dialogue.data = body._dialogue_data
 		
 		new_dialogue.dialogue_finished.connect(func():
@@ -134,3 +135,12 @@ func set_waiting() -> void:
 func resume_movement() -> void:
 	waiting_input = false
 	index += 1
+
+func on_fired(employee: EmployeeData):
+	print("Fired: " + employee.name)
+	if (employee.name == name):
+		("Friend fired")
+		if new_dialogue:
+			new_dialogue.dialogue_finished.emit()
+			new_dialogue.queue_free()
+		queue_free()

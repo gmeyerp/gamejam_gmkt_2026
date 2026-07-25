@@ -17,7 +17,7 @@ func register_bot(bot: RouteAutomation) -> void:
 func start() -> void:
 	started = true
 	next_turn()
-	$"../Chefe".set_physics_process(true)
+	$"../Boss".set_physics_process(true)
 
 func _process(delta: float) -> void:
 	if not started:

@@ -29,7 +29,7 @@
 script = ExtResource("1_yqjtg")
 demission_manager = NodePath("DemissionManager")
 post_processing = NodePath("PostProcessing")
-max_game_time = 60.0
+max_game_time = 900.0
 
 [node name="Hud" type="CanvasLayer" parent="." unique_id=1984543245]
 
@@ -282,7 +282,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 3)
 [node name="Point_SideA" type="Node3D" parent="Point_Chefe" unique_id=931085198]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 0)
 
-[node name="Chefe" type="CharacterBody3D" parent="." unique_id=728306156 node_paths=PackedStringArray("hud", "dialogue_area", "points")]
+[node name="Boss" type="CharacterBody3D" parent="." unique_id=728306156 node_paths=PackedStringArray("hud", "dialogue_area", "points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24678898, 1.23494, -26.23165)
 script = ExtResource("12_1kice")
 hud = NodePath("../Hud")
@@ -293,10 +293,10 @@ nameperson = Array[String](["Boss", "You", "Boss", "You"])
 speed = 8.0
 points = [NodePath("../Point_Chefe/Point_MesaChefe"), NodePath("../Point_Chefe/Point_SideA"), NodePath("../Point_Chefe/Point_SideB"), NodePath("../Point_Chefe/Point_Front"), NodePath("../Point_You"), NodePath("../Point_Chefe/Point_Front"), NodePath("../Point_Chefe/Point_SideB"), NodePath("../Point_Chefe/Point_SideA"), NodePath("../Point_Chefe/Point_MesaChefe")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Chefe" unique_id=698966240]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boss" unique_id=698966240]
 shape = SubResource("CapsuleShape3D_0i88t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Chefe" unique_id=305190626]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Boss" unique_id=305190626]
 mesh = SubResource("CapsuleMesh_0i88t")
 
 [node name="Points_Friends" type="Node3D" parent="." unique_id=1731595884]
@@ -329,6 +329,9 @@ character = NodePath(".")
 manager = NodePath("../Route_Manager")
 hud = NodePath("../Hud")
 dialogue_area = NodePath("../Point_You/Area3D")
+conversas = Array[Array]([["Hey sweetie, how is Annie doing? I'm so excited. I got her a lovely gift.", "She's growing so fast. What did you get her?", "Sweetie, it's a surprise for the birthday girl. I can't tell you.", "Knowing you I'm sure she'll like it."], ["Sweetie, did you hear? {nome1} arrived after you today and I think they scratched your car.", "What? I just got it back from the mechanic.", "{nome1} was a little bit unhinged lately. Could it be on purpose?", "I can't believe someone would do that."], ["Sweetie, since you're HR I think you should know...", "Here it comes...", "Apparently someone saw {nome1} hooking up with boss' wife on the holliday party.", "Does boss know about this?"], ["Hey there sweetie. How are you?", "I'm a little stressed with my assignments today. And you?", "You know what would help? Yoga tuesdaaaaaays. Where were you?", "Not this again."]])
+personagem = Array[Texture2D]([null, null, null, null])
+nameperson = Array[String](["Erika", "You", "Erika", "You"])
 points = [NodePath("../Points_Friends/Point_Mesa1"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Mesa1")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_1" unique_id=1266492199]
@@ -344,8 +347,9 @@ character = NodePath(".")
 manager = NodePath("../Route_Manager")
 hud = NodePath("../Hud")
 dialogue_area = NodePath("../Point_You/Area3D")
-personagem = Array[Texture2D]([null, ExtResource("9_dinhu")])
-nameperson = Array[String](["", "Javelar"])
+conversas = Array[Array]([["Hey, man. Can't wait for the party today. I'm bulking.", "You know you're paying your own pizzas, right?", "Lucky for me I'll well paid then. Maybe pump my numbers so I'm better? Just kidding", "You know I can't."], ["Hey, man. How are you doing?", "A little stressed with today's assignment but ok.", "Good to hear, bro. If you need any help just ask. You know I'm there for you.", "Thanks, man. Means a lot."], ["Bro did you hear? I got some bad news.", "No one announces good news, do they?", "I was just eating my eggs and saw {nome1} taking some food with your name on them.", "That bastard."], ["You're not gonna believe what I just saw. Or rather smelled.", "Try me.", "I just finished working out at the company gym and {nome1} left there without showering. Worst elevator ride ever.", "What's their floor? I will avoid."]])
+personagem = Array[Texture2D]([null, null, null, null])
+nameperson = Array[String](["Jake", "You", "Jake", "You"])
 points = [NodePath("../Points_Friends/Point_Mesa2"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Mesa2")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_2" unique_id=1952373948]
@@ -361,8 +365,9 @@ character = NodePath(".")
 manager = NodePath("../Route_Manager")
 hud = NodePath("../Hud")
 dialogue_area = NodePath("../Point_You/Area3D")
-personagem = Array[Texture2D]([null, ExtResource("9_dinhu")])
-nameperson = Array[String](["", "Javelar"])
+conversas = Array[Array]([["Uhmmm...", "Hi.", "Is... is it true you're the one responsible for layoffs? I really need this.", "I can't really play favorites."], ["Hi... There... Sorry to bother. ", "Can you speak up, please?", "What can I do stay here?", "Just do your job well and don't break rules."], ["Hi.... Do you know ahn.... Amy?.... I think that's her.", "Yes, she's from the office above us.", "Did you know that she... hmmm... leaves early everyday?", "Actually I heard it before."], ["Who's Annie?", "What? How do you know her?", "I saw her name in your computer.", "She's family."]])
+personagem = Array[Texture2D]([null, null, null, null])
+nameperson = Array[String](["Larry", "You", "Larry", "You"])
 points = [NodePath("../Points_Friends/Point_Mesa3"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Mesa3")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_3" unique_id=1292010789]
@@ -378,6 +383,7 @@ character = NodePath(".")
 manager = NodePath("../Route_Manager")
 hud = NodePath("../Hud")
 dialogue_area = NodePath("../Point_You/Area3D")
+conversas = Array[Array]([["Hey man, counting down the hours for the party?", "I sure am. ", "Same. Can't wait to give Annie her gift. Best godfather ever.", "If it's another dog you're keeping it."], ["Dude, I do you know {nome1}? They just asked me out. I have a shot.", "Really? So now it's reciprocal huh?", "Who doesn't love a workplace relationship?", "You do know I'm HR, right?"], ["Heard you are doing some layoffs. How are things?", "Pretty stressful. Having to decide what happens to people.", "Remember when Ray got me socks for the secret santa? Just saying.", "Hey, you gave them to me after that. I'm actually wearing them today."], ["Sweetie, since you're HR I think you should know...", "Here it comes...", "Apparently someone saw {nome1} hooking up with boss' wife on the holliday party.", "Does boss know about this?"]])
 personagem = Array[Texture2D]([null, ExtResource("9_dinhu")])
 nameperson = Array[String](["", "Javelar"])
 points = [NodePath("../Points_Friends/Point_Mesa4"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Mesa4")]

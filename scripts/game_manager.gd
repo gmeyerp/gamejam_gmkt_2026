@@ -13,6 +13,12 @@ class_name GameManager
 @onready var office: EnvironmentManager = $Office
 @onready var route_manager: RouteManager = $Route_Manager
 
+@onready var friend_1: RouteAutomation = $Friend_1
+@onready var friend_2: RouteAutomation = $Friend_2
+@onready var friend_3: RouteAutomation = $Friend_3
+@onready var friend_4: RouteAutomation = $Friend_4
+@onready var boss: Behavior = $Boss
+
 var score: int = 0
 @onready var employee_number: int = EmployeeList.get_employee_number()
 @onready var employee_number_ui: Label = $GameHUD/EmployeeNumer/CurrentEmployeeNumber
@@ -62,6 +68,7 @@ func game_start() -> void:
 	EmployeeList.reset_list()
 	update_employee_number()
 	office.clear_office()
+	connect_friends()
 	if desk and desk.clock:
 		desk.clock.reset_clock()
 
@@ -80,6 +87,13 @@ func game_start() -> void:
 	if not EmployeeList.employee_fired.is_connected(on_employee_fired):
 		EmployeeList.employee_fired.connect(on_employee_fired)
 
+func connect_friends():
+	demission_manager.employee_fired.connect(friend_1.on_fired)
+	demission_manager.employee_fired.connect(friend_2.on_fired)
+	demission_manager.employee_fired.connect(friend_3.on_fired)
+	demission_manager.employee_fired.connect(friend_4.on_fired)
+	demission_manager.employee_fired.connect(boss.on_fired)
+	
 func return_to_title() -> void:
 	is_playing = false
 	if demission_manager:

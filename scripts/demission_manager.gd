@@ -2,6 +2,8 @@ extends Node
 class_name DemissionManager
 
 signal employee_selected(employee: EmployeeData)
+signal employee_fired(employee: EmployeeData)
+
 signal game_finished
 
 @onready var employee_list: Array[EmployeeData] = EmployeeList.get_employee_list()
@@ -91,6 +93,7 @@ func process_decision(motive_chosen: GlobalVariables.LayoffMotive) -> void:
 			EmployeeList.add_next_round(current_employee)
 		else:
 			EmployeeList.remove_from_list(current_employee)
+	employee_fired.emit(current_employee)
 
 	current_index += 1
 	await get_tree().create_timer(1.0).timeout
