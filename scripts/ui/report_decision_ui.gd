@@ -5,11 +5,11 @@ signal layoff_chosen(motive: GlobalVariables.LayoffMotive)
 @onready var employee_name: Label = $EmployeeInfo/Name
 @onready var main_info: Label = $EmployeeInfo/MainInfo
 
-@onready var _title: Label = $Panel/VBox/Title
-@onready var _keep_button: Button = $Panel/VBox/KeepButton
-@onready var _improductivity_button: Button = $Panel/VBox/ImproductivityButton
-@onready var _budget_button: Button = $Panel/VBox/BudgetCutButton
-@onready var _behaviour_button: Button = $Panel/VBox/BehaviourButton
+@onready var _title: Label = %Title
+@onready var _keep_button: Button = %KeepButton
+@onready var _improductivity_button: Button = %ImproductivityButton
+@onready var _budget_button: Button = %BudgetCutButton
+@onready var _behaviour_button: Button = %BehaviourButton
 
 
 func _ready() -> void:

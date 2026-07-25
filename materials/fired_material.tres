@@ -1,4 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c0s2fww5fcurl"]
 
+[ext_resource type="Texture2D" uid="uid://cgip7ecsjji2x" path="res://materials/fire_texture.png" id="1_3f3e3"]
+
 [resource]
-albedo_color = Color(0.6508116, 0.79351467, 3.080368e-06, 1)
+transparency = 1
+albedo_color = Color(0.8901961, 0, 0.12941177, 1)
+albedo_texture = ExtResource("1_3f3e3")

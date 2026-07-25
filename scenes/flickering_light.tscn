@@ -64,23 +64,25 @@ _data = {
 &"broken": SubResource("Animation_qlewg")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykh0f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlewg"]
 resource_local_to_scene = true
 emission_enabled = true
 emission = Color(0.75388557, 0.8808983, 0.99512535, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_qmg03"]
+[sub_resource type="BoxMesh" id="BoxMesh_2mf54"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_ykh0f")
-radius = 0.2
-height = 0.4
+material = SubResource("StandardMaterial3D_qlewg")
+size = Vector3(0.4, 3, 0.045)
 
 [node name="FlickeringLight" type="SpotLight3D" unique_id=1119269783]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 light_color = Color(0.7529412, 0.88235295, 0.99607843, 1)
 light_energy = 2.0
 shadow_enabled = true
+shadow_blur = 0.359
+spot_range = 15.0
 spot_attenuation = -0.26
+spot_angle = 41.43
 script = ExtResource("1_qlewg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1636830268]
@@ -88,4 +90,5 @@ libraries/ = SubResource("AnimationLibrary_5ahix")
 autoplay = &"RESET"
 
 [node name="LightOrb" type="MeshInstance3D" parent="." unique_id=576600731]
-mesh = SubResource("SphereMesh_qmg03")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_2mf54")

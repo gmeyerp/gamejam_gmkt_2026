@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://c7fmu6q837r75"]
 
+[ext_resource type="Texture2D" uid="uid://dyyis2qistydp" path="res://materials/CrumpleTexture.png" id="1_bh4jb"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykh0f"]
 cull_mode = 2
+albedo_texture = ExtResource("1_bh4jb")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qmg03"]
 material = SubResource("StandardMaterial3D_ykh0f")

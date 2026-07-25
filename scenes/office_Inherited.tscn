@@ -4,17 +4,47 @@
 
 [node name="Office" unique_id=1875127865 instance=ExtResource("1_eyvtq")]
 
-[node name="TableClock" parent="." index="134" unique_id=529196787]
+[node name="Papers" parent="." index="3" unique_id=1765891498]
+visible = false
+
+[node name="TableClock" parent="." index="10" unique_id=186416043]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)
 
-[node name="TableClockAlternative1" parent="." index="135" unique_id=204889040]
+[node name="TableClockAlternative1" parent="." index="11" unique_id=372239922]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)
 
-[node name="TableClockAlternative2" parent="." index="136" unique_id=788610184]
+[node name="TableClockAlternative2" parent="." index="12" unique_id=802664655]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)
 
-[node name="TableClockAlternative3" parent="." index="137" unique_id=1841546965]
+[node name="TableClockAlternative3" parent="." index="13" unique_id=1886230269]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)
 
-[node name="TableClockAlternative4" parent="." index="138" unique_id=1315706552]
+[node name="TableClockAlternative4" parent="." index="14" unique_id=876908186]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.8661941, 0.7999998, -0.28163356)
+
+[node name="SceneBoundaries" parent="." index="130" unique_id=1299941126]
+cast_shadow = 0
+
+[node name="OfficeLights" parent="." index="134" unique_id=1955769245]
+visible = false
+
+[node name="OfficeLights_001" parent="." index="135" unique_id=1630072472]
+visible = false
+
+[node name="OfficeLights_002" parent="." index="136" unique_id=115842421]
+visible = false
+
+[node name="OfficeLights_003" parent="." index="137" unique_id=1479467792]
+visible = false
+
+[node name="OfficeLights_004" parent="." index="138" unique_id=2086732647]
+visible = false
+
+[node name="OfficeLights_005" parent="." index="139" unique_id=1934580143]
+visible = false
+
+[node name="OfficeLights_006" parent="." index="140" unique_id=1328988079]
+visible = false
+
+[node name="OfficeLights_007" parent="." index="141" unique_id=633140766]
+visible = false

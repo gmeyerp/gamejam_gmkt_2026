@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b2g3n4o737ckb" path="res://scenes/flickering_light.tscn" id="10_in4ui"]
 [ext_resource type="AudioStream" uid="uid://2nf0xkhxwgsw" path="res://sfx/positive.wav" id="10_ja80a"]
 [ext_resource type="AudioStream" uid="uid://dcgg5eglwm2j5" path="res://sfx/negative_2.wav" id="11_alkg7"]
-[ext_resource type="PackedScene" uid="uid://dqi4qdl4apset" path="res://scenes/ui/clock_display.tscn" id="11_clock_ui"]
+[ext_resource type="PackedScene" path="res://scenes/ui/clock_display.tscn" id="11_clock_ui"]
 [ext_resource type="Script" uid="uid://dq0ta68rtwsgq" path="res://resources/clock/clock_stage.gd" id="12_clock_stage"]
 [ext_resource type="Script" uid="uid://cf8lbwvcio247" path="res://scripts/camera/camera_controller.gd" id="13_camera"]
 [ext_resource type="PackedScene" uid="uid://bdmumm01qdu36" path="res://scenes/office_Inherited.tscn" id="20_ja80a"]
@@ -234,6 +234,8 @@ mode_lerp_speed = 4.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=671355985]
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 4, 2)
+light_color = Color(0.58827394, 0.76582235, 0.82413346, 1)
+light_energy = 0.8
 shadow_enabled = true
 
 [node name="Dirt" type="Marker3D" parent="." unique_id=1291452055]
@@ -249,23 +251,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4642298, 1.0096215, -9.8211
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0584981, 2, -9.427396)
 
 [node name="FlickeringLight" parent="." unique_id=1119269783 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 3, -4)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 5.2809067, -5.8381987)
 
 [node name="FlickeringLight2" parent="." unique_id=1953955363 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 3, -4)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 5.2809067, -5.8381987)
 
 [node name="FlickeringLight3" parent="." unique_id=276911742 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 3, -12)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 5.2809067, -12.9533415)
 
 [node name="FlickeringLight4" parent="." unique_id=576495430 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 3, -12)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 5.2809067, -12.9533415)
 
 [node name="FlickeringLight5" parent="." unique_id=84837394 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 3, -20)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 5.2809067, -20)
 
 [node name="FlickeringLight6" parent="." unique_id=1272869112 instance=ExtResource("10_in4ui")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 3, -20)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 5.2809067, -20)
 
 [node name="Office" parent="." unique_id=1875127865 instance=ExtResource("20_ja80a")]
+
+[connection signal="employee_fired" from="Desk/Report" to="." method="on_employee_fired"]
 
 [editable path="Office"]

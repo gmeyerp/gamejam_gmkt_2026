@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ccmc385s5v5ay" path="res://scenes/ui/report_decision_ui.tscn" id="2_ui"]
 [ext_resource type="Material" uid="uid://btljbto0kf2xv" path="res://materials/keep_material.tres" id="3_1i2vd"]
 [ext_resource type="Material" uid="uid://c0s2fww5fcurl" path="res://materials/fired_material.tres" id="3_m3xqq"]
+[ext_resource type="Texture2D" uid="uid://dyyis2qistydp" path="res://materials/CrumpleTexture.png" id="5_01eo7"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ykh0f"]
 viewport_path = NodePath("SubViewport")
@@ -221,7 +222,11 @@ _data = {
 &"send_report": SubResource("Animation_m3xqq")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evw4b"]
+albedo_texture = ExtResource("5_01eo7")
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_qmg03"]
+material = SubResource("StandardMaterial3D_evw4b")
 size = Vector2(0.35, 0.4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykh0f"]
@@ -256,8 +261,8 @@ size = Vector2(0.075, 0.075)
 script = ExtResource("1_display")
 animation_player = NodePath("AnimationPlayer")
 stampTexture = NodePath("StampTexture")
-keepMaterial = ExtResource("3_m3xqq")
-fireMaterial = ExtResource("3_1i2vd")
+keepMaterial = ExtResource("3_1i2vd")
+fireMaterial = ExtResource("3_m3xqq")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=255816298]
 size = Vector2i(512, 640)
