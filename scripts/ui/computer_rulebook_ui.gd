@@ -47,14 +47,14 @@ func set_department_data(averages: Dictionary) -> void:
 func update_wage_page():
 	var budget_text = ""
 	for i in GlobalVariables.Department.size():
-		budget_text += "%s average wages: %d
+		budget_text += "%s average wages: %.2f
 		" % [GlobalVariables.Department.keys()[i], EmployeeList.get_average_salary(i)]
 	_budget_page.text = budget_text
 
 func update_productivity_page():
 	var budget_text = ""
 	for i in GlobalVariables.Department.size():
-		budget_text += "%s average productivity: %d
+		budget_text += "%s average productivity: %.2f
 		" % [GlobalVariables.Department.keys()[i], EmployeeList.get_average_productivity(i)]
 	_productivity_page.text = budget_text
 

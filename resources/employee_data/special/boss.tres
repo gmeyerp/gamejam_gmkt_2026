@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://sjf6yjlk2pie"]
+
+[ext_resource type="Script" uid="uid://d2272qde40201" path="res://resources/employee_data/employee_data.gd" id="1_5le52"]
+
+[resource]
+script = ExtResource("1_5le52")
+name = "Boss"
+age = 54
+department = 3
+layoff_round = 4
+layoff_motive = 3
+production_rate = 0.1
+salary = 100.0
+metadata/_custom_type_script = "uid://d2272qde40201"

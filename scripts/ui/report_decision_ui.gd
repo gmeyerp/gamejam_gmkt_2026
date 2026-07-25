@@ -34,8 +34,8 @@ func show_employee(employee: EmployeeData) -> void:
 		employee_name.text = "Report
 		%s | Age: %d" % [employee.name, employee.age]
 		main_info.text = "Department: %s
-		Productivity: %d
-		Wage: %d
+		Productivity: %.2f
+		Wage: %.2f
 		Comment: %s
 		" % [GlobalVariables.Department.keys()[employee.department],
 		employee.production_rate, employee.salary, employee.commentary[EmployeeList.get_layoff_round()]]
