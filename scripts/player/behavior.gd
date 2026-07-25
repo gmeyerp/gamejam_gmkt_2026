@@ -15,6 +15,8 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	if index >= points.size():
+		velocity = Vector3.ZERO
+		set_physics_process(false) 
 		return
 
 	if waiting_input:
