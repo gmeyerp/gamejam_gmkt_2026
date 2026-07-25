@@ -13,7 +13,9 @@
 [ext_resource type="Script" uid="uid://c345omwqftp5k" path="res://scenes/detect_area.gd" id="8_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://dmlfgwuktrrhk" path="res://models/characters/Udan.png" id="8_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://dt7ceafpfxv6d" path="res://models/characters/Javelas.png" id="9_dinhu"]
+[ext_resource type="Resource" uid="uid://sjf6yjlk2pie" path="res://resources/employee_data/special/boss.tres" id="11_ca42v"]
 [ext_resource type="Script" uid="uid://jpcwktkkd1x6" path="res://scripts/player/behavior_boss.gd" id="12_1kice"]
+[ext_resource type="Resource" uid="uid://djqa2t6kdqsxp" path="res://resources/employee_data/special/you.tres" id="12_rysoc"]
 [ext_resource type="Script" uid="uid://c12vib6ytgl13" path="res://scripts/player/behavior_friends.gd" id="13_kvuet"]
 [ext_resource type="Script" uid="uid://fd3bqgn6mebd" path="res://scripts/player/route_manager.gd" id="16_ca42v"]
 
@@ -252,6 +254,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0079164505, 0.043248415, -0
 
 [node name="DemissionManager" type="Node" parent="." unique_id=1136449082]
 script = ExtResource("3_iywne")
+boss_data = ExtResource("11_ca42v")
+self_data = ExtResource("12_rysoc")
 metadata/_custom_type_script = "uid://c0r2aac6igsnl"
 
 [node name="Point_You" type="Node3D" parent="." unique_id=1856331660]
