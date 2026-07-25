@@ -3,3 +3,4 @@ class_name PlayerDesk
 
 @onready var report: DeskReport = %Report
 @onready var clock: DeskClock = %Clock
+@onready var computer: DeskComputer = $Computer

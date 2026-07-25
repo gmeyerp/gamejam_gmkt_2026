@@ -1,6 +1,8 @@
 class_name ComputerRulebookUI
 extends Control
 
+signal close_requested
+
 enum RulebookTab {
 	BEHAVIOUR_RULES,
 	DEPARTMENT_BUDGET,
@@ -10,6 +12,7 @@ enum RulebookTab {
 @onready var _behaviour_tab: Button = $Panel/VBox/TabButtons/BehaviourTab
 @onready var _budget_tab: Button = $Panel/VBox/TabButtons/BudgetTab
 @onready var _productivity_tab: Button = $Panel/VBox/TabButtons/ProductivityTab
+@onready var _close_button: Button = $Panel/VBox/TitleBar/CloseButton
 @onready var _behaviour_page: Label = %BehaviourPage
 @onready var _budget_page: Label = %BudgetPage
 @onready var _productivity_page: Label = %ProductivityPage
@@ -22,6 +25,7 @@ func _ready() -> void:
 	_behaviour_tab.pressed.connect(switch_tab.bind(RulebookTab.BEHAVIOUR_RULES))
 	_budget_tab.pressed.connect(switch_tab.bind(RulebookTab.DEPARTMENT_BUDGET))
 	_productivity_tab.pressed.connect(switch_tab.bind(RulebookTab.DEPARTMENT_PRODUCTIVITY))
+	_close_button.pressed.connect(func() -> void: close_requested.emit())
 	_refresh_tab_visibility()
 
 

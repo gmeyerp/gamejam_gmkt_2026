@@ -55,13 +55,23 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_qrbbp")
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Title" type="Label" parent="Panel/VBox" unique_id=745386304]
+[node name="TitleBar" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/VBox/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 30
 text = "Rulebook"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="Panel/VBox/TitleBar"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "X"
+script = ExtResource("12_gnv4x")
 
 [node name="TabButtons" type="HBoxContainer" parent="Panel/VBox" unique_id=1545234170]
 layout_mode = 2

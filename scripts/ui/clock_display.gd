@@ -2,30 +2,29 @@ class_name ClockDisplay
 extends Node3D
 
 @export var sub_viewport: SubViewport
-@export var screen_mesh: MeshInstance3D
 @export var time_label: Label
-@export var viewport_width: int = 256
-@export var viewport_height: int = 64
-@export var screen_width: float = 0.22
-@export var screen_height: float = 0.06
+@export var screen_sprite: Sprite3D
+@export var base_viewport_height: int = 64
 @export var font_size: int = 36
+
+var _followed_screen: MeshInstance3D
 
 
 func _ready() -> void:
 	if sub_viewport == null:
 		sub_viewport = get_node_or_null("SubViewport") as SubViewport
-	if screen_mesh == null:
-		screen_mesh = get_node_or_null("ScreenMesh") as MeshInstance3D
 	if time_label == null and sub_viewport:
 		time_label = sub_viewport.get_node_or_null("TimeLabel") as Label
+	if screen_sprite == null:
+		screen_sprite = get_node_or_null("ScreenSprite") as Sprite3D
 
-	_apply_layout()
 	if sub_viewport:
 		sub_viewport.gui_disable_input = true
 		sub_viewport.handle_input_locally = false
 		sub_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 
-	_apply_viewport_texture()
+	_apply_label_style()
+	_bind_sprite_texture()
 
 
 func set_time_text(text: String) -> void:
@@ -33,27 +32,65 @@ func set_time_text(text: String) -> void:
 		time_label.text = text
 
 
-func _apply_layout() -> void:
-	if sub_viewport:
-		sub_viewport.size = Vector2i(viewport_width, viewport_height)
-	if time_label:
-		time_label.add_theme_font_size_override("font_size", font_size)
-		time_label.clip_text = false
-		time_label.autowrap_mode = TextServer.AUTOWRAP_OFF
-		time_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		time_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	if screen_mesh:
-		var quad := QuadMesh.new()
-		quad.size = Vector2(screen_width, screen_height)
-		screen_mesh.mesh = quad
-		screen_mesh.position = Vector3(0.0, 0.0, 0.071)
-
-
-func _apply_viewport_texture() -> void:
-	if screen_mesh == null or sub_viewport == null:
+func follow_screen(screen: MeshInstance3D) -> void:
+	if screen == null:
 		return
-	var mat := StandardMaterial3D.new()
-	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	mat.albedo_texture = sub_viewport.get_texture()
-	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR
-	screen_mesh.material_override = mat
+	if _followed_screen and _followed_screen != screen:
+		_followed_screen.visible = true
+	_followed_screen = screen
+	screen.visible = false
+
+	var aabb := screen.get_aabb()
+	var face_size := _face_size_from_aabb(aabb)
+	var world_width := face_size.x * screen.global_transform.basis.get_scale().x
+	var world_height := face_size.y * screen.global_transform.basis.get_scale().y
+	world_width = absf(world_width)
+	world_height = absf(world_height)
+	if world_height < 0.0001:
+		world_height = 0.0001
+
+	var aspect := world_width / world_height
+	var vp_height := maxi(base_viewport_height, 16)
+	var vp_width := maxi(int(round(float(vp_height) * aspect)), 32)
+	if sub_viewport:
+		sub_viewport.size = Vector2i(vp_width, vp_height)
+
+	if screen_sprite:
+		screen_sprite.global_transform = screen.global_transform
+		# Nudge slightly along local +Z so we sit in front of the bezel.
+		screen_sprite.global_position += screen.global_transform.basis.z.normalized() * 0.001
+		screen_sprite.centered = true
+		screen_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
+		screen_sprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR
+		screen_sprite.pixel_size = world_height / float(vp_height)
+		_bind_sprite_texture()
+
+	_apply_label_style()
+
+
+func _face_size_from_aabb(aabb: AABB) -> Vector2:
+	var sx := aabb.size.x
+	var sy := aabb.size.y
+	var sz := aabb.size.z
+	# Two largest axes = screen face (handles XY or XZ oriented screens).
+	if sx >= sz and sy >= sz:
+		return Vector2(sx, sy)
+	if sx >= sy and sz >= sy:
+		return Vector2(sx, sz)
+	return Vector2(sy, sz)
+
+
+func _apply_label_style() -> void:
+	if time_label == null:
+		return
+	time_label.add_theme_font_size_override("font_size", font_size)
+	time_label.clip_text = false
+	time_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	time_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	time_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+
+
+func _bind_sprite_texture() -> void:
+	if screen_sprite == null or sub_viewport == null:
+		return
+	screen_sprite.texture = sub_viewport.get_texture()

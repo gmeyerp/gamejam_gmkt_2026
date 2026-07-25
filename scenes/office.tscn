@@ -96,24 +96,6 @@ format_mode = 4
 variant_index = 4
 metadata/_custom_type_script = "uid://dq0ta68rtwsgq"
 
-[sub_resource type="BoxMesh" id="BoxMesh_clock_hm"]
-size = Vector3(0.28, 0.1, 0.14)
-
-[sub_resource type="StandardMaterial3D" id="Mat_clock"]
-albedo_color = Color(0.12, 0.12, 0.14, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_clock_hms"]
-size = Vector3(0.48, 0.1, 0.14)
-
-[sub_resource type="BoxMesh" id="BoxMesh_clock_hmscs"]
-size = Vector3(0.64, 0.1, 0.14)
-
-[sub_resource type="BoxMesh" id="BoxMesh_clock_hmsms"]
-size = Vector3(0.74, 0.1, 0.14)
-
-[sub_resource type="BoxMesh" id="BoxMesh_clock_hmsus"]
-size = Vector3(0.96, 0.1, 0.14)
-
 [sub_resource type="BoxShape3D" id="BoxShape_clock"]
 size = Vector3(1, 0.12, 0.16)
 
@@ -195,64 +177,15 @@ transform = Transform3D(0.9918944, 0, -0.12706462, 0, 1, 0, 0.12706462, 0, 0.991
 [node name="LastPaper5" parent="Desk/Report" unique_id=1535158415 instance=ExtResource("10_07d2k")]
 transform = Transform3D(0.88941634, 0, 0.45709792, 0, 1, 0, -0.45709792, 0, 0.88941634, 0, -0.0039693713, 0)
 
-[node name="Clock" type="Node3D" parent="Desk" unique_id=1162184841 node_paths=PackedStringArray("variants")]
+[node name="Clock" type="Node3D" parent="Desk" unique_id=1162184841 node_paths=PackedStringArray("variants", "display")]
 unique_name_in_owner = true
 transform = Transform3D(0.8769217, 0, -0.4806332, 0, 1, 0, 0.4806332, 0, 0.8769217, 0.88669425, 0.12581313, -0.26916376)
 script = ExtResource("4_clock")
 stages = Array[ExtResource("12_clock_stage")]([SubResource("ClockStage_0"), SubResource("ClockStage_1"), SubResource("ClockStage_2"), SubResource("ClockStage_3"), SubResource("ClockStage_4"), SubResource("Resource_0tnpc"), SubResource("Resource_adnto"), SubResource("Resource_grqqk"), SubResource("Resource_gy76c")])
-variants = [NodePath("ClockBody_HM"), NodePath("ClockBody_HMS"), NodePath("ClockBody_HMSCs"), NodePath("ClockBody_HMSMs"), NodePath("ClockBody_HMSUs")]
+variants = [NodePath("../../Office/TableClock"), NodePath("../../Office/TableClockAlternative1"), NodePath("../../Office/TableClockAlternative2"), NodePath("../../Office/TableClockAlternative3"), NodePath("../../Office/TableClockAlternative4")]
+display = NodePath("ClockDisplay")
 
-[node name="ClockBody_HM" type="Node3D" parent="Desk/Clock" unique_id=643567221]
-
-[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HM" unique_id=1284705517]
-mesh = SubResource("BoxMesh_clock_hm")
-surface_material_override/0 = SubResource("Mat_clock")
-
-[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HM" unique_id=423279344 instance=ExtResource("11_clock_ui")]
-
-[node name="ClockBody_HMS" type="Node3D" parent="Desk/Clock" unique_id=26025301]
-visible = false
-
-[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HMS" unique_id=1735941642]
-mesh = SubResource("BoxMesh_clock_hms")
-surface_material_override/0 = SubResource("Mat_clock")
-
-[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HMS" unique_id=2087257058 instance=ExtResource("11_clock_ui")]
-viewport_width = 410
-screen_width = 0.35
-
-[node name="ClockBody_HMSCs" type="Node3D" parent="Desk/Clock" unique_id=1397853514]
-visible = false
-
-[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HMSCs" unique_id=1734361276]
-mesh = SubResource("BoxMesh_clock_hmscs")
-surface_material_override/0 = SubResource("Mat_clock")
-
-[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HMSCs" unique_id=313452321 instance=ExtResource("11_clock_ui")]
-viewport_width = 563
-screen_width = 0.48
-
-[node name="ClockBody_HMSMs" type="Node3D" parent="Desk/Clock" unique_id=1254908392]
-visible = false
-
-[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HMSMs" unique_id=875294760]
-mesh = SubResource("BoxMesh_clock_hmsms")
-surface_material_override/0 = SubResource("Mat_clock")
-
-[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HMSMs" unique_id=1367018772 instance=ExtResource("11_clock_ui")]
-viewport_width = 614
-screen_width = 0.53
-
-[node name="ClockBody_HMSUs" type="Node3D" parent="Desk/Clock" unique_id=414914262]
-visible = false
-
-[node name="BodyMesh" type="MeshInstance3D" parent="Desk/Clock/ClockBody_HMSUs" unique_id=1005823097]
-mesh = SubResource("BoxMesh_clock_hmsus")
-surface_material_override/0 = SubResource("Mat_clock")
-
-[node name="ClockDisplay" parent="Desk/Clock/ClockBody_HMSUs" unique_id=1618106833 instance=ExtResource("11_clock_ui")]
-viewport_width = 820
-screen_width = 0.7
+[node name="ClockDisplay" parent="Desk/Clock" unique_id=423279344 instance=ExtResource("11_clock_ui")]
 
 [node name="FocusMarker" type="Marker3D" parent="Desk/Clock" unique_id=648323789]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.052299023, 0.4)
@@ -330,3 +263,5 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 3, -20)
 
 [node name="Office" parent="." unique_id=190045835 instance=ExtResource("20_ja80a")]
+
+[editable path="Office"]

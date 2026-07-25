@@ -10,15 +10,16 @@ const START_MICROSECONDS := 0
 
 @export var stages: Array[ClockStage] = []
 @export var variants: Array[Node3D] = []
+@export var display: ClockDisplay
 
 var _active_variant_index: int = -1
-var _displays: Array[ClockDisplay] = []
 
 
 func _ready() -> void:
 	if stages.is_empty():
 		stages = _make_default_stages()
-	_cache_displays()
+	if display == null:
+		display = get_node_or_null("ClockDisplay") as ClockDisplay
 	_activate_variant(0)
 	_update_from_progress(0.0)
 
@@ -84,28 +85,31 @@ func _activate_variant(index: int) -> void:
 	for i in variants.size():
 		if variants[i]:
 			variants[i].visible = i == index
+	_align_display_to_active_screen()
+
+
+func _align_display_to_active_screen() -> void:
+	if display == null:
+		return
+	if _active_variant_index < 0 or _active_variant_index >= variants.size():
+		return
+	var screen := _find_clock_screen(variants[_active_variant_index])
+	if screen:
+		display.follow_screen(screen)
 
 
 func _set_display_text(text: String) -> void:
-	if _active_variant_index < 0 or _active_variant_index >= _displays.size():
-		return
-	var display := _displays[_active_variant_index]
 	if display:
 		display.set_time_text(text)
 
 
-func _cache_displays() -> void:
-	_displays.clear()
-	for variant in variants:
-		var display: ClockDisplay = null
-		if variant:
-			display = variant.get_node_or_null("ClockDisplay") as ClockDisplay
-			if display == null:
-				for child in variant.get_children():
-					if child is ClockDisplay:
-						display = child
-						break
-		_displays.append(display)
+func _find_clock_screen(variant: Node3D) -> MeshInstance3D:
+	if variant == null:
+		return null
+	for child in variant.get_children():
+		if child is MeshInstance3D and String(child.name).begins_with("ClockScreen"):
+			return child
+	return null
 
 
 func _face_start_of_game() -> Dictionary:

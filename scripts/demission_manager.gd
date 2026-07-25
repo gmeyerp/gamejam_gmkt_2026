@@ -6,13 +6,15 @@ signal game_finished
 
 @onready var employee_list: Array[EmployeeData] = EmployeeList.get_employee_list()
 var current_index: int = 0
+var _session_active: bool = false
 
 func start_game() -> void:
+	_session_active = true
 	current_index = 0
-	
+
 	employee_list = EmployeeList.reset_list()
 	employee_list.shuffle()
-	
+
 	print("--- INICIANDO NOVO JOGO ---")
 	print("Ordem dos funcionários sorteados:")
 	for i in range(employee_list.size()):
@@ -22,10 +24,16 @@ func start_game() -> void:
 
 	load_next_employee()
 
+func stop_game() -> void:
+	_session_active = false
+	current_index = 0
+
 func load_next_employee() -> void:
+	if not _session_active:
+		return
 	if current_index < employee_list.size():
 		var current_employee: EmployeeData = employee_list[current_index]
-		
+
 		if not current_employee:
 			current_index += 1
 			load_next_employee()
@@ -38,32 +46,38 @@ func load_next_employee() -> void:
 		employee_list = EmployeeList.get_employee_list()
 		if employee_list.size() == 0:
 			print(">> Todos os funcionários foram processados!")
+			_session_active = false
 			game_finished.emit()
 		else:
 			start_new_round()
 
 func start_new_round() -> void:
+	if not _session_active:
+		return
 	employee_list.shuffle()
 	current_index = 0
 	load_next_employee()
 
-func process_decision(motive_chosen: GlobalVariables.LayoffMotive) -> void:	
-	
+func process_decision(motive_chosen: GlobalVariables.LayoffMotive) -> void:
+	if not _session_active:
+		return
 	if current_index >= employee_list.size():
 		return
-		
+
 	var current_employee: EmployeeData = employee_list[current_index]
-	
+
 	if motive_chosen == current_employee.layoff_motive:
 		print(" Decisão CORRETA para %s" % current_employee.name)
 	else:
 		print(" Decisão ERRADA para %s" % current_employee.name)
-	
+
 	if motive_chosen == GlobalVariables.LayoffMotive.Keep:
 		EmployeeList.add_next_round(current_employee)
 	else:
 		EmployeeList.remove_from_list(current_employee)
-	
+
 	current_index += 1
 	await get_tree().create_timer(1.0).timeout
+	if not _session_active:
+		return
 	load_next_employee()

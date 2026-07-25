@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dji0kargchvj8"]
 
 [ext_resource type="Script" uid="uid://cu0rglerd6mos" path="res://scripts/ui/diegetic_ui_display.gd" id="1_display"]
-[ext_resource type="PackedScene" path="res://scenes/ui/computer_rulebook_ui.tscn" id="2_ui"]
+[ext_resource type="PackedScene" path="res://scenes/ui/computer_os_ui.tscn" id="2_ui"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_screen"]
 size = Vector2(0.5, 0.36)
@@ -16,7 +16,7 @@ script = ExtResource("1_display")
 size = Vector2i(640, 400)
 render_target_update_mode = 4
 
-[node name="ComputerRulebookUI" parent="SubViewport" unique_id=1862932064 instance=ExtResource("2_ui")]
+[node name="ComputerOsUI" parent="SubViewport" unique_id=1862932064 instance=ExtResource("2_ui")]
 
 [node name="ScreenMesh" type="MeshInstance3D" parent="." unique_id=1684366399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.045)
