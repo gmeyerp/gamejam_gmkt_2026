@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://yfuamemx8jjg"]
+
+[ext_resource type="Script" uid="uid://66vm5ib0igv" path="res://scripts/desk/dirt_pile.gd" id="1_awtre"]
+[ext_resource type="PackedScene" uid="uid://bbtpnv3arm1d7" path="res://models/box_pile.glb" id="2_awtre"]
+
+[node name="BoxPile" type="Marker3D" unique_id=843056700]
+script = ExtResource("1_awtre")
+object_to_pile = ExtResource("2_awtre")
+object_size = 0.5

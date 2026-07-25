@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bilvu0mxotm6w" path="res://scripts/desk/desk_surface.gd" id="1_desk"]
 [ext_resource type="Script" uid="uid://b6r0ce0okeani" path="res://scripts/environment_manager.gd" id="1_gdafm"]
 [ext_resource type="Script" uid="uid://cyh50bkyel1jc" path="res://scripts/desk/computer.gd" id="2_computer"]
-[ext_resource type="PackedScene" uid="uid://c407ecuqlnv7" path="res://scenes/garbage.tscn" id="2_in4ui"]
 [ext_resource type="Script" uid="uid://cqbp2sea2is7k" path="res://scripts/desk/report.gd" id="3_report"]
 [ext_resource type="Script" uid="uid://cnt0wq62pgagn" path="res://scripts/desk/player_desk.gd" id="3_ujkv6"]
 [ext_resource type="Script" uid="uid://yc3u3dqu82hd" path="res://scripts/desk/clock.gd" id="4_clock"]
@@ -19,6 +18,8 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/clock_display.tscn" id="11_clock_ui"]
 [ext_resource type="Script" uid="uid://dq0ta68rtwsgq" path="res://resources/clock/clock_stage.gd" id="12_clock_stage"]
 [ext_resource type="Script" uid="uid://cf8lbwvcio247" path="res://scripts/camera/camera_controller.gd" id="13_camera"]
+[ext_resource type="PackedScene" uid="uid://clyrcbgyigds3" path="res://scenes/desk/paper_dirt.tscn" id="18_ja80a"]
+[ext_resource type="PackedScene" uid="uid://yfuamemx8jjg" path="res://scenes/desk/box_dirt.tscn" id="19_alkg7"]
 [ext_resource type="PackedScene" uid="uid://bdmumm01qdu36" path="res://scenes/office_Inherited.tscn" id="20_ja80a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape_desk"]
@@ -102,8 +103,7 @@ size = Vector3(1, 0.12, 0.16)
 [node name="Office" type="Node3D" unique_id=1965194032 node_paths=PackedStringArray("lights", "dirt")]
 script = ExtResource("1_gdafm")
 lights = [NodePath("FlickeringLight"), NodePath("FlickeringLight2"), NodePath("FlickeringLight3"), NodePath("FlickeringLight4"), NodePath("FlickeringLight5"), NodePath("FlickeringLight6")]
-dirt = [NodePath("Dirt"), NodePath("Dirt2"), NodePath("Dirt3"), NodePath("Dirt4")]
-garbage = ExtResource("2_in4ui")
+dirt = [NodePath("PaperPiles/PaperDirt"), NodePath("PaperPiles/PaperDirt2"), NodePath("PaperPiles/PaperDirt3"), NodePath("PaperPiles/PaperDirt4"), NodePath("PaperPiles/PaperDirt5"), NodePath("PaperPiles/PaperDirt6"), NodePath("PaperPiles/PaperDirt7"), NodePath("PaperPiles/PaperDirt8"), NodePath("PaperPiles/PaperDirt9"), NodePath("PaperPiles/PaperDirt10"), NodePath("PaperPiles/PaperDirt11"), NodePath("PaperPiles/PaperDirt12"), NodePath("PaperPiles/PaperDirt12"), NodePath("PaperPiles/PaperDirt13"), NodePath("PaperPiles/PaperDirt14"), NodePath("PaperPiles/PaperDirt15"), NodePath("PaperPiles/PaperDirt16"), NodePath("PaperPiles/PaperDirt17"), NodePath("PaperPiles/PaperDirt18"), NodePath("PaperPiles/PaperDirt19"), NodePath("BoxPile"), NodePath("BoxPile2"), NodePath("BoxPile3")]
 
 [node name="Desk" type="Node3D" parent="." unique_id=1555415675]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -238,17 +238,85 @@ light_color = Color(0.58827394, 0.76582235, 0.82413346, 1)
 light_energy = 0.8
 shadow_enabled = true
 
-[node name="Dirt" type="Marker3D" parent="." unique_id=1291452055]
+[node name="PaperPiles" type="Node" parent="." unique_id=985988946]
+
+[node name="PaperDirt" parent="PaperPiles" unique_id=1208563958 instance=ExtResource("18_ja80a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5615145, 0.016961098, -12.212607)
 
-[node name="Dirt2" type="Marker3D" parent="." unique_id=863276492]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7323682, 0, -5.5882034)
+[node name="PaperDirt2" parent="PaperPiles" unique_id=1412549137 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4966764, 0.016961098, -18.023268)
 
-[node name="Dirt3" type="Marker3D" parent="." unique_id=1389658558]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4642298, 1.0096215, -9.821197)
+[node name="PaperDirt3" parent="PaperPiles" unique_id=1462725172 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0861955, 2.016961, -9.518167)
 
-[node name="Dirt4" type="Marker3D" parent="." unique_id=1702059631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0584981, 2, -9.427396)
+[node name="PaperDirt4" parent="PaperPiles" unique_id=793244718 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5967953, 0.01696086, -0.80120134)
+
+[node name="PaperDirt5" parent="PaperPiles" unique_id=1043970694 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0914094, 0.01696086, -1.6343577)
+
+[node name="PaperDirt6" parent="PaperPiles" unique_id=235814891 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3191836, 0.01696086, -1.6999857)
+
+[node name="PaperDirt7" parent="PaperPiles" unique_id=691450275 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5463699, 0.01696062, -0.43282008)
+
+[node name="PaperDirt8" parent="PaperPiles" unique_id=3064761 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.989767, 0.01696062, 0.21286076)
+
+[node name="PaperDirt9" parent="PaperPiles" unique_id=894514629 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4920897, 0.01696062, -5.867442)
+
+[node name="PaperDirt10" parent="PaperPiles" unique_id=120597115 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.189867, 0.01696086, -1.6999857)
+
+[node name="PaperDirt11" parent="PaperPiles" unique_id=77098732 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0395, 0.01696062, -1.3970919)
+
+[node name="PaperDirt12" parent="PaperPiles" unique_id=2118660973 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.482897, 0.01696062, -0.75141096)
+
+[node name="PaperDirt14" parent="PaperPiles" unique_id=689021224 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55458, 0.01696062, -1.9714206)
+
+[node name="PaperDirt15" parent="PaperPiles" unique_id=1355189174 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.111183, 0.01696062, -1.3257397)
+
+[node name="PaperDirt13" parent="PaperPiles" unique_id=1663706941 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.362774, 0.01696062, -5.867442)
+
+[node name="PaperDirt16" parent="PaperPiles" unique_id=10780385 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3481107, 0.01696062, -4.403091)
+
+[node name="PaperDirt17" parent="PaperPiles" unique_id=684686875 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9047136, 0.01696062, -3.75741)
+
+[node name="PaperDirt18" parent="PaperPiles" unique_id=1936813747 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.416341, 0.01696062, -4.1963177)
+
+[node name="PaperDirt19" parent="PaperPiles" unique_id=1613324438 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3959894, 0.016960382, -6.1677)
+
+[node name="PaperDirt20" parent="PaperPiles" unique_id=1865277252 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5724897, 0.01696062, -27.609934)
+
+[node name="PaperDirt21" parent="PaperPiles" unique_id=2111297102 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4763895, 0.016960382, -27.91019)
+
+[node name="PaperDirt22" parent="PaperPiles" unique_id=380856015 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.587495, 0.01696062, -26.446146)
+
+[node name="PaperDirt23" parent="PaperPiles" unique_id=583686267 instance=ExtResource("18_ja80a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6835952, 0.016960382, -26.746403)
+
+[node name="BoxPile" parent="." unique_id=843056700 instance=ExtResource("19_alkg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1786121, 0.016960382, -27.436264)
+
+[node name="BoxPile2" parent="." unique_id=1422227358 instance=ExtResource("19_alkg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3374882, 0.016960382, -28.135458)
+
+[node name="BoxPile3" parent="." unique_id=1290566306 instance=ExtResource("19_alkg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6794305, 0.016960382, -26.802092)
 
 [node name="FlickeringLight" parent="." unique_id=1119269783 instance=ExtResource("10_in4ui")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 5.2809067, -5.8381987)
@@ -269,6 +337,79 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 5.2809067, -20)
 
 [node name="Office" parent="." unique_id=1875127865 instance=ExtResource("20_ja80a")]
+
+[node name="BossPapers_002" parent="Office" index="26" unique_id=27468996]
+visible = false
+
+[node name="BossPapers_003" parent="Office" index="27" unique_id=156230412]
+visible = false
+
+[node name="BossPapers_004" parent="Office" index="28" unique_id=857398242]
+visible = false
+
+[node name="BossPapers_005" parent="Office" index="29" unique_id=543708191]
+visible = false
+
+[node name="BossPapers" parent="Office" index="30" unique_id=1637235942]
+visible = false
+
+[node name="BossDocumentBox" parent="Office" index="33" unique_id=108730129]
+visible = false
+
+[node name="BossDocumentBox_003" parent="Office" index="37" unique_id=2015446175]
+visible = false
+
+[node name="BossDocumentBox_004" parent="Office" index="38" unique_id=1494882044]
+visible = false
+
+[node name="BossDocumentBox_005" parent="Office" index="39" unique_id=360777650]
+visible = false
+
+[node name="BossDocumentBox_006" parent="Office" index="40" unique_id=840694246]
+visible = false
+
+[node name="BossDocumentBox_007" parent="Office" index="41" unique_id=1112478764]
+visible = false
+
+[node name="BossDocumentBox_008" parent="Office" index="42" unique_id=442764111]
+visible = false
+
+[node name="BossDocumentBox_009" parent="Office" index="43" unique_id=1302781917]
+visible = false
+
+[node name="BossDocumentBox_010" parent="Office" index="44" unique_id=842456119]
+visible = false
+
+[node name="BossDocumentBox_011" parent="Office" index="45" unique_id=1361410865]
+visible = false
+
+[node name="BossDocumentBox_012" parent="Office" index="46" unique_id=844503224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.726, 1.511, -27.036)
+visible = false
+
+[node name="BossDocumentBox_013" parent="Office" index="47" unique_id=2101059683]
+visible = false
+
+[node name="BossDocumentBox_014" parent="Office" index="48" unique_id=1927082264]
+visible = false
+
+[node name="BossDocumentBox_015" parent="Office" index="49" unique_id=2017409841]
+visible = false
+
+[node name="Papers_001" parent="Office" index="52" unique_id=2044692427]
+visible = false
+
+[node name="Papers_002" parent="Office" index="53" unique_id=244719638]
+visible = false
+
+[node name="Papers_003" parent="Office" index="54" unique_id=839973408]
+visible = false
+
+[node name="Papers_004" parent="Office" index="55" unique_id=1478932959]
+visible = false
+
+[node name="Papers_005" parent="Office" index="56" unique_id=284771120]
+visible = false
 
 [connection signal="employee_fired" from="Desk/Report" to="." method="on_employee_fired"]
 

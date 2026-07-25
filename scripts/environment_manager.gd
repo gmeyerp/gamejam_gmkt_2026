@@ -6,9 +6,8 @@ var max_maintenance: int
 
 @export var lights: Array[Light3D]
 @onready var game_lights = lights.duplicate()
-@export var dirt: Array[Node3D]
+@export var dirt: Array[DirtPile]
 @export var garbage_speed: float = 0
-@export var garbage: PackedScene
 @onready var diegetic_report: DiegeticUIDisplay = $Desk/Report/DiegeticReportUI
 
 var garbage_timer: float = 0
@@ -20,10 +19,9 @@ func clear_office():
 			light.repair()
 	game_lights = lights.duplicate()
 	
-	for node in dirt:
-		for child in node.get_children():
-			child.queue_free()
-			
+	for pile in dirt:
+		pile.clean()
+	
 	garbage_speed = 0
 	garbage_timer = 0
 	
@@ -56,9 +54,7 @@ func _process(delta: float) -> void:
 		create_garbage()
 
 func create_garbage():
-	if dirt.size() == 0 or not garbage:
+	if dirt.size() == 0:
 		return
-	var instance = garbage.instantiate()
 	var rand = randi_range(0, dirt.size() - 1)
-	dirt[rand].add_child(instance)
-	instance.position += Vector3.UP * dirt[rand].get_children().size() * 0.3
+	dirt[rand].pile()

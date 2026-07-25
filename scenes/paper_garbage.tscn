@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c407ecuqlnv7"]
+
+[ext_resource type="PackedScene" uid="uid://c0vguiposlx5a" path="res://models/paper_pile.glb" id="1_by6xh"]
+
+[node name="PaperGarbage" type="Node3D" unique_id=398386746]
+
+[node name="paper_pile" parent="." unique_id=1147917510 instance=ExtResource("1_by6xh")]

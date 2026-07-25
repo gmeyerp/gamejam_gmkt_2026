@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://clyrcbgyigds3"]
+
+[ext_resource type="Script" uid="uid://66vm5ib0igv" path="res://scripts/desk/dirt_pile.gd" id="1_mndxy"]
+[ext_resource type="PackedScene" uid="uid://c407ecuqlnv7" path="res://scenes/paper_garbage.tscn" id="2_ukdx4"]
+
+[node name="PaperDirt" type="Marker3D" unique_id=1208563958]
+script = ExtResource("1_mndxy")
+object_to_pile = ExtResource("2_ukdx4")
