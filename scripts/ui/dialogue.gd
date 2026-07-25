@@ -1,10 +1,9 @@
 extends Control
 class_name Dialogue
 
-# 1. Crie o sinal de encerramento
 signal dialogue_finished
 
-@export var text_speed: float = 0.015
+var steps: float = 0.0000000000000001
 var id: int = 0
 var data: Dictionary = {}
 
@@ -13,16 +12,12 @@ var data: Dictionary = {}
 @export var dialogue: RichTextLabel = null
 @export var face: TextureRect = null
 
-var _tween: Tween = null
-
 func _ready() -> void:
 	initialize_dialog()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		if dialogue.visible_ratio < 1.0:
-			if _tween and _tween.is_running():
-				_tween.kill()
 			dialogue.visible_ratio = 1.0
 			return
 
@@ -35,8 +30,8 @@ func _process(_delta: float) -> void:
 
 func initialize_dialog() -> void:
 	if data.is_empty() or not data.has(id):
-		push_error("Erro: A chave ", id, " não existe no dicionário de diálogos!")
-		queue_free()
+		dialogue_finished.emit()
+		queue_free() 
 		return
 
 	if namefriend: namefriend.text = data[id]["namefriend"]
@@ -44,6 +39,7 @@ func initialize_dialog() -> void:
 
 	if face:
 		var face_data = data[id]["face"]
+		
 		if face_data is Texture2D:
 			face.texture = face_data
 		elif face_data is String and ResourceLoader.exists(face_data):
@@ -51,15 +47,13 @@ func initialize_dialog() -> void:
 		else:
 			face.texture = null
 		
+	dialogue.visible_characters = 0
 	animate_text()
 
 func animate_text() -> void:
-	dialogue.visible_characters = 0
-	if _tween and _tween.is_running():
-		_tween.kill()
-
-	var total_characters: int = dialogue.get_total_character_count()
-	var duration: float = total_characters * text_speed
-
-	_tween = create_tween()
-	_tween.tween_property(dialogue, "visible_characters", total_characters, duration)
+	var current_id = id
+	while dialogue.visible_ratio < 1.0:
+		if current_id != id:
+			break
+		await get_tree().create_timer(steps).timeout
+		dialogue.visible_characters += 1

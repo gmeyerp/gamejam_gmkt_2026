@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bclxg2ppqwi05"]
 
 [ext_resource type="Script" uid="uid://deq65sbeqx1pf" path="res://scripts/ui/dialogue.gd" id="1_3n4vj"]
-[ext_resource type="Texture2D" uid="uid://dmlfgwuktrrhk" path="res://resources/Udan.png" id="1_jwyou"]
+[ext_resource type="Texture2D" uid="uid://dmlfgwuktrrhk" path="res://models/characters/Udan.png" id="1_jwyou"]
 
 [node name="Dialogue" type="Control" unique_id=1259861431 node_paths=PackedStringArray("namefriend", "dialogue", "face")]
 layout_mode = 3

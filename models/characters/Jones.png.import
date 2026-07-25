@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt7ceafpfxv6d"
-path="res://.godot/imported/Javelas.png-27c98fd25e2194734c872d5d01fca658.ctex"
+uid="uid://flvu533kbnll"
+path="res://.godot/imported/Jones.png-a3aad2190ebf996d555f744320ff8f97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Javelas.png"
-dest_files=["res://.godot/imported/Javelas.png-27c98fd25e2194734c872d5d01fca658.ctex"]
+source_file="res://models/characters/Jones.png"
+dest_files=["res://.godot/imported/Jones.png-a3aad2190ebf996d555f744320ff8f97.ctex"]
 
 [params]
 

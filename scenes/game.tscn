@@ -11,11 +11,9 @@
 [ext_resource type="FontFile" uid="uid://dmlk7bbhtp8nf" path="res://ui/ari-w9500-display.ttf" id="4_kvuet"]
 [ext_resource type="Texture2D" uid="uid://n3b5tkdvnp1o" path="res://icon.svg" id="4_trtic"]
 [ext_resource type="Script" uid="uid://c345omwqftp5k" path="res://scenes/detect_area.gd" id="8_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://dmlfgwuktrrhk" path="res://resources/Udan.png" id="8_kvpfn"]
-[ext_resource type="Script" uid="uid://cmu8i0w3sdimo" path="res://scripts/player/behavior.gd" id="9_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://dt7ceafpfxv6d" path="res://resources/Javelas.png" id="9_dinhu"]
-[ext_resource type="Resource" uid="uid://sjf6yjlk2pie" path="res://resources/employee_data/special/boss.tres" id="11_ca42v"]
-[ext_resource type="Resource" uid="uid://djqa2t6kdqsxp" path="res://resources/employee_data/special/you.tres" id="12_rysoc"]
+[ext_resource type="Texture2D" uid="uid://dmlfgwuktrrhk" path="res://models/characters/Udan.png" id="8_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://dt7ceafpfxv6d" path="res://models/characters/Javelas.png" id="9_dinhu"]
+[ext_resource type="Script" uid="uid://jpcwktkkd1x6" path="res://scripts/player/behavior_boss.gd" id="12_1kice"]
 [ext_resource type="Script" uid="uid://c12vib6ytgl13" path="res://scripts/player/behavior_friends.gd" id="13_kvuet"]
 [ext_resource type="Script" uid="uid://fd3bqgn6mebd" path="res://scripts/player/route_manager.gd" id="16_ca42v"]
 
@@ -30,6 +28,8 @@ script = ExtResource("1_yqjtg")
 demission_manager = NodePath("DemissionManager")
 post_processing = NodePath("PostProcessing")
 max_game_time = 60.0
+
+[node name="Hud" type="CanvasLayer" parent="." unique_id=1984543245]
 
 [node name="PostProcessing" parent="." unique_id=929113980 instance=ExtResource("2_vtaks")]
 layer = 0
@@ -252,18 +252,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0079164505, 0.043248415, -0
 
 [node name="DemissionManager" type="Node" parent="." unique_id=1136449082]
 script = ExtResource("3_iywne")
-boss_data = ExtResource("11_ca42v")
-self_data = ExtResource("12_rysoc")
 metadata/_custom_type_script = "uid://c0r2aac6igsnl"
 
-[node name="Dialogue" type="Node3D" parent="." unique_id=51088233 node_paths=PackedStringArray("hud", "dialogue_area")]
-script = ExtResource("4_kvpfn")
-hud = NodePath("Hud")
-dialogue_area = NodePath("../Point_You/Area3D")
-chat = Array[String](["Nada de ir embora mais cedo hoje não em, não dou a minima sé possui compromisso mais tarde.", "Quero o serviço concluido e se isso significa que vai ter que ficar aqui ápos as 18 já não é um problema meu", "... Ok ne vejo que não tenho muita opção, pode deixa chefe", "Que bom que entendeu. Estou contando contigo em"])
-personagem = Array[Texture2D]([ExtResource("8_kvpfn"), ExtResource("9_dinhu")])
+[node name="Point_You" type="Node3D" parent="." unique_id=1856331660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 
-[node name="Hud" type="CanvasLayer" parent="Dialogue" unique_id=1984543245]
+[node name="Area3D" type="Area3D" parent="Point_You" unique_id=1732930151]
+script = ExtResource("8_0tnpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Point_You/Area3D" unique_id=289924086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.14783049)
+shape = SubResource("BoxShape3D_0i88t")
 
 [node name="Point_Chefe" type="Node3D" parent="." unique_id=2020617358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -26)
@@ -279,19 +278,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 3)
 [node name="Point_SideA" type="Node3D" parent="Point_Chefe" unique_id=931085198]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 0)
 
-[node name="Point_You" type="Node3D" parent="." unique_id=1856331660]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
-
-[node name="Area3D" type="Area3D" parent="Point_You" unique_id=1732930151]
-script = ExtResource("8_0tnpc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Point_You/Area3D" unique_id=289924086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.14783049)
-shape = SubResource("BoxShape3D_0i88t")
-
-[node name="Chefe" type="CharacterBody3D" parent="." unique_id=728306156 node_paths=PackedStringArray("points")]
+[node name="Chefe" type="CharacterBody3D" parent="." unique_id=728306156 node_paths=PackedStringArray("hud", "dialogue_area", "points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24678898, 1.23494, -26.23165)
-script = ExtResource("9_0tnpc")
+script = ExtResource("12_1kice")
+hud = NodePath("../Hud")
+dialogue_area = NodePath("../Point_You/Area3D")
+conversas = Array[Array]([["Nada de sair mais cedo hoje, quero todo o serviço finalizado.", "Mas chefe hoje tenho aniversário da minha filha.", "Não me importo que tenha compromisso, acabe até as 18 ou continue apos isso.", "Ahh já que não tem outra forma. Ok né vou ver se demito o {nome1}"]])
+personagem = Array[Texture2D]([ExtResource("8_kvpfn"), ExtResource("9_dinhu"), ExtResource("8_kvpfn"), ExtResource("9_dinhu")])
+nameperson = Array[String](["Udan", "Javelar", "Udan", "Javelar"])
+speed = 8.0
 points = [NodePath("../Point_Chefe/Point_MesaChefe"), NodePath("../Point_Chefe/Point_SideA"), NodePath("../Point_Chefe/Point_SideB"), NodePath("../Point_Chefe/Point_Front"), NodePath("../Point_You"), NodePath("../Point_Chefe/Point_Front"), NodePath("../Point_Chefe/Point_SideB"), NodePath("../Point_Chefe/Point_SideA"), NodePath("../Point_Chefe/Point_MesaChefe")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chefe" unique_id=698966240]
@@ -323,11 +318,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -8)
 [node name="Point_Mesa4" type="Node3D" parent="Points_Friends" unique_id=1469677592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3.6)
 
-[node name="Friend_1" type="CharacterBody3D" parent="." unique_id=1591275231 node_paths=PackedStringArray("character", "manager")]
+[node name="Friend_1" type="CharacterBody3D" parent="." unique_id=1591275231 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -8)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
+hud = NodePath("../Hud")
+dialogue_area = NodePath("../Point_You/Area3D")
+personagem = Array[Texture2D]([null, ExtResource("9_dinhu")])
+nameperson = Array[String](["", "Javelar"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_1" unique_id=1266492199]
 shape = SubResource("CapsuleShape3D_0i88t")
@@ -335,11 +334,15 @@ shape = SubResource("CapsuleShape3D_0i88t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_1" unique_id=1104494850]
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Friend_2" type="CharacterBody3D" parent="." unique_id=1261741946 node_paths=PackedStringArray("character", "manager")]
+[node name="Friend_2" type="CharacterBody3D" parent="." unique_id=1261741946 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -3.6)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
+hud = NodePath("../Hud")
+dialogue_area = NodePath("../Point_You/Area3D")
+personagem = Array[Texture2D]([null, ExtResource("9_dinhu")])
+nameperson = Array[String](["", "Javelar"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_2" unique_id=1952373948]
 shape = SubResource("CapsuleShape3D_0i88t")
@@ -347,11 +350,15 @@ shape = SubResource("CapsuleShape3D_0i88t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_2" unique_id=815519738]
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Friend_3" type="CharacterBody3D" parent="." unique_id=1544350430 node_paths=PackedStringArray("character", "manager")]
+[node name="Friend_3" type="CharacterBody3D" parent="." unique_id=1544350430 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -8)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
+hud = NodePath("../Hud")
+dialogue_area = NodePath("../Point_You/Area3D")
+personagem = Array[Texture2D]([null, ExtResource("9_dinhu")])
+nameperson = Array[String](["", "Javelar"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_3" unique_id=1292010789]
 shape = SubResource("CapsuleShape3D_0i88t")
@@ -359,11 +366,15 @@ shape = SubResource("CapsuleShape3D_0i88t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_3" unique_id=40470540]
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Friend_4" type="CharacterBody3D" parent="." unique_id=1857943544 node_paths=PackedStringArray("character", "manager")]
+[node name="Friend_4" type="CharacterBody3D" parent="." unique_id=1857943544 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3.6)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
+hud = NodePath("../Hud")
+dialogue_area = NodePath("../Point_You/Area3D")
+personagem = Array[Texture2D]([null, ExtResource("9_dinhu")])
+nameperson = Array[String](["", "Javelar"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_4" unique_id=5135914]
 shape = SubResource("CapsuleShape3D_0i88t")

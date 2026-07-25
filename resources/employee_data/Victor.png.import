@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmlfgwuktrrhk"
-path="res://.godot/imported/Udan.png-899bedd001745978e19f411a01139275.ctex"
+uid="uid://mw0ysiucqea8"
+path="res://.godot/imported/Victor.png-3700b6bcb2f58400e8f93ad6d57213de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Udan.png"
-dest_files=["res://.godot/imported/Udan.png-899bedd001745978e19f411a01139275.ctex"]
+source_file="res://resources/employee_data/Victor.png"
+dest_files=["res://.godot/imported/Victor.png-3700b6bcb2f58400e8f93ad6d57213de.ctex"]
 
 [params]
 
