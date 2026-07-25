@@ -20,6 +20,7 @@ func _process(_delta: float) -> void:
 			_on_route_completed()
 
 func execute_route() -> void:
+	print(name + "executing route")
 	if not character:
 		return
 

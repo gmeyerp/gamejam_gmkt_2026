@@ -329,6 +329,8 @@ character = NodePath(".")
 manager = NodePath("../Route_Manager")
 hud = NodePath("../Hud")
 dialogue_area = NodePath("../Point_You/Area3D")
+personagem = Array[Texture2D]([null, ExtResource("9_dinhu")])
+nameperson = Array[String](["", "Javelar"])
 points = [NodePath("../Points_Friends/Point_Mesa1"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Mesa1")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_1" unique_id=1266492199]

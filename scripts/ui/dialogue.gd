@@ -3,6 +3,9 @@ class_name Dialogue
 
 signal dialogue_finished
 
+@export var dialogue_speed : float = 0.5
+@export var wait_after_complete : float = 3
+var waiting : float = 0
 var steps: float = 0.0000000000000001
 var id: int = 0
 var data: Dictionary = {}
@@ -15,12 +18,15 @@ var data: Dictionary = {}
 func _ready() -> void:
 	initialize_dialog()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	dialogue.visible_ratio += delta * dialogue_speed
 	if Input.is_action_just_pressed("ui_accept"):
 		if dialogue.visible_ratio < 1.0:
 			dialogue.visible_ratio = 1.0
-			return
-
+			waiting = wait_after_complete
+	if dialogue.visible_ratio >= 1.0:
+		waiting += delta
+	if waiting >= wait_after_complete:
 		id += 1
 		if id >= data.size():
 			dialogue_finished.emit()
@@ -29,6 +35,8 @@ func _process(_delta: float) -> void:
 			initialize_dialog()
 
 func initialize_dialog() -> void:
+	waiting = 0
+	dialogue.visible_ratio = 0
 	if data.is_empty() or not data.has(id):
 		dialogue_finished.emit()
 		queue_free() 
@@ -48,7 +56,7 @@ func initialize_dialog() -> void:
 			face.texture = null
 		
 	dialogue.visible_characters = 0
-	animate_text()
+	#animate_text()
 
 func animate_text() -> void:
 	var current_id = id

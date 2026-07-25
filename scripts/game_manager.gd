@@ -11,6 +11,7 @@ class_name GameManager
 @onready var final_score: Label = $EndMenu/Control/Score
 @onready var game_hud: CanvasLayer = $GameHUD
 @onready var office: EnvironmentManager = $Office
+@onready var route_manager: RouteManager = $Route_Manager
 
 var score: int = 0
 @onready var employee_number: int = EmployeeList.get_employee_number()
@@ -46,11 +47,13 @@ func _connect_computer_os() -> void:
 
 func _on_os_start_pressed() -> void:
 	game_start()
+	#isso nao deveria estar dentro do game start?
 	if gameplay_controller:
 		gameplay_controller.on_start_game_pressed()
 
 func game_start() -> void:
 	game_time = 0.0
+	route_manager.start()
 	is_playing = true
 	post_processing.set_distortion(0)
 	reset_score()

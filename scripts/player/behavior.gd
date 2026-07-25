@@ -30,6 +30,7 @@ func _ready() -> void:
 	if dialogue_area:
 		dialogue_area.body_entered.connect(area_body)
 		dialogue_area.body_exited.connect(area_exited)
+	set_physics_process(false)
 
 func build_random_dialogue_data() -> void:
 	_dialogue_data.clear()
