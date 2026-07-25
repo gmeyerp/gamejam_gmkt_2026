@@ -240,6 +240,7 @@ text = "Quit"
 script = ExtResource("4_dinhu")
 
 [node name="Office" parent="." unique_id=1066995191 instance=ExtResource("2_lnu2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0079164505, 0.043248415, -0.025420308)
 
 [node name="DemissionManager" type="Node" parent="." unique_id=1136449082]
 script = ExtResource("3_iywne")
