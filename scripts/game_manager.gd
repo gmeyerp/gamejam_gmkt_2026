@@ -90,11 +90,18 @@ func game_start() -> void:
 		EmployeeList.employee_fired.connect(on_employee_fired)
 
 func connect_friends():
-	demission_manager.employee_fired.connect(friend_1.on_fired)
-	demission_manager.employee_fired.connect(friend_2.on_fired)
-	demission_manager.employee_fired.connect(friend_3.on_fired)
-	demission_manager.employee_fired.connect(friend_4.on_fired)
-	demission_manager.employee_fired.connect(boss.on_fired)
+	if not demission_manager:
+		return
+	if friend_1 and not demission_manager.employee_fired.is_connected(friend_1.on_fired):
+		demission_manager.employee_fired.connect(friend_1.on_fired)
+	if friend_2 and not demission_manager.employee_fired.is_connected(friend_2.on_fired):
+		demission_manager.employee_fired.connect(friend_2.on_fired)
+	if friend_3 and not demission_manager.employee_fired.is_connected(friend_3.on_fired):
+		demission_manager.employee_fired.connect(friend_3.on_fired)
+	if friend_4 and not demission_manager.employee_fired.is_connected(friend_4.on_fired):
+		demission_manager.employee_fired.connect(friend_4.on_fired)
+	if boss and not demission_manager.employee_fired.is_connected(boss.on_fired):
+		demission_manager.employee_fired.connect(boss.on_fired)
 	
 func return_to_title() -> void:
 	is_playing = false

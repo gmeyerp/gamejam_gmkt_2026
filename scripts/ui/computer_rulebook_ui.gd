@@ -62,8 +62,9 @@ func update_behaviour_page():
 	var round = EmployeeList.get_layoff_round()
 	var rule_text = ""
 	for i in range(rules.size()):
-		rule_text += "%s
-		" % rules[i].rule_description[round]
+		if rules[i] and not rules[i].rule_description.is_empty():
+			var idx = min(round, rules[i].rule_description.size() - 1)
+			rule_text += "%s\n\t\t" % rules[i].rule_description[idx]
 	_behaviour_page.text = rule_text
 	print(rule_text)
 
