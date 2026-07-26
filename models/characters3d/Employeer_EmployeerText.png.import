@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3yye5fxte3if"
-path.s3tc="res://.godot/imported/Employeer_EmployeerText.png-e824ac737f96a9d4affa8b188010f6ed.s3tc.ctex"
+uid="uid://ds01nn2art7t4"
+path.s3tc="res://.godot/imported/Employeer_EmployeerText.png-fb0325968fc019f8c0c7b5a5452c8a44.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/characters3D/Employeer_EmployeerText.png"
-dest_files=["res://.godot/imported/Employeer_EmployeerText.png-e824ac737f96a9d4affa8b188010f6ed.s3tc.ctex"]
+source_file="res://models/characters3d/Employeer_EmployeerText.png"
+dest_files=["res://.godot/imported/Employeer_EmployeerText.png-fb0325968fc019f8c0c7b5a5452c8a44.s3tc.ctex"]
 
 [params]
 
