@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3kn2hccbphlr"
+path="res://.godot/imported/Berliner Philharmoniker, Claudio Abbado — Tchaikovsky_ 1812 Overture, Op. 49, TH 49.mp3-dd7b2d5f6108216f482ae71e9fa57202.mp3str"
+
+[deps]
+
+source_file="res://sfx/Berliner Philharmoniker, Claudio Abbado — Tchaikovsky_ 1812 Overture, Op. 49, TH 49.mp3"
+dest_files=["res://.godot/imported/Berliner Philharmoniker, Claudio Abbado — Tchaikovsky_ 1812 Overture, Op. 49, TH 49.mp3-dd7b2d5f6108216f482ae71e9fa57202.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

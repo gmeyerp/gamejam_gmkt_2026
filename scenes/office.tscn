@@ -411,6 +411,9 @@ visible = false
 [node name="Papers_005" parent="Office" index="56" unique_id=284771120]
 visible = false
 
+[node name="Chair_002" parent="Office" index="60" unique_id=1541923444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65083, 0.016230136, -4.375044)
+
 [connection signal="employee_fired" from="Desk/Report" to="." method="on_employee_fired"]
 
 [editable path="Office"]

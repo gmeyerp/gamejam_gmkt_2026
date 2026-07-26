@@ -5,6 +5,18 @@
 [ext_resource type="PackedScene" uid="uid://d0xifjyukvu2n" path="res://scenes/ui/computer_rulebook_ui.tscn" id="3_rulebook"]
 [ext_resource type="Script" uid="uid://dgsop8aipatjf" path="res://scripts/ui/button.gd" id="4_button"]
 [ext_resource type="FontFile" uid="uid://6cveqkjv8r3l" path="res://ui/Game-Font.ttf" id="4_kah4c"]
+[ext_resource type="Script" uid="uid://cyuthm5x24em7" path="res://scenes/ui/credits_screen.gd" id="5_yiye7"]
+[ext_resource type="Script" uid="uid://db7flvpmgt1lg" path="res://scenes/ui/link_button.gd" id="6_jdxt2"]
+
+[sub_resource type="GDScript" id="GDScript_u5ymw"]
+script/source = "extends SoundButton
+
+@onready var credits_screen: ColorRect = $\"../..\"
+
+func on_button_pressed():
+	super()
+	credits_screen.hide()
+"
 
 [node name="ComputerOsUI" type="Control" unique_id=102451917]
 layout_mode = 3
@@ -81,11 +93,144 @@ layout_mode = 2
 text = "Start Game"
 script = ExtResource("4_button")
 
+[node name="Credits" type="Button" parent="BootScreen/Center/VBox" unique_id=1681269875]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+text = "Credits"
+script = ExtResource("4_button")
+
 [node name="QuitButton" type="Button" parent="BootScreen/Center/VBox" unique_id=1003759816]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Quit"
 script = ExtResource("4_button")
+
+[node name="CreditsScreen" type="ColorRect" parent="." unique_id=425476893]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.08, 0.12, 1)
+script = ExtResource("5_yiye7")
+
+[node name="VBox" type="VBoxContainer" parent="CreditsScreen" unique_id=64328812]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 74.0
+offset_right = 239.0
+offset_bottom = 582.0
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="CreditsScreen/VBox" unique_id=1581660370]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 40
+text = "CREDITS (with links)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scripting" type="Label" parent="CreditsScreen/VBox" unique_id=202515302]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 35
+text = "Scripting"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArthurAnjos" type="Button" parent="CreditsScreen/VBox" unique_id=710310098]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Arthur Anjos"
+script = ExtResource("6_jdxt2")
+link = "https://www.linkedin.com/in/arthur-anjos-09048a421/"
+
+[node name="ArthurMordente" type="Button" parent="CreditsScreen/VBox" unique_id=1565695098]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Arthur Mordente"
+script = ExtResource("6_jdxt2")
+link = "https://www.linkedin.com/in/arthurmordente/"
+
+[node name="Gabriel" type="Button" parent="CreditsScreen/VBox" unique_id=151531668]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Gabriel Meyer"
+script = ExtResource("6_jdxt2")
+link = "https://www.linkedin.com/in/gmeyerp/"
+
+[node name="Luiz" type="Button" parent="CreditsScreen/VBox" unique_id=1595896681]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Luiz Gustavo Costa"
+script = ExtResource("6_jdxt2")
+link = "https://www.linkedin.com/in/luiz-gustavo-926696322/"
+
+[node name="VBox2" type="VBoxContainer" parent="CreditsScreen" unique_id=1531102864]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 74.0
+offset_right = 518.0
+offset_bottom = 582.0
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="CreditsScreen/VBox2" unique_id=1802510184]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 40
+text = "CREDITS (with links)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3D Modeling" type="Label" parent="CreditsScreen/VBox2" unique_id=852635329]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 35
+text = "3D Modeling"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Javelar" type="Button" parent="CreditsScreen/VBox2" unique_id=114670673]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "João Pedro Avelar"
+script = ExtResource("6_jdxt2")
+link = "https://www.linkedin.com/in/javelar/"
+
+[node name="Victor" type="Button" parent="CreditsScreen/VBox2" unique_id=1316528283]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Victor Ferraz"
+script = ExtResource("6_jdxt2")
+link = "https://www.linkedin.com/in/victor-ferraz-4109bb295/"
+
+[node name="3D Modeling2" type="Label" parent="CreditsScreen/VBox2" unique_id=162481955]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 35
+text = "Return"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="Button" parent="CreditsScreen/VBox2" unique_id=604056380]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Return"
+script = SubResource("GDScript_u5ymw")
 
 [node name="RulebookWindow" parent="." unique_id=1128787929 instance=ExtResource("3_rulebook")]
 visible = false
@@ -142,3 +287,6 @@ custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
 text = "Cancel"
 script = ExtResource("4_button")
+
+[connection signal="pressed" from="BootScreen/Center/VBox/Credits" to="CreditsScreen" method="_on_credits_pressed"]
+[connection signal="pressed" from="CreditsScreen/VBox2/Return" to="CreditsScreen" method="_on_return_pressed"]

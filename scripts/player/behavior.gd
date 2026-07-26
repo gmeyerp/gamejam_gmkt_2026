@@ -8,6 +8,7 @@ const DialogueScreen: PackedScene = preload("res://scenes/dialogue.tscn")
 @export var dialogue_area: Area3D = null 
 var new_dialogue: Node
 var moving : bool = false
+@export var route_manager : RouteManager
 
 @export_category("Dialogue Setup")
 @export var conversas: Array[Array] = [] 
@@ -145,6 +146,7 @@ func on_fired(employee: EmployeeData):
 	print("Fired: " + employee.name)
 	if (employee.name == name):
 		("Friend fired")
+		route_manager.registered_bots.erase(self)
 		if new_dialogue:
 			new_dialogue.dialogue_finished.emit()
 			new_dialogue.queue_free()

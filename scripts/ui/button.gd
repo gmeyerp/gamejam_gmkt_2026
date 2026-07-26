@@ -1,5 +1,5 @@
 extends Button
-
+class_name SoundButton
 const BUTTON_SOUND = preload("uid://n7oef61b4pw8")
 @export var unique_sound : AudioStream
 
