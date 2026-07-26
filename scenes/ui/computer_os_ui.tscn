@@ -91,7 +91,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
 theme_override_fonts/font = ExtResource("4_kah4c")
 theme_override_font_sizes/font_size = 93
-text = "LAYOFF SIMULATOR"
+text = "THE WORKPLACE"
 horizontal_alignment = 1
 vertical_alignment = 1
 

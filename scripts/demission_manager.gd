@@ -93,7 +93,8 @@ func process_decision(motive_chosen: GlobalVariables.LayoffMotive) -> void:
 			EmployeeList.add_next_round(current_employee)
 		else:
 			EmployeeList.remove_from_list(current_employee)
-	employee_fired.emit(current_employee)
+	if motive_chosen != GlobalVariables.LayoffMotive.Keep:
+		employee_fired.emit(current_employee)
 
 	current_index += 1
 	await get_tree().create_timer(1.0).timeout
