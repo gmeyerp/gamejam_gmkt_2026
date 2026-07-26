@@ -29,7 +29,11 @@ func get_average_productivity(department: GlobalVariables.Department) -> float:
 	if department == GlobalVariables.Department.Boss:
 		avg = 0.1
 	elif department == GlobalVariables.Department.HR:
-		avg = (1 - float(get_employee_number())/float(employee_list.size())) * 100
+		var total_emps: float = float(employee_list.size())
+		if total_emps > 0.0:
+			avg = (1.0 - float(get_employee_number()) / total_emps) * 100.0
+		else:
+			avg = 0.0
 	else:
 		for emp in current_employees:
 			if emp and emp.department == department:
@@ -101,7 +105,7 @@ func start_new_round() -> void:
 	layoff_rounds += 1
 	layoff_rounds = clamp(layoff_rounds,0,4)
 
-func get_layoff_round():
+func get_layoff_round() -> int:
 	return layoff_rounds
 
 func get_employee_list() -> Array[EmployeeData]:

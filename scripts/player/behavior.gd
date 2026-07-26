@@ -104,7 +104,9 @@ func _physics_process(_delta: float) -> void:
 	if points.is_empty():
 		return
 	if velocity != Vector3.ZERO:
-		look_at_from_position(position, position - velocity)
+		var dir := -velocity.normalized()
+		if absf(dir.dot(Vector3.UP)) < 0.99:
+			look_at_from_position(position, position - velocity)
 	moving = velocity != Vector3.ZERO
 
 	if index >= points.size():

@@ -19,6 +19,8 @@ func _ready() -> void:
 	initialize_dialog()
 
 func _process(delta: float) -> void:
+	if not dialogue:
+		return
 	dialogue.visible_ratio += delta * dialogue_speed
 	if Input.is_action_just_pressed("ui_accept"):
 		if dialogue.visible_ratio < 1.0:
@@ -36,7 +38,8 @@ func _process(delta: float) -> void:
 
 func initialize_dialog() -> void:
 	waiting = 0
-	dialogue.visible_ratio = 0
+	if dialogue:
+		dialogue.visible_ratio = 0
 	if data.is_empty() or not data.has(id):
 		dialogue_finished.emit()
 		queue_free() 
