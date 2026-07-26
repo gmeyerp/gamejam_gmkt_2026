@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://d0xifjyukvu2n" path="res://scenes/ui/computer_rulebook_ui.tscn" id="3_rulebook"]
 [ext_resource type="Script" uid="uid://dgsop8aipatjf" path="res://scripts/ui/button.gd" id="4_button"]
 [ext_resource type="FontFile" uid="uid://6cveqkjv8r3l" path="res://ui/Game-Font.ttf" id="4_kah4c"]
+[ext_resource type="Script" uid="uid://bel48eqrsphof" path="res://scenes/ui/configuration.gd" id="5_u5ymw"]
 [ext_resource type="Script" uid="uid://cyuthm5x24em7" path="res://scenes/ui/credits_screen.gd" id="5_yiye7"]
+[ext_resource type="Script" uid="uid://cw17bvoks04e2" path="res://scenes/ui/master_volume_slide.gd" id="6_hy3vh"]
 [ext_resource type="Script" uid="uid://db7flvpmgt1lg" path="res://scenes/ui/link_button.gd" id="6_jdxt2"]
 
 [sub_resource type="GDScript" id="GDScript_u5ymw"]
@@ -49,6 +51,12 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(120, 64)
 layout_mode = 2
 text = "Rulebook"
+script = ExtResource("4_button")
+
+[node name="Configure" type="Button" parent="Desktop/Icons" unique_id=1065697695]
+custom_minimum_size = Vector2(120, 64)
+layout_mode = 2
+text = "Configure"
 script = ExtResource("4_button")
 
 [node name="QuitIcon" type="Button" parent="Desktop/Icons" unique_id=826796448]
@@ -99,10 +107,105 @@ layout_mode = 2
 text = "Credits"
 script = ExtResource("4_button")
 
+[node name="Configue" type="Button" parent="BootScreen/Center/VBox" unique_id=33578112]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+text = "Configure"
+script = ExtResource("4_button")
+
 [node name="QuitButton" type="Button" parent="BootScreen/Center/VBox" unique_id=1003759816]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Quit"
+script = ExtResource("4_button")
+
+[node name="Configuration" type="ColorRect" parent="." unique_id=1525717513]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.08, 0.12, 1)
+script = ExtResource("5_u5ymw")
+
+[node name="Center" type="CenterContainer" parent="Configuration" unique_id=1988685651]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -26.0
+offset_right = 6.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Configuration/Center" unique_id=783797080]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Configuration/Center/VBox" unique_id=543742709]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 93
+text = "Audio Control"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master" type="Label" parent="Configuration/Center/VBox" unique_id=821961442]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 35
+text = "Game Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolume" type="HSlider" parent="Configuration/Center/VBox" unique_id=1807809070]
+layout_mode = 2
+step = 5.0
+value = 50.0
+script = ExtResource("6_hy3vh")
+
+[node name="UI" type="Label" parent="Configuration/Center/VBox" unique_id=2031860961]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 35
+text = "UI Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIVolume" type="HSlider" parent="Configuration/Center/VBox" unique_id=897059403]
+visible = false
+layout_mode = 2
+step = 5.0
+value = 50.0
+
+[node name="BGM" type="Label" parent="Configuration/Center/VBox" unique_id=553957593]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 35
+text = "BGM Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGMVolume" type="HSlider" parent="Configuration/Center/VBox" unique_id=229239504]
+visible = false
+layout_mode = 2
+step = 5.0
+value = 50.0
+
+[node name="Return" type="Button" parent="Configuration/Center/VBox" unique_id=520147362]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+text = "Return"
 script = ExtResource("4_button")
 
 [node name="CreditsScreen" type="ColorRect" parent="." unique_id=425476893]
@@ -288,5 +391,12 @@ layout_mode = 2
 text = "Cancel"
 script = ExtResource("4_button")
 
+[connection signal="pressed" from="Desktop/Icons/Configure" to="Configuration" method="_on_configue_pressed"]
 [connection signal="pressed" from="BootScreen/Center/VBox/Credits" to="CreditsScreen" method="_on_credits_pressed"]
+[connection signal="pressed" from="BootScreen/Center/VBox/Configue" to="Configuration" method="_on_configue_pressed"]
+[connection signal="value_changed" from="Configuration/Center/VBox/MasterVolume" to="Configuration" method="_on_master_volume_value_changed"]
+[connection signal="visibility_changed" from="Configuration/Center/VBox/MasterVolume" to="Configuration/Center/VBox/MasterVolume" method="_on_visibility_changed"]
+[connection signal="value_changed" from="Configuration/Center/VBox/UIVolume" to="Configuration" method="_on_ui_volume_value_changed"]
+[connection signal="value_changed" from="Configuration/Center/VBox/BGMVolume" to="Configuration" method="_on_bgm_volume_value_changed"]
+[connection signal="pressed" from="Configuration/Center/VBox/Return" to="Configuration" method="_on_return_pressed"]
 [connection signal="pressed" from="CreditsScreen/VBox2/Return" to="CreditsScreen" method="_on_return_pressed"]
