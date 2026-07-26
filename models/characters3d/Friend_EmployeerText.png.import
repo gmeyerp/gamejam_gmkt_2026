@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3yye5fxte3if"
-path.s3tc="res://.godot/imported/Employeer_EmployeerText.png-e824ac737f96a9d4affa8b188010f6ed.s3tc.ctex"
+uid="uid://rxc1j5mk0yn3"
+path.s3tc="res://.godot/imported/Friend_EmployeerText.png-3e89ff3cd02adae77caec86984e2810e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "698e4dbe5c618c7d28a9ac562034ec00"
+"md5": "569cd4170580fb694c4e9b0d2297c170"
 }
 
 [deps]
 
-source_file="res://models/characters3D/Employeer_EmployeerText.png"
-dest_files=["res://.godot/imported/Employeer_EmployeerText.png-e824ac737f96a9d4affa8b188010f6ed.s3tc.ctex"]
+source_file="res://models/characters3d/Friend_EmployeerText.png"
+dest_files=["res://.godot/imported/Friend_EmployeerText.png-3e89ff3cd02adae77caec86984e2810e.s3tc.ctex"]
 
 [params]
 
