@@ -7,6 +7,7 @@ const DialogueScreen: PackedScene = preload("res://scenes/dialogue.tscn")
 @export var hud: CanvasLayer = null
 @export var dialogue_area: Area3D = null 
 var new_dialogue: Node
+var moving : bool = false
 
 @export_category("Dialogue Setup")
 @export var conversas: Array[Array] = [] 
@@ -101,9 +102,13 @@ func reset_dialogue_area() -> void:
 func _physics_process(_delta: float) -> void:
 	if points.is_empty():
 		return
+	
+	look_at_from_position(position, position - velocity)
+	moving = velocity != Vector3.ZERO
 
 	if index >= points.size():
 		velocity = Vector3.ZERO
+		rotation = points[0].rotation
 		set_physics_process(false) 
 		return
 

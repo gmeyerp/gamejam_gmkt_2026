@@ -18,13 +18,64 @@
 [ext_resource type="Resource" uid="uid://djqa2t6kdqsxp" path="res://resources/employee_data/special/you.tres" id="12_rysoc"]
 [ext_resource type="Script" uid="uid://c12vib6ytgl13" path="res://scripts/player/behavior_friends.gd" id="13_kvuet"]
 [ext_resource type="Script" uid="uid://fd3bqgn6mebd" path="res://scripts/player/route_manager.gd" id="16_ca42v"]
-[ext_resource type="PackedScene" uid="uid://bo7xash43lh6f" path="res://Animation/employeer_animation.tscn" id="17_264po"]
+[ext_resource type="PackedScene" uid="uid://dnfb5bit5o3x2" path="res://models/characters3d/Employeer.glb" id="17_264po"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0i88t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0i88t"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0i88t"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bt5mj"]
+animation = &"Apresentation"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hda73"]
+animation = &"IdleTalk"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gesda"]
+animation = &"Walk"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_un5gr"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "velocity.x != 0.0 or velocity.y != 0.0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t0rix"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e1j6l"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "velocity.x == 0.0 and velocity.y == 0.0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pl11u"]
+xfade_time = 0.25
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bhx41"]
+states/Apresentation/node = SubResource("AnimationNodeAnimation_bt5mj")
+states/Apresentation/position = Vector2(646, 129.71428)
+states/IdleTalk/node = SubResource("AnimationNodeAnimation_hda73")
+states/IdleTalk/position = Vector2(434.3265, 188.57143)
+states/Walk/node = SubResource("AnimationNodeAnimation_gesda")
+states/Walk/position = Vector2(434.5714, 62.285713)
+transitions = ["IdleTalk", "Walk", SubResource("AnimationNodeStateMachineTransition_un5gr"), "Start", "IdleTalk", SubResource("AnimationNodeStateMachineTransition_t0rix"), "Walk", "Apresentation", SubResource("AnimationNodeStateMachineTransition_e1j6l"), "Apresentation", "IdleTalk", SubResource("AnimationNodeStateMachineTransition_pl11u")]
 
 [node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager", "post_processing")]
 script = ExtResource("1_yqjtg")
@@ -301,19 +352,25 @@ shape = SubResource("CapsuleShape3D_0i88t")
 visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Employeer" parent="Boss" unique_id=1205178136 instance=ExtResource("17_264po")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.92056435, 0)
+[node name="Employeer" parent="Boss" unique_id=1224916238 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="Skeleton3D" parent="Boss/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1205178136, 445192492) index="0" unique_id=255565774]
-bones/1/rotation = Quaternion(-0.7064923, 0.029473798, 0.029473815, 0.7064923)
-bones/2/rotation = Quaternion(0.04393259, -0.22046004, 0.9216582, -0.31624928)
-bones/3/rotation = Quaternion(0.41636992, -0.057484288, 0.07698868, 0.90410423)
-bones/4/rotation = Quaternion(-2.3002302e-07, -6.8737315e-08, 0.9701408, 0.24254246)
-bones/5/rotation = Quaternion(-1.284584e-08, -9.3205905e-08, 0.13653165, 0.99063575)
-bones/6/rotation = Quaternion(8.340962e-10, -2.4537222e-08, 0.15975639, 0.98715645)
+[node name="Skeleton3D" parent="Boss/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1224916238, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7051627, 0.052398205, 0.052398212, 0.7051627)
+bones/2/rotation = Quaternion(0.057437833, -0.21733287, 0.90041256, -0.3724574)
+bones/3/rotation = Quaternion(0.4169487, -0.0548525, -0.069819316, 0.904583)
+bones/4/rotation = Quaternion(-2.2615589e-07, -2.2338803e-08, 0.9757129, 0.2190536)
+bones/5/rotation = Quaternion(-4.027923e-09, -9.40007e-08, 0.0428108, 0.9990833)
+bones/6/rotation = Quaternion(-1.9843217e-16, -2.0740497e-08, 0.18121864, 0.9834429)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
 
-[node name="AnimationTree" parent="Boss/Employeer" index="2" unique_id=1900479705]
-advance_expression_base_node = NodePath("../..")
+[node name="AnimationTree" type="AnimationTree" parent="Boss" unique_id=1008832941]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
 
 [node name="Points_Friends" type="Node3D" parent="." unique_id=1731595884]
 
@@ -321,25 +378,25 @@ advance_expression_base_node = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
 
 [node name="Point_Mid_1-2" type="Node3D" parent="Points_Friends" unique_id=375744089]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.126959, 1, -7.967558)
 
 [node name="Point_Mesa1" type="Node3D" parent="Points_Friends" unique_id=864979434]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.637346, 1, -8.827795)
 
 [node name="Point_Mesa2" type="Node3D" parent="Points_Friends" unique_id=180841914]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -3.6)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.307807, 1, -4.319396)
 
 [node name="Point_Mid_3-4" type="Node3D" parent="Points_Friends" unique_id=1682950341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9626381, 1, -7.8351)
 
 [node name="Point_Mesa3" type="Node3D" parent="Points_Friends" unique_id=1257615142]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.678386, 1, -8.839458)
 
 [node name="Point_Mesa4" type="Node3D" parent="Points_Friends" unique_id=1469677592]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3.6)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.2807727, 1, -3.9995816)
 
 [node name="Friend_1" type="CharacterBody3D" parent="." unique_id=1591275231 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.681011, 0.9999999, -8.666029)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
@@ -354,10 +411,31 @@ points = [NodePath("../Points_Friends/Point_Mesa1"), NodePath("../Points_Friends
 shape = SubResource("CapsuleShape3D_0i88t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_1" unique_id=1104494850]
+visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
 
+[node name="Employeer" parent="Friend_1" unique_id=755122415 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Skeleton3D" parent="Friend_1/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(755122415, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7054303, 0.048663422, 0.048663422, 0.7054303)
+bones/2/rotation = Quaternion(0.05465385, -0.21804965, 0.905102, -0.36091226)
+bones/3/rotation = Quaternion(0.41009903, -0.05158514, -0.19687422, 0.88904345)
+bones/4/rotation = Quaternion(-2.2245429e-07, -2.4811941e-08, 0.95811784, 0.2863743)
+bones/5/rotation = Quaternion(-2.6187099e-08, -9.638135e-08, 0.11664688, 0.99317354)
+bones/6/rotation = Quaternion(2.8434266e-16, 1.0900994e-08, 0.07542862, 0.9971512)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="Friend_1" unique_id=1236172083]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
+
 [node name="Friend_2" type="CharacterBody3D" parent="." unique_id=1261741946 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -3.6)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.2425127, 1, -4.3562374)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
@@ -372,10 +450,31 @@ points = [NodePath("../Points_Friends/Point_Mesa2"), NodePath("../Points_Friends
 shape = SubResource("CapsuleShape3D_0i88t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_2" unique_id=815519738]
+visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
 
+[node name="Employeer" parent="Friend_2" unique_id=418108568 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.81948256, 0)
+
+[node name="Skeleton3D" parent="Friend_2/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(418108568, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7049684, -0.054950815, -0.054950815, 0.7049684)
+bones/2/rotation = Quaternion(0.01866699, -0.22401837, 0.9515588, -0.20976938)
+bones/3/rotation = Quaternion(0.41349345, -0.052924927, -0.14904845, 0.89666414)
+bones/4/rotation = Quaternion(-2.0676224e-07, -6.37774e-08, 0.8685711, 0.49556464)
+bones/5/rotation = Quaternion(-5.196939e-08, -1.0583037e-07, 0.06307703, 0.99800867)
+bones/6/rotation = Quaternion(1.2805982e-09, -7.2033988e-09, 0.00019181755, 1)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="Friend_2" unique_id=854272447]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
+
 [node name="Friend_3" type="CharacterBody3D" parent="." unique_id=1544350430 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.668496, 1, -8.9860115)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
@@ -390,10 +489,31 @@ points = [NodePath("../Points_Friends/Point_Mesa3"), NodePath("../Points_Friends
 shape = SubResource("CapsuleShape3D_0i88t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_3" unique_id=40470540]
+visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
 
+[node name="Employeer" parent="Friend_3" unique_id=1361534793 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8904155, 0)
+
+[node name="Skeleton3D" parent="Friend_3/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1361534793, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7062819, -0.03414576, -0.034145776, 0.7062819)
+bones/2/rotation = Quaternion(0.035766076, -0.22193131, 0.9327022, -0.28201798)
+bones/3/rotation = Quaternion(0.4011737, -0.04875879, -0.28489342, 0.8692054)
+bones/4/rotation = Quaternion(-2.024795e-07, 5.533381e-08, 0.91311085, 0.4077115)
+bones/5/rotation = Quaternion(3.659055e-08, -8.762538e-08, -0.089301094, 0.99600476)
+bones/6/rotation = Quaternion(8.81504e-10, 2.4801988e-08, -0.15823466, 0.98740155)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="Friend_3" unique_id=1332287552]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
+
 [node name="Friend_4" type="CharacterBody3D" parent="." unique_id=1857943544 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3.6)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.156408, 1, -4.1391563)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
@@ -408,7 +528,27 @@ points = [NodePath("../Points_Friends/Point_Mesa4"), NodePath("../Points_Friends
 shape = SubResource("CapsuleShape3D_0i88t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_4" unique_id=992208121]
+visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
+
+[node name="Employeer" parent="Friend_4" unique_id=1356275920 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Skeleton3D" parent="Friend_4/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1356275920, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7071068, 5.3385094e-08, 5.3385094e-08, 0.7071068)
+bones/2/rotation = Quaternion(0.031280253, -0.22260787, 0.93820333, -0.26313853)
+bones/3/rotation = Quaternion(0.416326, -0.05439842, -0.089879766, 0.9031253)
+bones/4/rotation = Quaternion(-2.2452242e-07, -3.514568e-08, 0.9616987, 0.2741088)
+bones/5/rotation = Quaternion(1.7389217e-14, -9.408693e-08, -8.940698e-08, 1)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="Friend_4" unique_id=1417270146]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
 
 [node name="Route_Manager" type="Node3D" parent="." unique_id=567275079]
 script = ExtResource("16_ca42v")
@@ -421,3 +561,7 @@ max_interval = 80.0
 [connection signal="employee_selected" from="DemissionManager" to="Office/Desk/Report" method="set_employee"]
 
 [editable path="Boss/Employeer"]
+[editable path="Friend_1/Employeer"]
+[editable path="Friend_2/Employeer"]
+[editable path="Friend_3/Employeer"]
+[editable path="Friend_4/Employeer"]
