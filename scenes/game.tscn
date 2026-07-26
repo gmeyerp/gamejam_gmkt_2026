@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://djqa2t6kdqsxp" path="res://resources/employee_data/special/you.tres" id="12_rysoc"]
 [ext_resource type="Script" uid="uid://c12vib6ytgl13" path="res://scripts/player/behavior_friends.gd" id="13_kvuet"]
 [ext_resource type="Script" uid="uid://fd3bqgn6mebd" path="res://scripts/player/route_manager.gd" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://bo7xash43lh6f" path="res://Animation/employeer_animation.tscn" id="17_264po"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0i88t"]
 
@@ -297,7 +298,22 @@ points = [NodePath("../Point_Chefe/Point_MesaChefe"), NodePath("../Point_Chefe/P
 shape = SubResource("CapsuleShape3D_0i88t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boss" unique_id=305190626]
+visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
+
+[node name="Employeer" parent="Boss" unique_id=1205178136 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.92056435, 0)
+
+[node name="Skeleton3D" parent="Boss/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1205178136, 445192492) index="0" unique_id=255565774]
+bones/1/rotation = Quaternion(-0.7064923, 0.029473798, 0.029473815, 0.7064923)
+bones/2/rotation = Quaternion(0.04393259, -0.22046004, 0.9216582, -0.31624928)
+bones/3/rotation = Quaternion(0.41636992, -0.057484288, 0.07698868, 0.90410423)
+bones/4/rotation = Quaternion(-2.3002302e-07, -6.8737315e-08, 0.9701408, 0.24254246)
+bones/5/rotation = Quaternion(-1.284584e-08, -9.3205905e-08, 0.13653165, 0.99063575)
+bones/6/rotation = Quaternion(8.340962e-10, -2.4537222e-08, 0.15975639, 0.98715645)
+
+[node name="AnimationTree" parent="Boss/Employeer" index="2" unique_id=1900479705]
+advance_expression_base_node = NodePath("../..")
 
 [node name="Points_Friends" type="Node3D" parent="." unique_id=1731595884]
 
@@ -403,3 +419,5 @@ max_interval = 80.0
 [connection signal="pressed" from="EndMenu/Control/StartButton" to="GameplayController" method="on_start_game_pressed"]
 [connection signal="pressed" from="EndMenu/Control/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="employee_selected" from="DemissionManager" to="Office/Desk/Report" method="set_employee"]
+
+[editable path="Boss/Employeer"]

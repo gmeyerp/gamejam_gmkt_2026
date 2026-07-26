@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bo7xash43lh6f"]
+
+[ext_resource type="PackedScene" uid="uid://dnfb5bit5o3x2" path="res://models/characters3d/Employeer.glb" id="1_nm6i5"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1mk6m"]
+animation = &"Apresentation"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4snkc"]
+animation = &"IdleTalk"
+use_custom_timeline = true
+timeline_length = 2.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tcpfq"]
+animation = &"Walk"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p1g8i"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_luexo"]
+xfade_time = 0.5
+advance_expression = "velocity == Vector3.ZERO"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hk6bb"]
+xfade_time = 0.5
+advance_expression = "velocity != Vector3.ZERO"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h25hv"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y5rqy"]
+xfade_time = 2.5
+switch_mode = 2
+advance_mode = 2
+advance_expression = "velocity != Vector3.ZERO"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_80cng"]
+states/Apresentation/node = SubResource("AnimationNodeAnimation_1mk6m")
+states/Apresentation/position = Vector2(554, 82)
+states/IdleTalk/node = SubResource("AnimationNodeAnimation_4snkc")
+states/IdleTalk/position = Vector2(275, 82)
+states/Start/position = Vector2(110, 82)
+states/Walk/node = SubResource("AnimationNodeAnimation_tcpfq")
+states/Walk/position = Vector2(354, 175)
+transitions = ["Start", "IdleTalk", SubResource("AnimationNodeStateMachineTransition_p1g8i"), "Walk", "IdleTalk", SubResource("AnimationNodeStateMachineTransition_luexo"), "IdleTalk", "Walk", SubResource("AnimationNodeStateMachineTransition_hk6bb"), "Walk", "Apresentation", SubResource("AnimationNodeStateMachineTransition_h25hv"), "Apresentation", "IdleTalk", SubResource("AnimationNodeStateMachineTransition_y5rqy")]
+graph_offset = Vector2(5, 15)
+
+[node name="Employeer" unique_id=1205178136 instance=ExtResource("1_nm6i5")]
+
+[node name="Skeleton3D" parent="EmployeerRig" parent_id_path=PackedInt32Array(445192492) index="0" unique_id=255565774]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.70639026, -0.031824645, -0.031824645, 0.70639026)
+bones/2/rotation = Quaternion(0.022545883, -0.22366133, 0.94778115, -0.2262262)
+bones/3/rotation = Quaternion(0.41780525, -0.056135166, -0.0065773684, 0.906777)
+bones/4/rotation = Quaternion(-2.1111076e-07, -5.2619427e-08, 0.8935573, 0.44894928)
+bones/5/rotation = Quaternion(-5.7704707e-08, -1.052837e-07, 0.12424127, 0.99225205)
+bones/6/rotation = Quaternion(-2.228227e-16, -1.7576808e-08, 0.08341055, 0.99651533)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1900479705]
+tree_root = SubResource("AnimationNodeStateMachine_80cng")
+anim_player = NodePath("../AnimationPlayer")
