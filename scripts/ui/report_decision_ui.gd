@@ -30,6 +30,7 @@ func _ready() -> void:
 func show_employee(employee: EmployeeData) -> void:
 	visible = true
 	if employee and not employee.name.is_empty():
+		var comment := _get_employee_comment(employee)
 		_title.text = "Decision for — %s" % employee.name
 		employee_name.text = "Report
 		%s | Age: %d" % [employee.name, employee.age]
@@ -38,7 +39,19 @@ func show_employee(employee: EmployeeData) -> void:
 		Wage: %.2f
 		Comment: %s
 		" % [GlobalVariables.Department.keys()[employee.department],
-		employee.production_rate, employee.salary, employee.commentary[EmployeeList.get_layoff_round()]]
+		employee.production_rate, employee.salary, comment]
 	
 	else:
-		_title.text = "Report — %s" % employee.name
+		if employee:
+			_title.text = "Report — %s" % employee.name
+		else:
+			_title.text = "Report"
+
+
+func _get_employee_comment(employee: EmployeeData) -> String:
+	if not employee or employee.commentary.is_empty():
+		return ""
+	var round_idx: int = EmployeeList.get_layoff_round()
+	if round_idx >= 0 and round_idx < employee.commentary.size():
+		return employee.commentary[round_idx]
+	return employee.commentary[employee.commentary.size() - 1]

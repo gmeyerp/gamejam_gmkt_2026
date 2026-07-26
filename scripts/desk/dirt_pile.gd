@@ -14,7 +14,6 @@ func pile():
 
 func clean():
 	print(name + " clean")
-	var piles = get_children()
-	for i in range(piles.size(),-1):
-		piles[i].queue_free()
+	for child in get_children():
+		child.queue_free()
 	counter = 0
