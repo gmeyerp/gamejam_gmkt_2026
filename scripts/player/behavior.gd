@@ -102,8 +102,8 @@ func reset_dialogue_area() -> void:
 func _physics_process(_delta: float) -> void:
 	if points.is_empty():
 		return
-	
-	look_at_from_position(position, position - velocity)
+	if velocity != Vector3.ZERO:
+		look_at_from_position(position, position - velocity)
 	moving = velocity != Vector3.ZERO
 
 	if index >= points.size():

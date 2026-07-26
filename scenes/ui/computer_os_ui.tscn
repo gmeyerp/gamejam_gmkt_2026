@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://tvyboa8w64a8" path="res://scripts/ui/computer_os_ui.gd" id="2_script"]
 [ext_resource type="PackedScene" uid="uid://d0xifjyukvu2n" path="res://scenes/ui/computer_rulebook_ui.tscn" id="3_rulebook"]
 [ext_resource type="Script" uid="uid://dgsop8aipatjf" path="res://scripts/ui/button.gd" id="4_button"]
+[ext_resource type="FontFile" uid="uid://6cveqkjv8r3l" path="res://ui/Game-Font.ttf" id="4_kah4c"]
 
 [node name="ComputerOsUI" type="Control" unique_id=102451917]
 layout_mode = 3
@@ -67,9 +68,12 @@ theme_override_constants/separation = 16
 
 [node name="Title" type="Label" parent="BootScreen/Center/VBox" unique_id=1637588712]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+theme_override_fonts/font = ExtResource("4_kah4c")
+theme_override_font_sizes/font_size = 93
 text = "LAYOFF SIMULATOR"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="BootScreen/Center/VBox" unique_id=1194275880]
 custom_minimum_size = Vector2(200, 40)
@@ -84,6 +88,7 @@ text = "Quit"
 script = ExtResource("4_button")
 
 [node name="RulebookWindow" parent="." unique_id=1128787929 instance=ExtResource("3_rulebook")]
+visible = false
 layout_mode = 1
 
 [node name="QuitConfirmDialog" type="ColorRect" parent="." unique_id=1854294159]

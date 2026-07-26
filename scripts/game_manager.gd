@@ -13,10 +13,10 @@ class_name GameManager
 @onready var office: EnvironmentManager = $Office
 @onready var route_manager: RouteManager = $Route_Manager
 
-@onready var friend_1: RouteAutomation = $Friend_1
-@onready var friend_2: RouteAutomation = $Friend_2
-@onready var friend_3: RouteAutomation = $Friend_3
-@onready var friend_4: RouteAutomation = $Friend_4
+@onready var friend_1: RouteAutomation = $Erika
+@onready var friend_2: RouteAutomation = $Jake
+@onready var friend_3: RouteAutomation = $Larry
+@onready var friend_4: RouteAutomation = $Jeff
 @onready var boss: Behavior = $Boss
 
 var score: int = 0

@@ -5,11 +5,28 @@
 [ext_resource type="Resource" uid="uid://cexp2a7f0m6yw" path="res://resources/employee_data/round0/cheryl.tres" id="3_es7cj"]
 [ext_resource type="Resource" uid="uid://hndwv0451o4n" path="res://resources/employee_data/round0/craig.tres" id="4_rn3am"]
 [ext_resource type="Resource" uid="uid://d0rwtscje5fo0" path="res://resources/employee_data/round0/ron.tres" id="5_m76vs"]
+[ext_resource type="Resource" uid="uid://dl51jbwh53cny" path="res://resources/employee_data/round0/scott.tres" id="6_yy7q2"]
+[ext_resource type="Resource" uid="uid://siilngpci85a" path="res://resources/employee_data/round1/april.tres" id="7_evbfy"]
+[ext_resource type="Resource" uid="uid://dr0mo1yohhig6" path="res://resources/employee_data/round1/cyril.tres" id="8_i748e"]
+[ext_resource type="Resource" uid="uid://b2apcstk5hx5s" path="res://resources/employee_data/round1/kevin.tres" id="9_cq2da"]
+[ext_resource type="Resource" uid="uid://dha5os7ugoljs" path="res://resources/employee_data/round1/sterling.tres" id="10_sf4ai"]
+[ext_resource type="Resource" uid="uid://r2aloumm8mhr" path="res://resources/employee_data/round2/amy.tres" id="11_a7qov"]
+[ext_resource type="Resource" uid="uid://bjk2ihdxwooey" path="res://resources/employee_data/round2/creed.tres" id="12_e8ml1"]
+[ext_resource type="Resource" uid="uid://b0wkjmnbyvcfj" path="res://resources/employee_data/round2/jim.tres" id="13_thf3g"]
+[ext_resource type="Resource" uid="uid://pl84elsu5ioi" path="res://resources/employee_data/round3/lana.tres" id="14_pcy35"]
+[ext_resource type="Resource" uid="uid://c3i1ysreum4qw" path="res://resources/employee_data/round3/pam.tres" id="15_alh4p"]
+[ext_resource type="Resource" uid="uid://hbwsn5vscycb" path="res://resources/employee_data/round3/stanley.tres" id="16_7c0bl"]
+[ext_resource type="Resource" uid="uid://dvwa4ws755h41" path="res://resources/employee_data/round4/malory.tres" id="17_026jq"]
+[ext_resource type="Resource" uid="uid://cwemtvj0vetrw" path="res://resources/employee_data/round4/ray.tres" id="18_r7x2n"]
 [ext_resource type="Resource" uid="uid://sjf6yjlk2pie" path="res://resources/employee_data/special/boss.tres" id="19_m76vs"]
+[ext_resource type="Resource" uid="uid://dvdccxdjegnly" path="res://resources/employee_data/special/erika.tres" id="19_noqo4"]
+[ext_resource type="Resource" uid="uid://cnpq85j5sat33" path="res://resources/employee_data/special/jake.tres" id="20_rhssi"]
 [ext_resource type="Resource" uid="uid://djqa2t6kdqsxp" path="res://resources/employee_data/special/you.tres" id="20_rv34t"]
+[ext_resource type="Resource" uid="uid://c8xapk3ab60mk" path="res://resources/employee_data/special/jeff.tres" id="21_boh7m"]
+[ext_resource type="Resource" uid="uid://xp8qe8amfswf" path="res://resources/employee_data/special/larry.tres" id="22_6thyw"]
 
 [node name="EmployeeList" type="Node" unique_id=1547746916]
 script = ExtResource("1_fe0eh")
-employee_list = Array[ExtResource("2_epcra")]([ExtResource("3_es7cj"), ExtResource("4_rn3am"), ExtResource("5_m76vs")])
+employee_list = Array[ExtResource("2_epcra")]([ExtResource("3_es7cj"), ExtResource("4_rn3am"), ExtResource("5_m76vs"), ExtResource("6_yy7q2"), ExtResource("7_evbfy"), ExtResource("8_i748e"), ExtResource("9_cq2da"), ExtResource("10_sf4ai"), ExtResource("11_a7qov"), ExtResource("12_e8ml1"), ExtResource("13_thf3g"), ExtResource("14_pcy35"), ExtResource("15_alh4p"), ExtResource("16_7c0bl"), ExtResource("17_026jq"), ExtResource("18_r7x2n"), ExtResource("19_noqo4"), ExtResource("20_rhssi"), ExtResource("21_boh7m"), ExtResource("22_6thyw")])
 boss = ExtResource("19_m76vs")
 you = ExtResource("20_rv34t")
