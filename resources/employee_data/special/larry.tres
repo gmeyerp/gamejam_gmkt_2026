@@ -10,4 +10,5 @@ layoff_round = 4
 layoff_motive = 2
 production_rate = 94.0
 salary = 33.0
+commentary = Array[String](["He's new here. Took your place when you went to HR.", "He doesn't talk much, but is super focused on his assignments.", "Yesterday I saw him staring at me while I had lunch. I thought it was super weird. But after that he told me I had a sausa stain on my shirt. Embarassing.", "He talked the boss into letting him choose today's playlist.", "I heard his glasses are fake."])
 metadata/_custom_type_script = "uid://d2272qde40201"

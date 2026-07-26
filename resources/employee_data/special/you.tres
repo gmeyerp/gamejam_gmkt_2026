@@ -7,4 +7,5 @@ script = ExtResource("1_vi6b6")
 name = "You"
 age = 40
 department = 4
+commentary = Array[String](["It's you.", "It's you.", "It's you.", "It's you.", "It's you. Maybe it's time to go."])
 metadata/_custom_type_script = "uid://d2272qde40201"

@@ -10,4 +10,5 @@ layoff_round = 4
 layoff_motive = 1
 production_rate = 30.0
 salary = 22.0
+commentary = Array[String](["Sweeite, can you see me? I'm behind your computer.", "I don't like your new desk layout. I can barely see you.", "Hey sweetie, can I have a copy of this report?", "Oh sweetie, I'm sorry the boss kept you in front on him. No more funsies, right?", "Is your clock working? Mine is weird."])
 metadata/_custom_type_script = "uid://d2272qde40201"

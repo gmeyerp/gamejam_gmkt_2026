@@ -10,4 +10,6 @@ layoff_round = 4
 layoff_motive = 1
 production_rate = 65.0
 salary = 25.0
+commentary = Array[String](["Did you like my new haircut? I got it for Annie's birthday.", "It's nice that boss placed you there today. I missed you while you were in the other floor.", "He's distracted by you and is distracting you. Stop chatting and go to work.
+- Boss", "He's so funny. I can see why you chose him as Annie's godfather.", "This is my invitation for my house warming party. Down payment was earlier today, I'm so excited."])
 metadata/_custom_type_script = "uid://d2272qde40201"
