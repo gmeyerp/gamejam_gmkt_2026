@@ -12,6 +12,7 @@ class_name GameManager
 @onready var game_hud: CanvasLayer = $GameHUD
 @onready var office: EnvironmentManager = $Office
 @onready var route_manager: RouteManager = $Route_Manager
+@onready var bgm: AudioStreamPlayer = $BGM
 
 @onready var friend_1: RouteAutomation = $Erika
 @onready var friend_2: RouteAutomation = $Jake
@@ -69,6 +70,7 @@ func game_start() -> void:
 	update_employee_number()
 	office.clear_office()
 	connect_friends()
+	bgm.play()
 	if desk and desk.clock:
 		desk.clock.reset_clock()
 
@@ -155,3 +157,7 @@ func update_employee_number():
 func on_employee_fired():
 	print("Employee fired")
 	update_employee_number()
+
+
+func _on_reset_button_pressed() -> void:
+	get_tree().reload_current_scene()

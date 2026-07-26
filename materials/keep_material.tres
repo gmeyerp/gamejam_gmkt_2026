@@ -4,5 +4,6 @@
 
 [resource]
 transparency = 1
+shading_mode = 0
 albedo_color = Color(0.2627451, 0.5568628, 0.1254902, 1)
 albedo_texture = ExtResource("1_iorjg")

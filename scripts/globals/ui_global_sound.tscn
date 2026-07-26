@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://cd8dj8jkfanrt" path="res://scripts/globals/ui_global_sound.gd" id="1_su482"]
 
 [node name="UIGlobalSound" type="AudioStreamPlayer" unique_id=2061523034]
+bus = &"UI"
 script = ExtResource("1_su482")

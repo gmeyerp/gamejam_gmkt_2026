@@ -39,7 +39,7 @@ func _start_next_bot_route() -> void:
 	if registered_bots.is_empty():
 		print("Unregistered bot")
 		return
-
+	
 	current_bot = registered_bots.pick_random()
 	
 	current_bot.execute_route()
