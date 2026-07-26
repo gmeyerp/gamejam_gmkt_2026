@@ -41,7 +41,7 @@ loop_mode = 0
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hda73"]
 animation = &"IdleTalk"
 use_custom_timeline = true
-timeline_length = 1.0
+timeline_length = 1.5
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 1
@@ -371,11 +371,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="Boss/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1224916238, 1346233208) index="0" unique_id=1490177150]
 bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
-bones/1/rotation = Quaternion(-0.7071068, 5.3385094e-08, 5.3385094e-08, 0.7071068)
-bones/2/rotation = Quaternion(0.031280253, -0.22260787, 0.93820333, -0.26313853)
-bones/3/rotation = Quaternion(0.416326, -0.05439842, -0.089879766, 0.9031253)
-bones/4/rotation = Quaternion(-2.2452242e-07, -3.514568e-08, 0.9616987, 0.2741088)
-bones/5/rotation = Quaternion(1.7389217e-14, -9.408693e-08, -8.940698e-08, 1)
+bones/1/rotation = Quaternion(-0.7070868, 0.005314346, 0.0053143427, 0.7070868)
+bones/2/rotation = Quaternion(0.051815685, -0.21874145, 0.9097156, -0.34912014)
+bones/3/rotation = Quaternion(0.40514836, -0.049939983, -0.24989213, 0.8780175)
+bones/4/rotation = Quaternion(-2.0837804e-07, 7.8212764e-08, 0.95116675, 0.3086778)
+bones/5/rotation = Quaternion(2.9967783e-08, -8.798375e-08, -0.018872106, 0.99982196)
+bones/6/rotation = Quaternion(9.911143e-10, 2.6583981e-08, -0.0985513, 0.99513197)
 bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
 bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
 
@@ -473,12 +474,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="Jake/Maromba/EmployeerRig" parent_id_path=PackedInt32Array(984233602, 329756647) index="0" unique_id=1113518878]
 bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
-bones/1/rotation = Quaternion(-0.7064282, 0.030971842, 0.03097185, 0.7064282)
-bones/2/rotation = Quaternion(0.05390327, -0.21823639, 0.90633845, -0.357796)
-bones/3/rotation = Quaternion(0.4083572, -0.05097673, -0.21712999, 0.8851556)
-bones/4/rotation = Quaternion(-2.2238001e-07, -2.5245331e-08, 0.9575608, 0.28823176)
-bones/5/rotation = Quaternion(-6.3784853e-09, -9.387047e-08, 0.06779369, 0.9976994)
-bones/6/rotation = Quaternion(3.3121193e-16, 1.08985265e-08, -0.011459016, 0.9999344)
+bones/1/rotation = Quaternion(-0.7071068, 5.3385094e-08, 5.3385094e-08, 0.7071068)
+bones/2/rotation = Quaternion(0.031280253, -0.22260787, 0.93820333, -0.26313853)
+bones/3/rotation = Quaternion(0.416326, -0.05439842, -0.089879766, 0.9031253)
+bones/4/rotation = Quaternion(-2.2452242e-07, -3.514568e-08, 0.9616987, 0.2741088)
+bones/5/rotation = Quaternion(1.7389217e-14, -9.408693e-08, -8.940698e-08, 1)
 bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
 bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
 
@@ -513,12 +513,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="Larry/Nerd/EmployeerRig" parent_id_path=PackedInt32Array(1720672322, 1146457786) index="0" unique_id=1531632278]
 bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
-bones/1/rotation = Quaternion(-0.707094, -0.0042582005, -0.004258197, 0.707094)
-bones/2/rotation = Quaternion(0.02934794, -0.2228708, 0.9404508, -0.25498974)
-bones/3/rotation = Quaternion(0.4159163, -0.057647787, 0.08915619, 0.9031842)
-bones/4/rotation = Quaternion(-2.1648833e-07, -3.542548e-08, 0.9262797, 0.37683684)
-bones/5/rotation = Quaternion(-6.030001e-08, -1.0493269e-07, 0.15154985, 0.9884497)
-bones/6/rotation = Quaternion(-3.533901e-16, -1.7551425e-08, 0.114587046, 0.9934133)
+bones/1/rotation = Quaternion(-0.7046771, -0.058567557, -0.058567557, 0.7046772)
+bones/2/rotation = Quaternion(0.01820382, -0.2240565, 0.95199054, -0.20780155)
+bones/3/rotation = Quaternion(0.41107932, -0.051946923, -0.18442327, 0.8912371)
+bones/4/rotation = Quaternion(-2.061118e-07, -6.529736e-08, 0.86491376, 0.5019205)
+bones/5/rotation = Quaternion(-4.982467e-08, -1.0594449e-07, 0.040171266, 0.99919283)
+bones/6/rotation = Quaternion(1.279605e-09, -7.197814e-09, -0.030768318, 0.9995266)
 bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
 bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
 
@@ -553,12 +553,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="Jeff/Friend/EmployeerRig" parent_id_path=PackedInt32Array(709433161, 1498918708) index="0" unique_id=573482258]
 bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
-bones/1/rotation = Quaternion(-0.707094, -0.0042582005, -0.004258197, 0.707094)
-bones/2/rotation = Quaternion(0.02934794, -0.2228708, 0.9404508, -0.25498974)
-bones/3/rotation = Quaternion(0.4159163, -0.057647787, 0.08915619, 0.9031842)
-bones/4/rotation = Quaternion(-2.1648833e-07, -3.542548e-08, 0.9262797, 0.37683684)
-bones/5/rotation = Quaternion(-6.030001e-08, -1.0493269e-07, 0.15154985, 0.9884497)
-bones/6/rotation = Quaternion(-3.533901e-16, -1.7551425e-08, 0.114587046, 0.9934133)
+bones/1/rotation = Quaternion(-0.70609003, -0.03790797, -0.03790799, 0.7060899)
+bones/2/rotation = Quaternion(0.03357955, -0.22227262, 0.9354332, -0.2728223)
+bones/3/rotation = Quaternion(0.40124628, -0.04877956, -0.28429696, 0.86936605)
+bones/4/rotation = Quaternion(-2.015395e-07, 5.2342926e-08, 0.90739894, 0.42027026)
+bones/5/rotation = Quaternion(3.683855e-08, -8.760255e-08, -0.09191539, 0.9957668)
+bones/6/rotation = Quaternion(4.4155404e-10, 1.755359e-08, -0.15818308, 0.98740983)
 bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
 bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
 
