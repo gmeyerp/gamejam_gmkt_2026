@@ -9,8 +9,8 @@
 [ext_resource type="Theme" uid="uid://ctwpwhl3etueo" path="res://ui/computer_theme.tres" id="4_ir15t"]
 [ext_resource type="Script" uid="uid://c15rj0exjou6x" path="res://scripts/ui/level_dialogue.gd" id="4_kvpfn"]
 [ext_resource type="FontFile" uid="uid://dmlk7bbhtp8nf" path="res://ui/ari-w9500-display.ttf" id="4_kvuet"]
-[ext_resource type="Texture2D" uid="uid://n3b5tkdvnp1o" path="res://icon.svg" id="4_trtic"]
 [ext_resource type="Script" uid="uid://c345omwqftp5k" path="res://scenes/detect_area.gd" id="8_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://mnecajb00b74" path="res://ui/EmployeIcon.png" id="8_264po"]
 [ext_resource type="Texture2D" uid="uid://dmlfgwuktrrhk" path="res://models/characters/Udan.png" id="8_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://dt7ceafpfxv6d" path="res://models/characters/Javelas.png" id="9_dinhu"]
 [ext_resource type="Resource" uid="uid://sjf6yjlk2pie" path="res://resources/employee_data/special/boss.tres" id="11_ca42v"]
@@ -18,13 +18,64 @@
 [ext_resource type="Resource" uid="uid://djqa2t6kdqsxp" path="res://resources/employee_data/special/you.tres" id="12_rysoc"]
 [ext_resource type="Script" uid="uid://c12vib6ytgl13" path="res://scripts/player/behavior_friends.gd" id="13_kvuet"]
 [ext_resource type="Script" uid="uid://fd3bqgn6mebd" path="res://scripts/player/route_manager.gd" id="16_ca42v"]
-[ext_resource type="PackedScene" uid="uid://bo7xash43lh6f" path="res://Animation/employeer_animation.tscn" id="17_264po"]
+[ext_resource type="PackedScene" uid="uid://dnfb5bit5o3x2" path="res://models/characters3d/Employeer.glb" id="17_264po"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0i88t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0i88t"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0i88t"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bt5mj"]
+animation = &"Apresentation"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hda73"]
+animation = &"IdleTalk"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gesda"]
+animation = &"Walk"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_un5gr"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "velocity.x != 0.0 or velocity.y != 0.0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t0rix"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e1j6l"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "velocity.x == 0.0 and velocity.y == 0.0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pl11u"]
+xfade_time = 0.25
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bhx41"]
+states/Apresentation/node = SubResource("AnimationNodeAnimation_bt5mj")
+states/Apresentation/position = Vector2(646, 129.71428)
+states/IdleTalk/node = SubResource("AnimationNodeAnimation_hda73")
+states/IdleTalk/position = Vector2(434.3265, 188.57143)
+states/Walk/node = SubResource("AnimationNodeAnimation_gesda")
+states/Walk/position = Vector2(434.5714, 62.285713)
+transitions = ["IdleTalk", "Walk", SubResource("AnimationNodeStateMachineTransition_un5gr"), "Start", "IdleTalk", SubResource("AnimationNodeStateMachineTransition_t0rix"), "Walk", "Apresentation", SubResource("AnimationNodeStateMachineTransition_e1j6l"), "Apresentation", "IdleTalk", SubResource("AnimationNodeStateMachineTransition_pl11u")]
 
 [node name="Game" type="Node" unique_id=1083196052 node_paths=PackedStringArray("demission_manager", "post_processing")]
 script = ExtResource("1_yqjtg")
@@ -119,11 +170,12 @@ anchor_left = 0.79300004
 anchor_top = 0.057000004
 anchor_right = 0.9620001
 anchor_bottom = 0.20700002
-offset_left = 0.46392822
+offset_left = 75.43994
 offset_top = 0.063999176
-offset_right = -0.2241211
+offset_right = -57.04016
 offset_bottom = -0.13601685
 grow_horizontal = 0
+theme = ExtResource("4_ir15t")
 
 [node name="CurrentEmployeeNumber" type="Label" parent="GameHUD/EmployeeNumer" unique_id=963160310]
 layout_mode = 1
@@ -132,12 +184,14 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -73.0
-offset_top = -44.0
-offset_bottom = 44.0
+offset_left = -78.0
+offset_top = -78.524
+offset_right = 3.0
+offset_bottom = 9.475998
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 64
+theme_override_colors/font_color = Color(0.9147746, 0.9147747, 0.9147747, 1)
+theme_override_font_sizes/font_size = 74
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -147,18 +201,19 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -40.5
-offset_right = 94.0
-offset_bottom = 45.75
+offset_left = 30.0
+offset_top = -92.524
+offset_right = 116.0
+offset_bottom = -6.274002
 grow_vertical = 2
-texture = ExtResource("4_trtic")
+texture = ExtResource("8_264po")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="Score" type="Control" parent="GameHUD" unique_id=436912654]
 layout_mode = 3
 anchors_preset = 0
+theme = ExtResource("4_ir15t")
 
 [node name="ScoreNumber" type="Label" parent="GameHUD/Score" unique_id=711838650]
 layout_mode = 1
@@ -167,13 +222,14 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 37.0
-offset_top = 37.0
-offset_right = 110.0
-offset_bottom = 125.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 145.0
+offset_bottom = 152.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 64
+theme_override_colors/font_color = Color(0.9147746, 0.9147747, 0.9147747, 1)
+theme_override_font_sizes/font_size = 74
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -301,19 +357,25 @@ shape = SubResource("CapsuleShape3D_0i88t")
 visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Employeer" parent="Boss" unique_id=1205178136 instance=ExtResource("17_264po")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.92056435, 0)
+[node name="Employeer" parent="Boss" unique_id=1224916238 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="Skeleton3D" parent="Boss/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1205178136, 445192492) index="0" unique_id=255565774]
-bones/1/rotation = Quaternion(-0.7064923, 0.029473798, 0.029473815, 0.7064923)
-bones/2/rotation = Quaternion(0.04393259, -0.22046004, 0.9216582, -0.31624928)
-bones/3/rotation = Quaternion(0.41636992, -0.057484288, 0.07698868, 0.90410423)
-bones/4/rotation = Quaternion(-2.3002302e-07, -6.8737315e-08, 0.9701408, 0.24254246)
-bones/5/rotation = Quaternion(-1.284584e-08, -9.3205905e-08, 0.13653165, 0.99063575)
-bones/6/rotation = Quaternion(8.340962e-10, -2.4537222e-08, 0.15975639, 0.98715645)
+[node name="Skeleton3D" parent="Boss/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1224916238, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7056266, 0.045728765, 0.04572878, 0.7056266)
+bones/2/rotation = Quaternion(0.053629436, -0.21830386, 0.9067866, -0.35665864)
+bones/3/rotation = Quaternion(0.41780055, -0.056059647, -0.010632891, 0.9067454)
+bones/4/rotation = Quaternion(-2.2719745e-07, -2.4786496e-08, 0.97932774, 0.20227984)
+bones/5/rotation = Quaternion(-7.530981e-09, -9.3785054e-08, 0.08004295, 0.9967915)
+bones/6/rotation = Quaternion(6.576764e-10, -2.3729699e-08, 0.18126012, 0.98343515)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
 
-[node name="AnimationTree" parent="Boss/Employeer" index="2" unique_id=1900479705]
-advance_expression_base_node = NodePath("../..")
+[node name="AnimationTree" type="AnimationTree" parent="Boss" unique_id=1008832941]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
 
 [node name="Points_Friends" type="Node3D" parent="." unique_id=1731595884]
 
@@ -321,25 +383,25 @@ advance_expression_base_node = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
 
 [node name="Point_Mid_1-2" type="Node3D" parent="Points_Friends" unique_id=375744089]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.126959, 1, -7.967558)
 
 [node name="Point_Mesa1" type="Node3D" parent="Points_Friends" unique_id=864979434]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.637346, 1, -8.827795)
 
 [node name="Point_Mesa2" type="Node3D" parent="Points_Friends" unique_id=180841914]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -3.6)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.307807, 1, -4.319396)
 
 [node name="Point_Mid_3-4" type="Node3D" parent="Points_Friends" unique_id=1682950341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9626381, 1, -7.8351)
 
 [node name="Point_Mesa3" type="Node3D" parent="Points_Friends" unique_id=1257615142]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.678386, 1, -8.839458)
 
 [node name="Point_Mesa4" type="Node3D" parent="Points_Friends" unique_id=1469677592]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3.6)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.2807727, 1, -3.9995816)
 
-[node name="Friend_1" type="CharacterBody3D" parent="." unique_id=1591275231 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -8)
+[node name="Erika" type="CharacterBody3D" parent="." unique_id=1591275231 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.681011, 0.9999999, -8.666029)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
@@ -350,14 +412,35 @@ personagem = Array[Texture2D]([null, null, null, null])
 nameperson = Array[String](["Erika", "You", "Erika", "You"])
 points = [NodePath("../Points_Friends/Point_Mesa1"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Mesa1")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_1" unique_id=1266492199]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Erika" unique_id=1266492199]
 shape = SubResource("CapsuleShape3D_0i88t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_1" unique_id=1104494850]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Erika" unique_id=1104494850]
+visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Friend_2" type="CharacterBody3D" parent="." unique_id=1261741946 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -3.6)
+[node name="Employeer" parent="Erika" unique_id=755122415 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Skeleton3D" parent="Erika/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(755122415, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7056266, 0.045728765, 0.04572878, 0.7056266)
+bones/2/rotation = Quaternion(0.053629436, -0.21830386, 0.9067866, -0.35665864)
+bones/3/rotation = Quaternion(0.41780055, -0.056059647, -0.010632891, 0.9067454)
+bones/4/rotation = Quaternion(-2.2719745e-07, -2.4786496e-08, 0.97932774, 0.20227984)
+bones/5/rotation = Quaternion(-7.530981e-09, -9.3785054e-08, 0.08004295, 0.9967915)
+bones/6/rotation = Quaternion(6.576764e-10, -2.3729699e-08, 0.18126012, 0.98343515)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="Erika" unique_id=1236172083]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
+
+[node name="Jake" type="CharacterBody3D" parent="." unique_id=1261741946 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.2425127, 1, -4.3562374)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
@@ -368,14 +451,35 @@ personagem = Array[Texture2D]([null, null, null, null])
 nameperson = Array[String](["Jake", "You", "Jake", "You"])
 points = [NodePath("../Points_Friends/Point_Mesa2"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_1-2"), NodePath("../Points_Friends/Point_Mesa2")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_2" unique_id=1952373948]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jake" unique_id=1952373948]
 shape = SubResource("CapsuleShape3D_0i88t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_2" unique_id=815519738]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Jake" unique_id=815519738]
+visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Friend_3" type="CharacterBody3D" parent="." unique_id=1544350430 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -8)
+[node name="Employeer" parent="Jake" unique_id=418108568 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.81948256, 0)
+
+[node name="Skeleton3D" parent="Jake/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(418108568, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7056266, 0.045728765, 0.04572878, 0.7056266)
+bones/2/rotation = Quaternion(0.053629436, -0.21830386, 0.9067866, -0.35665864)
+bones/3/rotation = Quaternion(0.41780055, -0.056059647, -0.010632891, 0.9067454)
+bones/4/rotation = Quaternion(-2.2719745e-07, -2.4786496e-08, 0.97932774, 0.20227984)
+bones/5/rotation = Quaternion(-7.530981e-09, -9.3785054e-08, 0.08004295, 0.9967915)
+bones/6/rotation = Quaternion(6.576764e-10, -2.3729699e-08, 0.18126012, 0.98343515)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="Jake" unique_id=854272447]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
+
+[node name="Larry" type="CharacterBody3D" parent="." unique_id=1544350430 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.668496, 1, -8.9860115)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
@@ -386,14 +490,35 @@ personagem = Array[Texture2D]([null, null, null, null])
 nameperson = Array[String](["Larry", "You", "Larry", "You"])
 points = [NodePath("../Points_Friends/Point_Mesa3"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Mesa3")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_3" unique_id=1292010789]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Larry" unique_id=1292010789]
 shape = SubResource("CapsuleShape3D_0i88t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_3" unique_id=40470540]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Larry" unique_id=40470540]
+visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
 
-[node name="Friend_4" type="CharacterBody3D" parent="." unique_id=1857943544 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3.6)
+[node name="Employeer" parent="Larry" unique_id=1361534793 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8904155, 0)
+
+[node name="Skeleton3D" parent="Larry/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1361534793, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7056266, 0.045728765, 0.04572878, 0.7056266)
+bones/2/rotation = Quaternion(0.053629436, -0.21830386, 0.9067866, -0.35665864)
+bones/3/rotation = Quaternion(0.41780055, -0.056059647, -0.010632891, 0.9067454)
+bones/4/rotation = Quaternion(-2.2719745e-07, -2.4786496e-08, 0.97932774, 0.20227984)
+bones/5/rotation = Quaternion(-7.530981e-09, -9.3785054e-08, 0.08004295, 0.9967915)
+bones/6/rotation = Quaternion(6.576764e-10, -2.3729699e-08, 0.18126012, 0.98343515)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="Larry" unique_id=1332287552]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
+
+[node name="Jeff" type="CharacterBody3D" parent="." unique_id=1857943544 node_paths=PackedStringArray("character", "manager", "hud", "dialogue_area", "points")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.156408, 1, -4.1391563)
 script = ExtResource("13_kvuet")
 character = NodePath(".")
 manager = NodePath("../Route_Manager")
@@ -401,14 +526,35 @@ hud = NodePath("../Hud")
 dialogue_area = NodePath("../Point_You/Area3D")
 conversas = Array[Array]([["Hey man, counting down the hours for the party?", "I sure am. ", "Same. Can't wait to give Annie her gift. Best godfather ever.", "If it's another dog you're keeping it."], ["Dude, I do you know {nome1}? They just asked me out. I have a shot.", "Really? So now it's reciprocal huh?", "Who doesn't love a workplace relationship?", "You do know I'm HR, right?"], ["Heard you are doing some layoffs. How are things?", "Pretty stressful. Having to decide what happens to people.", "Remember when Ray got me socks for the secret santa? Just saying.", "Hey, you gave them to me after that. I'm actually wearing them today."], ["Sweetie, since you're HR I think you should know...", "Here it comes...", "Apparently someone saw {nome1} hooking up with boss' wife on the holliday party.", "Does boss know about this?"]])
 personagem = Array[Texture2D]([null, ExtResource("9_dinhu")])
-nameperson = Array[String](["", "Javelar"])
+nameperson = Array[String](["Jeff", "You", "Jeff", "You"])
 points = [NodePath("../Points_Friends/Point_Mesa4"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Center"), NodePath("../Point_You"), NodePath("../Points_Friends/Point_Center"), NodePath("../Points_Friends/Point_Mid_3-4"), NodePath("../Points_Friends/Point_Mesa4")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Friend_4" unique_id=5135914]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jeff" unique_id=5135914]
 shape = SubResource("CapsuleShape3D_0i88t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Friend_4" unique_id=992208121]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Jeff" unique_id=992208121]
+visible = false
 mesh = SubResource("CapsuleMesh_0i88t")
+
+[node name="Employeer" parent="Jeff" unique_id=1356275920 instance=ExtResource("17_264po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Skeleton3D" parent="Jeff/Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1356275920, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.7056266, 0.045728765, 0.04572878, 0.7056266)
+bones/2/rotation = Quaternion(0.053629436, -0.21830386, 0.9067866, -0.35665864)
+bones/3/rotation = Quaternion(0.41780055, -0.056059647, -0.010632891, 0.9067454)
+bones/4/rotation = Quaternion(-2.2719745e-07, -2.4786496e-08, 0.97932774, 0.20227984)
+bones/5/rotation = Quaternion(-7.530981e-09, -9.3785054e-08, 0.08004295, 0.9967915)
+bones/6/rotation = Quaternion(6.576764e-10, -2.3729699e-08, 0.18126012, 0.98343515)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="Jeff" unique_id=1417270146]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_bhx41")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
 
 [node name="Route_Manager" type="Node3D" parent="." unique_id=567275079]
 script = ExtResource("16_ca42v")
@@ -421,3 +567,7 @@ max_interval = 80.0
 [connection signal="employee_selected" from="DemissionManager" to="Office/Desk/Report" method="set_employee"]
 
 [editable path="Boss/Employeer"]
+[editable path="Erika/Employeer"]
+[editable path="Jake/Employeer"]
+[editable path="Larry/Employeer"]
+[editable path="Jeff/Employeer"]

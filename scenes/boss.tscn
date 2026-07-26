@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://skm34edw351l"]
+
+[ext_resource type="Script" uid="uid://jpcwktkkd1x6" path="res://scripts/player/behavior_boss.gd" id="1_qnbj4"]
+[ext_resource type="Texture2D" uid="uid://dmlfgwuktrrhk" path="res://models/characters/Udan.png" id="2_r3bxh"]
+[ext_resource type="Texture2D" uid="uid://dt7ceafpfxv6d" path="res://models/characters/Javelas.png" id="3_wqpjq"]
+[ext_resource type="PackedScene" uid="uid://dnfb5bit5o3x2" path="res://models/characters3d/Employeer.glb" id="4_qnbj4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0i88t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0i88t"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hda73"]
+animation = &"IdleTalk"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gesda"]
+animation = &"Walk"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_un5gr"]
+advance_mode = 2
+advance_expression = "velocity.x != 0.0 or velocity.y != 0.0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t0rix"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hda73"]
+advance_mode = 2
+advance_expression = "velocity.x == 0.0 and velocity.y == 0.0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_r3bxh"]
+states/IdleTalk/node = SubResource("AnimationNodeAnimation_hda73")
+states/IdleTalk/position = Vector2(434.3265, 188.57143)
+states/Walk/node = SubResource("AnimationNodeAnimation_gesda")
+states/Walk/position = Vector2(434.5714, 62.285713)
+transitions = ["IdleTalk", "Walk", SubResource("AnimationNodeStateMachineTransition_un5gr"), "Start", "IdleTalk", SubResource("AnimationNodeStateMachineTransition_t0rix"), "Walk", "IdleTalk", SubResource("AnimationNodeStateMachineTransition_hda73")]
+
+[node name="Boss" type="CharacterBody3D" unique_id=1216906008 node_paths=PackedStringArray("points")]
+script = ExtResource("1_qnbj4")
+conversas = Array[Array]([["You're not leaving until you're done.", "But it's Annie's birthday today.", "Your priority is the company until you finish your assignment or until it's 18", "If I don't have a choice let me check how {nome1} is doing."], ["Don't forget, you're mine until you're done.", "But I have plans for after my shift.", "Exactly. After your shift. Until you finish the assignment or until 18", "Fine fine fine..."]])
+personagem = Array[Texture2D]([ExtResource("2_r3bxh"), ExtResource("3_wqpjq"), ExtResource("2_r3bxh"), ExtResource("3_wqpjq")])
+nameperson = Array[String](["Boss", "You", "Boss", "You"])
+speed = 8.0
+points = [null, null, null, null, null, null, null, null, null]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1431202867]
+shape = SubResource("CapsuleShape3D_0i88t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1809406281]
+visible = false
+mesh = SubResource("CapsuleMesh_0i88t")
+
+[node name="Employeer" parent="." unique_id=1224916238 instance=ExtResource("4_qnbj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.91974807, 0)
+
+[node name="Skeleton3D" parent="Employeer/EmployeerRig" parent_id_path=PackedInt32Array(1224916238, 713727802) index="0" unique_id=523403261]
+bones/1/position = Vector3(-2.9367705e-08, -1.5072465e-37, -0.19449352)
+bones/1/rotation = Quaternion(-0.70607555, 0.038175695, 0.038175702, 0.70607555)
+bones/2/rotation = Quaternion(0.05401816, -0.21820801, 0.90615, -0.35827315)
+bones/3/rotation = Quaternion(0.409067, -0.051219974, -0.20913027, 0.8867386)
+bones/4/rotation = Quaternion(-2.22418e-07, -2.502428e-08, 0.9578454, 0.28728434)
+bones/5/rotation = Quaternion(-8.696777e-09, -9.3684164e-08, 0.09243362, 0.99571896)
+bones/6/rotation = Quaternion(4.4753563e-16, 1.0907931e-08, 0.02068362, 0.99978614)
+bones/7/position = Vector3(-1.496288e-07, -1.3552527e-20, -0.20145929)
+bones/7/rotation = Quaternion(0.7071068, 4.7180066e-07, -5.3385083e-08, 0.7071068)
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1577350654]
+root_node = NodePath("../Employeer")
+tree_root = SubResource("AnimationNodeStateMachine_r3bxh")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Employeer/AnimationPlayer")
+
+[editable path="Employeer"]
